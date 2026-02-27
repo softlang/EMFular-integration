@@ -4,3 +4,4 @@
 
 export * from './lib/ngx-emfular-integration.service';
 export * from './lib/ngx-emfular-integration.component';
+export * from './lib/model.service';

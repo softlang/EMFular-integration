@@ -19,7 +19,7 @@ export function provideHistoryForModel<M>(
 @Injectable({
   providedIn: 'root'
 })
-export abstract class ModelServiceService<M extends Referencable<any>> {
+export abstract class ModelService<M extends Referencable<any>> {
 
   protected _model!: M
   get model(): M {
@@ -32,8 +32,8 @@ export abstract class ModelServiceService<M extends Referencable<any>> {
   abstract deserialize(modelJson: JsonOf<M>): M
 
   protected constructor(
-      @Inject(HISTORY_SERVICE) private readonly historyService: HistoryService<JsonOf<M>>,
-      private ioService: IoService
+      @Inject(HISTORY_SERVICE) readonly historyService: HistoryService<JsonOf<M>>,
+      readonly ioService: IoService
   ) {
     //should actually initialize a model:this._model = new M;
     this.historyService.state$.subscribe(state => {
