@@ -35,8 +35,7 @@ export abstract class ModelService<M extends Referencable<any>> {
       readonly ioService: IoService,
       protected readonly modelClass: JsonDeserializable<M>,
   ) {
-    //should actually initialize a model:this._model = new M;
-    this._model = new modelClass()
+    this._model = new modelClass()     //default initialization without calling set, since adjustments might need not yet initialized properties
     this.historyService.state$.subscribe(state => {
       if (state) {
         this.applyJson(state);
@@ -72,7 +71,7 @@ export abstract class ModelService<M extends Referencable<any>> {
   }
 
   protected applyJson(modelJson: JsonOf<M>): M {
-    this._model = this.deserialize(modelJson);
+    this.model = this.deserialize(modelJson);
     return this.model;
   }
 
