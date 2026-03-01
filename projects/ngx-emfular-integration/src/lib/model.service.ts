@@ -75,11 +75,15 @@ export abstract class ModelService<M extends Referencable<any>> {
     return this.model;
   }
 
+  loadFromJson(modelJson: JsonOf<M>): void {
+    this.applyJson(modelJson);
+    this.saveCurrentState()
+  }
+
   loadFromFile(event: Event) {
     this.ioService.loadStringFromFile(event).then(txt => {
       //todo insert detection code for wrong files (no json, not appropriately structured
-      this.applyJson(JSON.parse(txt));
-      this.saveCurrentState()
+      this.loadFromJson(JSON.parse(txt));
     });
   }
 
