@@ -19,7 +19,7 @@ export function provideHistoryForModel<M>(
 @Injectable({
   providedIn: 'root'
 })
-export class ModelService<M extends Referencable<any>> {
+export abstract class ModelService<M extends Referencable<any>> {
 
   private _model!: M
   get model(): M {
@@ -30,12 +30,13 @@ export class ModelService<M extends Referencable<any>> {
     this.adaptToModel()
   }
 
-  constructor(
+  protected constructor(
       @Inject(HISTORY_SERVICE) readonly historyService: HistoryService<JsonOf<M>>,
       readonly ioService: IoService,
-      private readonly modelClass: JsonDeserializable<M>
+      protected readonly modelClass: JsonDeserializable<M>,
   ) {
     //should actually initialize a model:this._model = new M;
+    this._model = new modelClass()
     this.historyService.state$.subscribe(state => {
       if (state) {
         this.applyJson(state);
@@ -53,10 +54,9 @@ export class ModelService<M extends Referencable<any>> {
   adaptToModel() {}
 
   // override by either a fixed string or sth from the current model itself
-  fileTitle(): string {
+  public fileTitle(): string {
     return "model"
   }
-
 
   serialize(): JsonOf<M> {
     return this.model.toJson()
