@@ -21,14 +21,27 @@ export function provideHistoryForModel<M>(
 })
 export abstract class ModelService<M extends Referencable<any>> {
 
-  protected _model!: M
+  private _model!: M
   get model(): M {
     return this._model;
   }
+  protected set model(model: M) {
+    this._model = this.adjustModel(model);
+    this.adaptToModel()
+  }
+
+  //default implementation to override if you need any normalization on a model before setting it
+  adjustModel(model: M): M {
+    return model;
+  }
+
+  //default implementation to override if you need adaptation of surroundings,
+  // e.g. other attributes, notifications, signals etc
+  adaptToModel() {}
 
   abstract fileTitle(): string // either a fixed string or sth from the current model itself
 
-  // M.fromJson(modelJson) plus any convenience /graphical organization necessary
+  // M.fromJson(modelJson)
   abstract deserialize(modelJson: JsonOf<M>): M
 
   protected constructor(
@@ -38,7 +51,7 @@ export abstract class ModelService<M extends Referencable<any>> {
     //should actually initialize a model:this._model = new M;
     this.historyService.state$.subscribe(state => {
       if (state) {
-        this.deserialize(state);
+        this.applyModel(state);
       }
     });
   }
@@ -54,7 +67,7 @@ export abstract class ModelService<M extends Referencable<any>> {
   protected applyModel(modelJson: JsonOf<M>): M {
     let m: M = this.deserialize(modelJson);
     this._model = m;
-    return m;
+    return this.model;
   }
 
   load(modelJson: JsonOf<M>): M {
