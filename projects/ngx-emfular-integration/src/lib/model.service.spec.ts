@@ -3,24 +3,31 @@ import { TestBed } from '@angular/core/testing';
 import {HISTORY_SERVICE, ModelService, provideHistoryForModel} from './model.service';
 import {HistoryService, IoService } from 'ngx-emfular-helper';
 import { Referencable } from 'emfular';
+import {BehaviorSubject} from "rxjs";
+
+class DummyModel extends Referencable<any>{
+  id = 'x';
+  constructor() {
+    super();
+  }
+}
+
+class DummyModelService extends ModelService<DummyModel> {
+  constructor(
+      history: HistoryService<DummyModel>,
+      io: IoService
+  ) {
+    super(history, io, DummyModel);
+  }
+
+  id: string = "service"
+
+  override adaptToModel() {
+    this.id = "better service"// this would fail on construction if the model did not delay subscription
+  }
+}
 
 describe('ModelServiceService', () => {
-
-  class DummyModel extends Referencable<any>{
-    id = 'x';
-    constructor() {
-      super();
-    }
-  }
-
-  class DummyModelService extends ModelService<DummyModel> {
-    constructor(
-        history: HistoryService<DummyModel>,
-        io: IoService
-    ) {
-      super(history, io, DummyModel);
-    }
-  }
 
   let service: ModelService<any>;
 
@@ -43,3 +50,44 @@ describe('ModelServiceService', () => {
     expect(service).toBeTruthy();
   });
 });
+
+
+class HistoryServiceStub<T> {
+  subject = new BehaviorSubject<T | null>(null);
+
+  push(value: T) {
+    this.subject.next(value);
+  }
+
+  get stream() {
+    return this.subject.asObservable();
+  }
+}
+
+describe('ModelService with HistoryService emitting immediately', () => {
+  let historyStub: HistoryServiceStub<any>;
+
+  beforeEach(() => {
+    historyStub = new HistoryServiceStub<any>();
+    historyStub.subject.next({ foo: 'bar' }); // immediate emission
+
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: HISTORY_SERVICE, useValue: historyStub },
+        { provide: IoService, useValue: {} },
+        { provide: DummyModelService, useFactory: () =>
+              new DummyModelService(
+                  TestBed.inject(HISTORY_SERVICE),
+                  TestBed.inject(IoService),
+              ) }
+      ]
+    });
+  });
+
+  it('should be created', () => {
+    const service = TestBed.inject(DummyModelService);
+    expect(service).toBeTruthy();
+  });
+
+});
+
