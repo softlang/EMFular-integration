@@ -36,11 +36,13 @@ export abstract class ModelService<M extends Referencable<any>> {
       protected readonly modelClass: JsonDeserializable<M>,
   ) {
     this._model = new modelClass()     //default initialization without calling set, since adjustments might need not yet initialized properties
-    this.historyService.state$.subscribe(state => {
-      if (state) {
-        this.applyJson(state);
-      }
-    });
+    queueMicrotask(() => { //necessary to avoid timing issues if adjust model or adapt to model call services or other not initialized properties of the inheriting class
+      this.historyService.state$.subscribe(state => {
+        if (state) {
+          this.applyJson(state);
+        }
+      });
+    })
   }
 
   //default implementation to override if you need any normalization on a model before setting it
