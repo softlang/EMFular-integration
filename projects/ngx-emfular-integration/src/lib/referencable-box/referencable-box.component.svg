@@ -1,0 +1,4 @@
+<svg:g>
+    <g rectangleG [position]="position" [color]="color"></g>
+    <g text-area-svg [text]="referencable.getEClass()"></g>
+</svg:g>
