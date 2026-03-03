@@ -1,7 +1,24 @@
-<p>tree-editor works!</p>
-<emfular-file-level-bar
-        [svg]="svg.nativeElement"
-        [modelService]="modelService"
->
+<div class="tree-editor" id="tree-editor">
+    <emfular-file-level-bar
+            [svg]="svg.nativeElement"
+            [modelService]="modelService">
+    </emfular-file-level-bar>
+    <div class="editor-main">
+        <!-- vertical model bar -->
+        <emfular-model-editing-bar
+                class="model-bar"
+                [buttons]="sidebarButtons">
+        </emfular-model-editing-bar>
 
-</emfular-file-level-bar>
+
+            <!-- scrollable modeling canvas -->
+        <div class="modeling-container">
+            <svg #svg id="svg" class="canvas-svg">
+
+            </svg>
+        </div>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,6 @@
+<div class="model-editing-bar">
+    <button *ngFor="let b of buttons" (click)="b.action()">
+        <span *ngIf="b.icon" class="icon">{{ b.icon }}</span>
+        {{ b.label }}
+    </button>
+</div>
