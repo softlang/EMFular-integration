@@ -14,7 +14,11 @@
             <!-- scrollable modeling canvas -->
         <div class="modeling-container">
             <svg #svg id="svg" class="canvas-svg">
-
+                <g referencable-box
+                   [referencable]="modelService.model"
+                   [position]="initialBBox"
+                >
+                </g>
             </svg>
         </div>
 

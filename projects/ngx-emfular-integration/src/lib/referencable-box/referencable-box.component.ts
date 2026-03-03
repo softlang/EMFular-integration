@@ -21,11 +21,8 @@ export class ReferencableBoxComponent {
     const middle = (length-1)/2;
     return index - middle;
   }
-  computeChildBBox(index: number, length: number) {
-    // go down by two boxes height and give all children a fixed size of 5 towards the next box
-
-
-    const bbox: BoundingBox = {
+  computeChildBBox(index: number, length: number): BoundingBox {
+    return {
       x: this.position.x + ReferencableBoxComponent.computeOffset(index, length)*55,
       y: this.position.y+80,
       w: 50,
