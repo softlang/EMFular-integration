@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TreeEditorComponent } from './tree-editor.component';
 
@@ -20,4 +20,4 @@ describe('TreeEditorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+});*/

@@ -1,0 +1,16 @@
+<input id="openModel" type="file" class="file-upload" style="display:none"
+       (change)="modelService.loadFromFile($event)"
+       (click)="InputHandler.clearElem($event)">
+
+<div class="file-level-bar">
+    <button (click)="modelService.newModel()">New</button>
+    <button (click)="openModel()">Open</button>
+    <span class="separator"></span>
+    <button (click)="modelService.historyService.undo()" [disabled]="modelService.historyService.isUndoNotPossible()">Undo</button>
+    <button (click)="modelService.historyService.redo()" [disabled]="modelService.historyService.isRedoNotPossible()">Redo</button>
+    <span class="separator"></span>
+    <button (click)="modelService.save()">Save</button>
+    <button (click)="saveSVG()">Save SVG</button>
+    <button (click)="saveSVGasPNG()">Save PNG</button>
+    <button (click)="saveSVGasJPEG()">Save JPEG</button>
+</div>
