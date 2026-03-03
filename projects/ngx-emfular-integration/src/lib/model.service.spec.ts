@@ -4,10 +4,11 @@ import {HISTORY_SERVICE, ModelService, provideHistoryForModel} from './model.ser
 import {HistoryService, IoService } from 'ngx-emfular-helper';
 import {BehaviorSubject} from "rxjs";
 import {DummyReferencable} from './test/dummy-referencable';
+import {JsonOf} from "emfular";
 
 class DummyModelService extends ModelService<DummyReferencable> {
   constructor(
-      history: HistoryService<DummyReferencable>,
+      history: HistoryService<JsonOf<DummyReferencable>>,
       io: IoService
   ) {
     super(history, io, DummyReferencable);

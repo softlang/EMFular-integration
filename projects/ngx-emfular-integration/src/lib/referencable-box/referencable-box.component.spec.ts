@@ -15,6 +15,12 @@ describe('ReferencableBoxComponent', () => {
     fixture = TestBed.createComponent(ReferencableBoxComponent);
     component = fixture.componentInstance;
     component.referencable = new DummyReferencable()
+    component.position = {
+      x:5,
+      y: 10,
+      w: 50,
+      h: 20
+    }
     fixture.detectChanges();
   });
 
