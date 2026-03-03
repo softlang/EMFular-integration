@@ -59,6 +59,11 @@ export abstract class ModelService<M extends Referencable<any>> {
     return "model"
   }
 
+  newModel() {
+    this.model = new this.modelClass()
+    this.saveCurrentState()
+  }
+
   serialize(): JsonOf<M> {
     return this.model.toJson()
   }
