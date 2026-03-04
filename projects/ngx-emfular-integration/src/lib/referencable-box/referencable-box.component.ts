@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Referencable} from 'emfular';
-import {BoundingBox, RectangleComponent, TextAreaSvgComponent} from 'svg-graphics';
+import {BoundingBox, RectangleComponent, TextAreaSvgComponent} from 'ngx-svg-graphics';
 import {NgForOf} from "@angular/common";
 import {ReferencableChildBoxComponent} from "../referencable-child-box/referencable-child-box.component";
 

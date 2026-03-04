@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Referencable} from "emfular";
-import { BoundingBox } from 'svg-graphics';
+import { BoundingBox } from 'ngx-svg-graphics';
 
 @Component({
   selector: '[referencable-child-box]',

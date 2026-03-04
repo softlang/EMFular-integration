@@ -3,7 +3,7 @@ import { Referencable} from "emfular";
 import {FileLevelBarComponent} from "../editor/file-level-bar/file-level-bar.component";
 import {ModelEditingBarComponent} from "../editor/model-editing-bar/model-editing-bar.component";
 import {ReferencableBoxComponent} from "../referencable-box/referencable-box.component";
-import {BoundingBox} from "svg-graphics";
+import {BoundingBox} from "ngx-svg-graphics";
 import {ModelService} from "../model.service";
 
 @Component({
