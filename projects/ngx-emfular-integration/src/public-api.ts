@@ -3,3 +3,9 @@
  */
 
 export * from './lib/model.service';
+export * from './lib/tree-editor/tree-editor.component'
+export * from './lib/editor/file-level-bar/file-level-bar.component';
+export * from './lib/editor/file-level-bar-material/file-level-bar-material.component';
+export * from './lib/editor/model-editing-bar/model-editing-bar.component';
+export * from './lib/referencable-box/referencable-box.component';
+export * from './lib/referencable-child-box/referencable-child-box.component';
