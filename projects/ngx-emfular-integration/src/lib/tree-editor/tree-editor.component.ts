@@ -23,6 +23,7 @@ export class TreeEditorComponent<M extends Referencable<any>> {
         return this.svg.nativeElement;
     }
 
+    @Input() modelService!: ModelService<M>
 
     @Input() customButtons: Array<{
       label: string;
@@ -31,15 +32,11 @@ export class TreeEditorComponent<M extends Referencable<any>> {
   }> | null = null;
   initialBBox : BoundingBox = {x: 0, y: 20, w: 50, h: 25}
 
-  constructor(
-      public modelService: ModelService<M>,
-      ) {}
+  constructor() {}
 
   get sidebarButtons() {
       if (this.customButtons) return this.customButtons;
       else       //todo replace by default create buttons
           return[{label: "test", action: () => {console.log("Button on model edition works")}}];
   }
-
-    protected readonly Referencable = Referencable;
 }
