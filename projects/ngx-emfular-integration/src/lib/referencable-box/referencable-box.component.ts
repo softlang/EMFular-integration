@@ -13,7 +13,7 @@ import {ReferencableChildBoxComponent} from "../referencable-child-box/referenca
 export class ReferencableBoxComponent {
   @Input() referencable!: Referencable<any>;
   @Input() position!: BoundingBox
-  @Input() color?: string
+  @Input() color?: string = "#efad78"
 
   constructor() {}
 
