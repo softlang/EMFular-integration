@@ -1,4 +1,6 @@
-import {Referencable, ModelDefinition, eClass } from "emfular";
+import {Referencable} from "emfular"
+/*
+import {ModelDefinition, eClass } from "emfular";
 
 export const DummyMeta: ModelDefinition = {
     name: "dummy",
@@ -11,7 +13,7 @@ export const DummyMeta: ModelDefinition = {
     }
 }
 
-@eClass(DummyMeta, "DummyReferencable")
+@eClass(DummyMeta, "DummyReferencable")*/
 export class DummyReferencable extends Referencable<any>{
     id = 'x';
     constructor() {
