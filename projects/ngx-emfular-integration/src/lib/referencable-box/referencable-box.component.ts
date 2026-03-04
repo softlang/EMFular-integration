@@ -6,7 +6,7 @@ import {ReferencableChildBoxComponent} from "../referencable-child-box/referenca
 
 @Component({
   selector: '[referencable-box]',
-  imports: [RectangleComponent, TextAreaSvgComponent, NgForOf, ReferencableChildBoxComponent, TextAreaSvgComponent, RectangleComponent],
+  imports: [RectangleComponent, TextAreaSvgComponent, NgForOf, ReferencableChildBoxComponent, TextAreaSvgComponent],
   templateUrl: './referencable-box.component.svg',
   styleUrl: './referencable-box.component.css'
 })

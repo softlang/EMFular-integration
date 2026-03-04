@@ -1,13 +1,14 @@
 <svg:g [attr.id]="referencable.$gId">
     <g rectangleG [attr.id]="referencable.$gId+'_main'"
-       [position]="position" [color]="color"></g>
+       [position]="position"
+       [color]="color"></g>
     <g text-area-svg [text]="referencable.getEClass()"></g>
     <g referencable-child-box
-       *ngFor="let child of referencable.$treeChildren; let i = $index"
+       *ngFor="let child of referencable.$treeChildren; track index; let i = index"
        [parentGId]="referencable.$gId+'_main'"
        [refName]="child.referenceName"
        [children]="child.get()"
        [child]="child.get()"
-
+        [middle]="computeChildBBox(i, referencable.$treeChildren.length)"
     ></g>
 </svg:g>

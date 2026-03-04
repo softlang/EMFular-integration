@@ -19,7 +19,12 @@ import {ModelService} from "../model.service";
 export class TreeEditorComponent<M extends Referencable<any>> {
 
   @ViewChild('svg', { static: true }) svg!: ElementRef<SVGElement>;
-  @Input() customButtons: Array<{
+    get svgEl(): SVGElement {
+        return this.svg.nativeElement;
+    }
+
+
+    @Input() customButtons: Array<{
       label: string;
       icon?: string;
       action: () => void;
