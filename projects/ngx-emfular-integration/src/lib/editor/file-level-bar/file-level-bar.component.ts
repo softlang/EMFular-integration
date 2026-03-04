@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {InputHandler, IoService} from "ngx-emfular-helper";
-import {ModelService} from "ngx-emfular-integration";
 import {Referencable} from "emfular";
+import {ModelService} from "../../model.service";
 
 @Component({
   selector: 'emfular-file-level-bar',
