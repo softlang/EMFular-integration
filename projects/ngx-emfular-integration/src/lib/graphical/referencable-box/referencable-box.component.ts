@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Referencable} from 'emfular';
 import {ArrowBetweenElemsComponent, BoundingBox, RectangleComponent, TextAreaSvgComponent} from 'ngx-svg-graphics';
 import {NgForOf} from "@angular/common";
-import {GraphicalHelper} from "../graphical/graphical-helper";
+import {GraphicalHelper} from "../graphical-helper";
 
 @Component({
   selector: '[referencable-box]',

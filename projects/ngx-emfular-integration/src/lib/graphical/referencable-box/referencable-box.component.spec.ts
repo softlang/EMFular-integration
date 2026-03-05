@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReferencableBoxComponent } from './referencable-box.component';
-import {DummyReferencable} from "../test/dummy-referencable";
+import {DummyReferencable} from "../../test/dummy-referencable";
 
 describe('ReferencableBoxComponent', () => {
   let component: ReferencableBoxComponent;
