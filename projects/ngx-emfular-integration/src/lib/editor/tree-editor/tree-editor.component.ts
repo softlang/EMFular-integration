@@ -18,8 +18,8 @@ import {ModelService} from "../../model.service";
 })
 export class TreeEditorComponent<M extends Referencable<any>> {
 
-    svgwidth = 1000;
-    svgheigth = 2000;
+    svgwidth = 1500;
+    svgheigth = 1000;
 
   @ViewChild('svg', { static: true }) svg!: ElementRef<SVGElement>;
     get svgEl(): SVGElement {
