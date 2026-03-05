@@ -8,6 +8,7 @@ import {
 } from 'ngx-svg-graphics';
 import {NgForOf} from "@angular/common";
 import {ReferencableBoxComponent} from "../referencable-box/referencable-box.component";
+import {GraphicalHelper} from "../graphical/graphical-helper";
 
 @Component({
   selector: '[referencable-child-box]',
@@ -36,4 +37,5 @@ export class ReferencableChildBoxComponent {
     this.expanded = !this.expanded;
   }
 
+  protected readonly GraphicalHelper = GraphicalHelper;
 }

@@ -19,6 +19,8 @@
     </g>
     <g referencable-box
        *ngFor="let child of children; let i = index"
+       [referencable]="child"
+       [position]="GraphicalHelper.computeChildBBox(i, children.length, middle)"
    ></g>
 </svg:g>
 
