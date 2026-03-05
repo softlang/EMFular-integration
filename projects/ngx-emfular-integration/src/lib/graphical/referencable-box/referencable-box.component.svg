@@ -63,6 +63,13 @@
                [position]="elemBox"
             >
             </g>
+            <!-- arrow from reference to child box -->
+            <g arrowElems
+               [startGID]="containerKey"
+               startSuffix="_ref"
+               [endGID]="elem.$gId"
+               endSuffix="_main">
+            </g>
         }
     }
 </svg:g>
