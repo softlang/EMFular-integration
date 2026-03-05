@@ -18,6 +18,9 @@ import {ModelService} from "../../model.service";
 })
 export class TreeEditorComponent<M extends Referencable<any>> {
 
+    svgwidth = 1000;
+    svgheigth = 2000;
+
   @ViewChild('svg', { static: true }) svg!: ElementRef<SVGElement>;
     get svgEl(): SVGElement {
         return this.svg.nativeElement;
@@ -30,7 +33,7 @@ export class TreeEditorComponent<M extends Referencable<any>> {
       icon?: string;
       action: () => void;
   }> | null = null;
-  initialBBox : BoundingBox = {x: 750, y: 20, w: 50, h: 25}
+  initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 400, h: 25}
 
   constructor() {}
 

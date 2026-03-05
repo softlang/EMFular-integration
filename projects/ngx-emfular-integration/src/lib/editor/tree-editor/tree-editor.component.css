@@ -35,7 +35,5 @@ emfular-file-level-bar {
 
 /* the actual SVG canvas */
 .canvas-svg {
-    width: 2000px;   /* example large canvas */
-    height: 2000px;  /* your renderer will override this */
     display: block;
 }
