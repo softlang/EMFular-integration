@@ -17,5 +17,8 @@
        [endSuffix]="'_ref'"
     >
     </g>
+    <g referencable-box
+       *ngFor="let child of children; let i = index"
+   ></g>
 </svg:g>
 

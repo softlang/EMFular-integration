@@ -7,6 +7,7 @@ import {
   TextAreaSvgComponent
 } from 'ngx-svg-graphics';
 import {NgForOf} from "@angular/common";
+import {ReferencableBoxComponent} from "../referencable-box/referencable-box.component";
 
 @Component({
   selector: '[referencable-child-box]',
@@ -15,6 +16,7 @@ import {NgForOf} from "@angular/common";
     RectangleComponent,
     TextAreaSvgComponent,
     ArrowBetweenElemsComponent,
+    ReferencableBoxComponent,
   ],
   templateUrl: './referencable-child-box.component.svg',
   styleUrl: './referencable-child-box.component.css'

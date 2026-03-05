@@ -14,7 +14,7 @@
        *ngFor="let child of referencable.$treeChildren; let i = index"
        [parentGId]="referencable.$gId+'_main'"
        [refName]="child.referenceName"
-       [children]="getAsList(child)"
-        [middle]="computeChildBBox(i, referencable.$treeChildren.length)"
+       [children]="GraphicalHelper.getAsList(child)"
+        [middle]="GraphicalHelper.computeChildBBox(i, referencable.$treeChildren.length, this.position)"
     ></g>
 </svg:g>
