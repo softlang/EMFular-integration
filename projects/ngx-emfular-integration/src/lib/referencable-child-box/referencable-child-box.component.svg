@@ -1,1 +1,14 @@
-<p>referencable-child-box works!</p>
+<svg:g [attr.id]="parentGId+'_'+refName">
+    <g rectangleG
+       [attr.id]="parentGId+'_'+refName+'_ref'"
+       [position]="middle"
+       [color]="color"></g>
+    <g text-area-svg
+       [text]="refName"
+       [x]="middle.x"
+       [y]="middle.y"
+       [w]="middle.w"
+       [h]="middle.h"
+    ></g>
+</svg:g>
+

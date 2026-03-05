@@ -30,7 +30,7 @@ export class TreeEditorComponent<M extends Referencable<any>> {
       icon?: string;
       action: () => void;
   }> | null = null;
-  initialBBox : BoundingBox = {x: 0, y: 20, w: 50, h: 25}
+  initialBBox : BoundingBox = {x: 750, y: 20, w: 50, h: 25}
 
   constructor() {}
 
