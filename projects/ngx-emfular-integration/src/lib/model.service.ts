@@ -1,4 +1,4 @@
-import {Inject, Injectable, InjectionToken} from '@angular/core';
+import {Inject, Injectable, InjectionToken, PLATFORM_ID} from '@angular/core';
 import {Deserializer, JsonDeserializable, JsonOf, Referencable} from "emfular";
 import {HistoryService, IoService} from "ngx-emfular-helper";
 
@@ -11,7 +11,8 @@ export function provideHistoryForModel<M>(
 ) {
   return {
     provide: HISTORY_SERVICE,
-    useFactory: () => new HistoryService<JsonOf<M>>(prefix, bufferSize)
+    useFactory: (platformId: Object) => new HistoryService<JsonOf<M>>(prefix, bufferSize, platformId),
+    deps: [PLATFORM_ID]
   };
 }
 
