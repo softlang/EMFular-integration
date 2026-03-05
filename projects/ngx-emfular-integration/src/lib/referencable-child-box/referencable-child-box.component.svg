@@ -10,5 +10,12 @@
        [w]="middle.w"
        [h]="middle.h"
     ></g>
+    <g arrowElems
+       [startGID]="parentGId"
+       [startSuffix]="'_main'"
+       [endGID]="parentGId+'_'+refName"
+       [endSuffix]="'_ref'"
+    >
+    </g>
 </svg:g>
 
