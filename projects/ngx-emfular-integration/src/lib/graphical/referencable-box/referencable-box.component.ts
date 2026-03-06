@@ -1,11 +1,11 @@
 import {Component, Input} from '@angular/core';
 import {Referencable} from 'emfular';
-import {ArrowBetweenElemsComponent, BoundingBox, RectangleComponent, TextAreaSvgComponent, RectangleWithTextComponent} from 'ngx-svg-graphics';
+import {ArrowBetweenElemsComponent, BoundingBox, RectangleWithTextComponent, PositionHelper} from 'ngx-svg-graphics';
 import {GraphicalHelper} from "../graphical-helper";
 
 @Component({
   selector: '[referencable-box]',
-  imports: [RectangleWithTextComponent, RectangleComponent, TextAreaSvgComponent, ArrowBetweenElemsComponent],
+  imports: [RectangleWithTextComponent, ArrowBetweenElemsComponent],
   templateUrl: './referencable-box.component.svg',
   styleUrl: './referencable-box.component.css'
 })
@@ -17,4 +17,5 @@ export class ReferencableBoxComponent {
   constructor() {}
 
   protected readonly GraphicalHelper = GraphicalHelper;
+  protected readonly PositionHelper = PositionHelper
 }

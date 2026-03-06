@@ -14,7 +14,7 @@
             ; let i = $index) {
 
         @let containerKey = referencable.$gId + '_' + container.referenceName;
-        @let containerAnchorBox = GraphicalHelper.computeChildBBox(
+        @let containerAnchorBox = PositionHelper.computeChildBBox(
             i,
             referencable.$treeChildren.length,
             position
@@ -42,7 +42,7 @@
 
         @for (elem of realChildren; track elem.$gId; let j = $index) {
 
-            @let elemBox = GraphicalHelper.computeChildBBox(
+            @let elemBox = PositionHelper.computeChildBBox(
                 j,
                 realChildren.length,
                 containerAnchorBox
