@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { Referencable } from 'emfular';
+import {ModelService} from "../../model.service";
 
 @Component({
   selector: 'lib-model-details',
@@ -7,8 +8,9 @@ import { Referencable } from 'emfular';
   templateUrl: './model-details.component.html',
   styleUrl: './model-details.component.css'
 })
-export class ModelDetailsComponent<T extends Referencable<any>> {
+export class ModelDetailsComponent<T extends Referencable<any>, M extends Referencable<any>> {
   @Input() model!:T
+  @Input() modelService!: ModelService<M>
 
 
 }
