@@ -12,6 +12,5 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
   @Input() model!:T
   @Input() modelService!: ModelService<M>
 
-
 }
 

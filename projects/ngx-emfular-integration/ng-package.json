@@ -3,5 +3,6 @@
   "dest": "../../dist/ngx-emfular-integration",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [ "src/lib/styles/details-overlay.css" ]
 }
