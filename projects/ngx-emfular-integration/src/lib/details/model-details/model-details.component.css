@@ -1,0 +1,15 @@
+.attribute-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.attribute-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.attribute-row label {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
