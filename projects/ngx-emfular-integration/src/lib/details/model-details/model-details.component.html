@@ -10,9 +10,14 @@
     </div>
 </div>
 <div class="reference-list">
+    <tree-container-adapter
+            *ngFor="let container of getChildren()"
+            [container]="container"
+    >
+    </tree-container-adapter>
     <link-container-adapter
-    *ngFor="let container of getLinks()"
-    [container]="container"
+        *ngFor="let container of getLinks()"
+        [container]="container"
     >
     </link-container-adapter>
 </div>

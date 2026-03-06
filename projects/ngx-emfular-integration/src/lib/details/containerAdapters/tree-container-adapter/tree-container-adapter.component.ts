@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import { ReTreeChildrenContainer } from 'emfular';
 
 @Component({
   selector: 'tree-container-adapter',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './tree-container-adapter.component.css'
 })
 export class TreeContainerAdapterComponent {
+  @Input() container!: ReTreeChildrenContainer<any>
+
 
 }

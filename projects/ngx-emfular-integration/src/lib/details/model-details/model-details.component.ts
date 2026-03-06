@@ -7,13 +7,17 @@ import {NgForOf} from "@angular/common";
 import {
   LinkContainerAdapterComponent
 } from "../containerAdapters/link-container-adapter/link-container-adapter.component";
+import {
+  TreeContainerAdapterComponent
+} from "../containerAdapters/tree-container-adapter/tree-container-adapter.component";
 
 @Component({
   selector: 'lib-model-details',
   imports: [
     FormsModule,
     NgForOf,
-    LinkContainerAdapterComponent
+    LinkContainerAdapterComponent,
+    TreeContainerAdapterComponent
   ],
   templateUrl: './model-details.component.html',
   styleUrl: './model-details.component.css'
