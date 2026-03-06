@@ -22,6 +22,7 @@
 
         <!-- reference box -->
         <g rectangle-with-text
+           (click)="toggleExpand(i)"
            [id]="containerKey + '_ref'"
            [text]="container.referenceName"
            [position]="containerAnchorBox"
@@ -37,28 +38,31 @@
            endSuffix="_ref">
         </g>
 
-        <!-- real children inside this reference -->
-        @let realChildren = GraphicalHelper.getAsList(container);
+        @if (isExpandedArray[i]) {
+            <!-- real children inside this reference -->
+            @let realChildren = GraphicalHelper.getAsList(container);
 
-        @for (elem of realChildren; track elem.$gId; let j = $index) {
+            @for (elem of realChildren; track elem.$gId; let j = $index) {
 
-            @let elemBox = PositionHelper.computeChildBBox(
-                j,
-                realChildren.length,
-                containerAnchorBox
-            );
-            <g referencable-box
-               [referencable]="elem"
-               [position]="elemBox"
-            >
-            </g>
-            <!-- arrow from reference to child box -->
-            <g arrowElems
-               [startGID]="containerKey"
-               startSuffix="_ref"
-               [endGID]="elem.$gId"
-               endSuffix="_main">
-            </g>
+                @let elemBox = PositionHelper.computeChildBBox(
+                    j,
+                    realChildren.length,
+                    containerAnchorBox
+                );
+                <g referencable-box
+                   [referencable]="elem"
+                   [position]="elemBox"
+                >
+                </g>
+                <!-- arrow from reference to child box -->
+                <g arrowElems
+                   [startGID]="containerKey"
+                   startSuffix="_ref"
+                   [endGID]="elem.$gId"
+                   endSuffix="_main">
+                </g>
+            }
+
         }
     }
 </svg:g>

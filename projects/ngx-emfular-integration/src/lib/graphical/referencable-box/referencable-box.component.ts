@@ -14,6 +14,12 @@ export class ReferencableBoxComponent {
   @Input() position!: BoundingBox
   @Input() color?: string = "#efad78"
 
+  isExpandedArray: boolean[] = []
+
+  toggleExpand(i: number) {
+    this.isExpandedArray[i]= !this.isExpandedArray[i];
+  }
+
   constructor() {}
 
   protected readonly GraphicalHelper = GraphicalHelper;
