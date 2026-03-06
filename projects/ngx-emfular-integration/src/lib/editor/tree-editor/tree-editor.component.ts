@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import { Referencable} from "emfular";
 import {FileLevelBarComponent} from "../file-level-bar/file-level-bar.component";
 import {ModelEditingBarComponent} from "../model-editing-bar/model-editing-bar.component";
@@ -20,6 +20,7 @@ export class TreeEditorComponent<M extends Referencable<any>> {
 
     svgwidth = 1500;
     svgheigth = 1000;
+    @Output() chooseElement: EventEmitter<Referencable<any>> = new EventEmitter();
 
   @ViewChild('svg', { static: true }) svg!: ElementRef<SVGElement>;
     get svgEl(): SVGElement {
@@ -41,5 +42,9 @@ export class TreeEditorComponent<M extends Referencable<any>> {
       if (this.customButtons) return this.customButtons;
       else       //todo replace by default create buttons
           return[{label: "test", action: () => {console.log("Button on model edition works")}}];
+  }
+
+  choose(element: Referencable<any>) {
+      this.chooseElement.emit(element);
   }
 }

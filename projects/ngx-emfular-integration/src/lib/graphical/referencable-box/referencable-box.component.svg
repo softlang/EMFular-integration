@@ -1,6 +1,7 @@
 <svg:g [attr.id]="referencable.$gId">
 
     <g rectangle-with-text
+       (click)="choose(referencable)"
        [id]="referencable.$gId + '_main'"
        [text]="referencable.getEClass()"
        [position]="position"
@@ -50,6 +51,7 @@
                     containerAnchorBox
                 );
                 <g referencable-box
+                   (chooseElement)="choose($event)"
                    [referencable]="elem"
                    [position]="elemBox"
                 >
