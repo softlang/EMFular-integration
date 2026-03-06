@@ -9,4 +9,11 @@
         />
     </div>
 </div>
+<div class="reference-list">
+    <link-container-adapter
+    *ngFor="let container of getLinks()"
+    [container]="container"
+    >
+    </link-container-adapter>
+</div>
 

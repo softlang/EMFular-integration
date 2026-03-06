@@ -1,15 +1,19 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AttributeOptions, Referencable } from 'emfular';
+import {AttributeOptions, Referencable, ReLinkContainer, ReTreeChildrenContainer } from 'emfular';
 import {ModelService} from "../../model.service";
 import { getAllAttributes } from "emfular";
 import {FormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
+import {
+  LinkContainerAdapterComponent
+} from "../containerAdapters/link-container-adapter/link-container-adapter.component";
 
 @Component({
   selector: 'lib-model-details',
   imports: [
     FormsModule,
-    NgForOf
+    NgForOf,
+    LinkContainerAdapterComponent
   ],
   templateUrl: './model-details.component.html',
   styleUrl: './model-details.component.css'
@@ -26,5 +30,13 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
       key,
       options
     }));
+  }
+  
+  getLinks(): ReLinkContainer<any, any>[] {
+    return this.model.$otherReferences
+  }
+
+  getChildren(): ReTreeChildrenContainer<any>[] {
+    return this.model.$treeChildren
   }
 }
