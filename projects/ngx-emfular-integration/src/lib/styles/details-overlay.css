@@ -7,7 +7,8 @@
 .basic-details-panel {
     background: #ffffff;
     border-radius: 12px;
-    padding: 0; /* Let the component handle internal padding */
+    padding: 24px;
+    box-sizing: border-box;
     max-width: 700px;
     max-height: 90vh;
     overflow: hidden;
