@@ -5,15 +5,15 @@ import { getAllAttributes } from "emfular";
 import {FormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
 import {
-  TreeContainerAdapterComponent
-} from "../containerAdapters/tree-container-adapter/tree-container-adapter.component";
+  ContainerDetailsComponent
+} from "../container-details/container-details.component";
 
 @Component({
   selector: 'lib-model-details',
   imports: [
     FormsModule,
     NgForOf,
-    TreeContainerAdapterComponent
+    ContainerDetailsComponent
   ],
   templateUrl: './model-details.component.html',
   styleUrl: './model-details.component.css'

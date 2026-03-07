@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TreeContainerAdapterComponent } from './tree-container-adapter.component';
+import { ContainerDetailsComponent } from './container-details.component';
 
 describe('TreeContainerAdapterComponent', () => {
-  let component: TreeContainerAdapterComponent;
-  let fixture: ComponentFixture<TreeContainerAdapterComponent>;
+  let component: ContainerDetailsComponent;
+  let fixture: ComponentFixture<ContainerDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TreeContainerAdapterComponent]
+      imports: [ContainerDetailsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TreeContainerAdapterComponent);
+    fixture = TestBed.createComponent(ContainerDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

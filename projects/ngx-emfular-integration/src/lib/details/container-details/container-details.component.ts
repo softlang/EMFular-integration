@@ -1,19 +1,19 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ReContainer, Referencable } from 'emfular';
-import {GraphicalHelper} from "../../../utils/graphical-helper";
+import {GraphicalHelper} from "../../utils/graphical-helper";
 import {NgForOf} from "@angular/common";
-import {IdHelper} from "../../../utils/id-helper";
-import {ModelService} from "../../../model.service";
+import {IdHelper} from "../../utils/id-helper";
+import {ModelService} from "../../model.service";
 
 @Component({
-  selector: 'tree-container-adapter',
+  selector: 'container-details',
   imports: [
     NgForOf,
   ],
-  templateUrl: './tree-container-adapter.component.html',
-  styleUrl: './tree-container-adapter.component.css'
+  templateUrl: './container-details.component.html',
+  styleUrl: './container-details.component.css'
 })
-export class TreeContainerAdapterComponent {
+export class ContainerDetailsComponent {
   @Input() container!: ReContainer<any, any>
   @Input() modelService!: ModelService<any>
   @Input() isTree!: boolean
