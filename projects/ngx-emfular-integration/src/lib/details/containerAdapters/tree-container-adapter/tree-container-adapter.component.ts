@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {ReContainer, Referencable, ReTreeChildrenContainer } from 'emfular';
+import {ReContainer, Referencable } from 'emfular';
 import {GraphicalHelper} from "../../../utils/graphical-helper";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf} from "@angular/common";
 import {IdHelper} from "../../../utils/id-helper";
 import {ModelService} from "../../../model.service";
 
@@ -9,7 +9,6 @@ import {ModelService} from "../../../model.service";
   selector: 'tree-container-adapter',
   imports: [
     NgForOf,
-    NgIf
   ],
   templateUrl: './tree-container-adapter.component.html',
   styleUrl: './tree-container-adapter.component.css'

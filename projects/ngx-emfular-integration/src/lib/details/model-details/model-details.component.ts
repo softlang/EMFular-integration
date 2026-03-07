@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AttributeOptions, Referencable, ReLinkContainer, ReTreeChildrenContainer } from 'emfular';
 import {ModelService} from "../../model.service";
 import { getAllAttributes } from "emfular";
@@ -21,6 +21,7 @@ import {
 export class ModelDetailsComponent<T extends Referencable<any>, M extends Referencable<any>> implements OnInit {
   @Input() model!: T
   @Input() modelService!: ModelService<M>
+  @Output() openDetails: EventEmitter<Referencable<any>> = new EventEmitter();
 
   attributes: Array<{ key: string; options: AttributeOptions }> = [];
 
@@ -38,5 +39,9 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
 
   getChildren(): ReTreeChildrenContainer<any>[] {
     return this.model.$treeChildren
+  }
+
+  propagateOpenDetails(elem: Referencable<any>): void {
+    this.openDetails.emit(elem);
   }
 }

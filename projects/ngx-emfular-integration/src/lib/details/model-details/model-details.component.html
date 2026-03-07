@@ -14,13 +14,17 @@
     <tree-container-adapter
             *ngFor="let container of getChildren()"
             [container]="container"
+            [modelService]="modelService"
             [isTree]="true"
+            (openDetail)="propagateOpenDetails($event)"
     >
     </tree-container-adapter>
     <tree-container-adapter
         *ngFor="let container of getLinks()"
         [container]="container"
+        [modelService]="modelService"
         [isTree]="true"
+        (openDetail)="propagateOpenDetails($event)"
     >
     </tree-container-adapter>
 </div>

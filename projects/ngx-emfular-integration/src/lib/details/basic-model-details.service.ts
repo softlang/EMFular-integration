@@ -32,6 +32,10 @@ export class BasicModelDetailsService {
     const ref = overlayRef.attach(portal);
     ref.instance.model = elem;
     ref.instance.modelService = modelService;
+    ref.instance.openDetails.subscribe(next=> {
+        // should we? overlayRef.dispose()
+        this.openDetails(next, modelService);
+      })
     overlayRef.backdropClick().subscribe(
         () => overlayRef.dispose()
     );
