@@ -11,3 +11,5 @@ export * from './lib/graphical/referencable-box/referencable-box.component';
 
 export * from './lib/details/basic-model-details.service'
 export * from './lib/details/model-details/model-details.component';
+
+export * from './lib/utils/id-helper'

@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Referencable} from 'emfular';
 import {ArrowBetweenElemsComponent, BoundingBox, RectangleWithTextComponent, PositionHelper} from 'ngx-svg-graphics';
 import {GraphicalHelper} from "../graphical-helper";
+import {IdHelper} from "../../utils/id-helper";
 
 @Component({
   selector: '[referencable-box]',
@@ -30,4 +31,5 @@ export class ReferencableBoxComponent {
 
   protected readonly GraphicalHelper = GraphicalHelper;
   protected readonly PositionHelper = PositionHelper
+  protected readonly IdHelper = IdHelper;
 }

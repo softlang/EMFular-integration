@@ -3,7 +3,7 @@
     <g rectangle-with-text
        (click)="choose(referencable)"
        [id]="referencable.$gId + '_main'"
-       [text]="referencable.getEClass()"
+       [text]="IdHelper.getLabel(referencable)"
        [position]="position"
        [color]="color"
     >
