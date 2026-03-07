@@ -1,3 +1,18 @@
-<div class="container-row">
-    <label>{{ container.referenceName }}</label>
+<h4>{{container.referenceName+":"}}</h4>
+<!--
+<button *ngIf="!isTree" class="add-ref" (click)="add()">Add</button>
+-->
+<div class="container-row"
+     *ngFor="let ref of GraphicalHelper.getAsList(container)">
+    <div class="ref-info">
+        <span class="ref-icon">🔗</span>
+        <span class="ref-type">{{ ref.getEClass() }}</span>
+        <span class="ref-label">{{ IdHelper.getLabel(ref) }}</span>
+    </div>
+
+    <div class="ref-actions">
+        <button (click)="open(ref)">Open</button>
+        <button (click)="remove(ref)">Remove</button>
+    </div>
 </div>
+
