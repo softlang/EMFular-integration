@@ -14,12 +14,14 @@
     <tree-container-adapter
             *ngFor="let container of getChildren()"
             [container]="container"
+            [isTree]="true"
     >
     </tree-container-adapter>
-    <link-container-adapter
+    <tree-container-adapter
         *ngFor="let container of getLinks()"
         [container]="container"
+        [isTree]="true"
     >
-    </link-container-adapter>
+    </tree-container-adapter>
 </div>
 

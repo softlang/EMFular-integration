@@ -5,9 +5,6 @@ import { getAllAttributes } from "emfular";
 import {FormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
 import {
-  LinkContainerAdapterComponent
-} from "../containerAdapters/link-container-adapter/link-container-adapter.component";
-import {
   TreeContainerAdapterComponent
 } from "../containerAdapters/tree-container-adapter/tree-container-adapter.component";
 
@@ -16,7 +13,6 @@ import {
   imports: [
     FormsModule,
     NgForOf,
-    LinkContainerAdapterComponent,
     TreeContainerAdapterComponent
   ],
   templateUrl: './model-details.component.html',
