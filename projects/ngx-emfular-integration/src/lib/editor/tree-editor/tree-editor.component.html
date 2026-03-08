@@ -1,6 +1,6 @@
 <div class="tree-editor" id="tree-editor">
     <emfular-file-level-bar
-            [svg]="svgEl"
+            [svg]="svgElement"
             [modelService]="modelService">
     </emfular-file-level-bar>
     <div class="editor-main">
@@ -11,19 +11,12 @@
         </emfular-model-editing-bar>
 
 
-            <!-- scrollable modeling canvas -->
-        <div class="modeling-container">
-            <svg #svg id="svg" class="canvas-svg" [attr.width]="svgwidth" [attr.height]="svgheigth">
-                <g referencable-box
-                   [referencable]="modelService.model"
-                   [position]="initialBBox"
-                   (chooseElement)="choose($event)"
-                >
-                </g>
-            </svg>
-        </div>
-
+        <model-canvas
+                [modelService]="modelService"
+                (svgReady)="onSvgReady($event)"
+                (chooseElement)="choose($event)"
+        >
+        </model-canvas>
     </div>
-
 </div>
 

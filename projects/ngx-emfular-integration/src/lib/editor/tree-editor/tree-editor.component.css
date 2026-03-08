@@ -26,14 +26,3 @@ emfular-file-level-bar {
     flex-direction: column;
 }
 
-/* scrollable canvas area */
-.modeling-container {
-    flex: 1 1 auto;
-    overflow: auto; /* scrollbars appear when SVG is larger */
-    background: white;
-}
-
-/* the actual SVG canvas */
-.canvas-svg {
-    display: block;
-}
