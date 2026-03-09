@@ -4,7 +4,7 @@ import {GraphicalHelper} from "../../utils/graphical-helper";
 import {NgForOf, NgIf} from "@angular/common";
 import {IdHelper} from "../../utils/id-helper";
 import {ModelService} from "../../model.service";
-import {BasicModelDetailsService} from "../basic-model-details.service";
+import {ModelDetailsService} from "../model-details-service";
 
 @Component({
   selector: 'container-details',
@@ -15,11 +15,11 @@ import {BasicModelDetailsService} from "../basic-model-details.service";
   templateUrl: './container-details.component.html',
   styleUrl: './container-details.component.css'
 })
-export class ContainerDetailsComponent {
+export class ContainerDetailsComponent<M extends Referencable<any>> {
   @Input() container!: ReContainer<any, any>
   @Input() isTree!: boolean
-  @Input() modelService!: ModelService<any>
-  @Input() detailsService!: BasicModelDetailsService //todo just enforce interface?
+  @Input() modelService!: ModelService<M>
+  @Input() detailsService!: ModelDetailsService<M>  //todo just enforce interface?
 
   open(ref: Referencable<any>) {
     this.detailsService.openDetails(ref, this.modelService)

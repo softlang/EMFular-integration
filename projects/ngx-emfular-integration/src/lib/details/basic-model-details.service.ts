@@ -6,18 +6,18 @@ import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import {ModelCanvasComponent} from "../editor/model-canvas/model-canvas.component";
 import {Observable, Subject} from "rxjs";
+import {ModelDetailsService} from "./model-details-service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class BasicModelDetailsService {
+export class BasicModelDetailsService<M extends Referencable<any>> implements ModelDetailsService<M> {
 
   constructor( private overlay: Overlay) { }
 
   //actually T must be somewhere on M
   openDetails<
-      T extends Referencable<any>,
-      M extends Referencable<any>
+      T extends Referencable<any>
   >(elem: T, modelService: ModelService<M>) {
     // instead of opening the generic ModeldetailsCompoennt you might like to consider opening a specific one
     //by determining the eClass and switching based on elem.getEClass()
@@ -39,7 +39,7 @@ export class BasicModelDetailsService {
     );
   }
 
-    openModelChoice<M extends Referencable<any>>(
+    openModelChoice(
         modelService: ModelService<M>
     ): Observable<Referencable<any>> {
 

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AttributeOptions, Referencable, ReLinkContainer, ReTreeChildrenContainer } from 'emfular';
 import {ModelService} from "../../model.service";
 import { getAllAttributes } from "emfular";
@@ -7,7 +7,7 @@ import {NgForOf} from "@angular/common";
 import {
   ContainerDetailsComponent
 } from "../container-details/container-details.component";
-import {BasicModelDetailsService} from "../basic-model-details.service";
+import {ModelDetailsService} from "../model-details-service";
 
 @Component({
   selector: 'lib-model-details',
@@ -22,7 +22,7 @@ import {BasicModelDetailsService} from "../basic-model-details.service";
 export class ModelDetailsComponent<T extends Referencable<any>, M extends Referencable<any>> implements OnInit {
   @Input() model!: T
   @Input() modelService!: ModelService<M>
-  @Input() detailsService!: BasicModelDetailsService
+  @Input() detailsService!: ModelDetailsService<M>
 
   attributes: Array<{ key: string; options: AttributeOptions }> = [];
 
