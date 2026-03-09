@@ -1,26 +1,28 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ReContainer, Referencable } from 'emfular';
 import {GraphicalHelper} from "../../utils/graphical-helper";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {IdHelper} from "../../utils/id-helper";
 import {ModelService} from "../../model.service";
+import {BasicModelDetailsService} from "../basic-model-details.service";
 
 @Component({
   selector: 'container-details',
   imports: [
     NgForOf,
+    NgIf,
   ],
   templateUrl: './container-details.component.html',
   styleUrl: './container-details.component.css'
 })
 export class ContainerDetailsComponent {
   @Input() container!: ReContainer<any, any>
-  @Input() modelService!: ModelService<any>
   @Input() isTree!: boolean
-  @Output() openDetail = new EventEmitter<Referencable<any>>();
+  @Input() modelService!: ModelService<any>
+  @Input() detailsService!: BasicModelDetailsService //todo just enforce interface?
 
   open(ref: Referencable<any>) {
-    this.openDetail.emit(ref);
+    this.detailsService.openDetails(ref, this.modelService)
   }
 
   remove(ref: Referencable<any>) {
@@ -34,7 +36,15 @@ export class ContainerDetailsComponent {
     if(this.isTree) {
       console.log("Creation for several possible sub types is not solved in a meta-agnostic scenario")
     } else {
-      //todo
+      this.detailsService
+          .openModelChoice(this.modelService)
+          .subscribe(chosen => {
+            if (!chosen) return; // user cancelled
+            // todo what about type mismatches?
+            if (this.container.add(chosen)) {
+              this.modelService.saveCurrentState();
+            }
+          });
     }
   }
 

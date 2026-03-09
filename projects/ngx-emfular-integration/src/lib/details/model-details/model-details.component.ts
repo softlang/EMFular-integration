@@ -7,6 +7,7 @@ import {NgForOf} from "@angular/common";
 import {
   ContainerDetailsComponent
 } from "../container-details/container-details.component";
+import {BasicModelDetailsService} from "../basic-model-details.service";
 
 @Component({
   selector: 'lib-model-details',
@@ -21,7 +22,7 @@ import {
 export class ModelDetailsComponent<T extends Referencable<any>, M extends Referencable<any>> implements OnInit {
   @Input() model!: T
   @Input() modelService!: ModelService<M>
-  @Output() openDetails: EventEmitter<Referencable<any>> = new EventEmitter();
+  @Input() detailsService!: BasicModelDetailsService
 
   attributes: Array<{ key: string; options: AttributeOptions }> = [];
 
@@ -41,7 +42,4 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
     return this.model.$treeChildren
   }
 
-  propagateOpenDetails(elem: Referencable<any>): void {
-    this.openDetails.emit(elem);
-  }
 }

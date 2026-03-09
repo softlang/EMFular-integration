@@ -4,6 +4,8 @@ import {ModelService} from "../model.service";
 import {ModelDetailsComponent} from "./model-details/model-details.component";
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
+import {ModelCanvasComponent} from "../editor/model-canvas/model-canvas.component";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +20,7 @@ export class BasicModelDetailsService {
       M extends Referencable<any>
   >(elem: T, modelService: ModelService<M>) {
     // instead of opening the generic ModeldetailsCompoennt you might like to consider opening a specific one
-    //by determining the eClass and switching based on that
-    console.log("open details: "+elem.getEClass())
+    //by determining the eClass and switching based on elem.getEClass()
 
     const overlayRef = this.overlay.create(
         { hasBackdrop: true,
@@ -32,13 +33,42 @@ export class BasicModelDetailsService {
     const ref = overlayRef.attach(portal);
     ref.instance.model = elem;
     ref.instance.modelService = modelService;
-    ref.instance.openDetails.subscribe(next=> {
-        // should we? overlayRef.dispose()
-        this.openDetails(next, modelService);
-      })
+    ref.instance.detailsService = this
     overlayRef.backdropClick().subscribe(
         () => overlayRef.dispose()
     );
   }
+
+    openModelChoice<M extends Referencable<any>>(
+        modelService: ModelService<M>
+    ): Observable<Referencable<any>> {
+
+        const subject = new Subject<Referencable<any>>();
+
+        const overlayRef = this.overlay.create({
+            hasBackdrop: true,
+            backdropClass: 'cdk-overlay-dark-backdrop',
+            panelClass: 'basic-details-panel',
+            positionStrategy: this.overlay.position()
+                .global().centerHorizontally().centerVertically()
+        });
+
+        const portal = new ComponentPortal(ModelCanvasComponent<M>);
+        const ref = overlayRef.attach(portal);
+
+        ref.instance.modelService = modelService;
+        ref.instance.chooseElement.subscribe(next => {
+            subject.next(next);
+            subject.complete();
+            overlayRef.dispose();
+        });
+
+        overlayRef.backdropClick().subscribe(() => {
+            subject.complete();
+            overlayRef.dispose();
+        });
+
+        return subject.asObservable();
+    }
 
 }

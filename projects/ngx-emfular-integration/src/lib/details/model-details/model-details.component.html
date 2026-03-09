@@ -14,17 +14,17 @@
     <container-details
             *ngFor="let container of getChildren()"
             [container]="container"
-            [modelService]="modelService"
             [isTree]="true"
-            (openDetail)="propagateOpenDetails($event)"
+            [modelService]="modelService"
+            [detailsService]="detailsService"
     >
     </container-details>
     <container-details
         *ngFor="let container of getLinks()"
         [container]="container"
+        [isTree]="false"
         [modelService]="modelService"
-        [isTree]="true"
-        (openDetail)="propagateOpenDetails($event)"
+        [detailsService]="detailsService"
     >
     </container-details>
 </div>
