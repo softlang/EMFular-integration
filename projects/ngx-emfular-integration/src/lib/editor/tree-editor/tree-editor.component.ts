@@ -1,9 +1,11 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { Referencable} from "emfular";
 import {FileLevelBarComponent} from "../file-level-bar/file-level-bar.component";
 import {ModelEditingBarComponent} from "../model-editing-bar/model-editing-bar.component";
 import {ModelService} from "../../model.service";
 import {ModelCanvasComponent} from "../model-canvas/model-canvas.component";
+import {ModelDetailsService} from "../../details/model-details-service";
+import {BasicModelDetailsService} from "../../details/basic-model-details.service";
 
 @Component({
   selector: 'emfular-tree-editor',
@@ -18,27 +20,30 @@ import {ModelCanvasComponent} from "../model-canvas/model-canvas.component";
 export class TreeEditorComponent<M extends Referencable<any>> {
     svgElement!: SVGSVGElement;
     @Input() modelService!: ModelService<M>
+    @Input() detailsService?: ModelDetailsService<M>
     @Input() customButtons: Array<{
       label: string;
       icon?: string;
       action: () => void;
     }> | null = null;
 
-    @Output() chooseElement: EventEmitter<Referencable<any>> = new EventEmitter();
+    constructor(private basicDetailsService: BasicModelDetailsService<M>) {}
 
-    constructor() {}
-
-  get sidebarButtons() {
+    get sidebarButtons() {
       if (this.customButtons) return this.customButtons;
       else       //todo replace by default create buttons
           return[{label: "test", action: () => {console.log("Button on model edition works")}}];
-  }
+    }
 
-  onSvgReady(svg: SVGSVGElement) {
-    this.svgElement = svg;
-  }
+    get effectiveDetailsService(): ModelDetailsService<M> {
+        return this.detailsService ?? this.basicDetailsService;
+    }
 
-  choose(element: Referencable<any>) {
-      this.chooseElement.emit(element);
-  }
+    onSvgReady(svg: SVGSVGElement) {
+        this.svgElement = svg;
+    }
+
+    choose(element: Referencable<any>) {
+      this.effectiveDetailsService.openDetails(element, this.modelService)
+    }
 }
