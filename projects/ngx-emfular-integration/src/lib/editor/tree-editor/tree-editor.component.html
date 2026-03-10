@@ -1,0 +1,22 @@
+<div class="tree-editor" id="tree-editor">
+    <emfular-file-level-bar
+            [svg]="svgElement"
+            [modelService]="modelService">
+    </emfular-file-level-bar>
+    <div class="editor-main">
+        <!-- vertical model bar -->
+        <emfular-model-editing-bar
+                class="model-bar"
+                [buttons]="sidebarButtons">
+        </emfular-model-editing-bar>
+
+
+        <model-canvas
+                [modelService]="modelService"
+                (svgReady)="onSvgReady($event)"
+                (chooseElement)="choose($event)"
+        >
+        </model-canvas>
+    </div>
+</div>
+

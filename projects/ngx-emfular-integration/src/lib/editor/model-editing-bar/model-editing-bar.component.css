@@ -1,0 +1,23 @@
+.model-editing-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.4rem;
+    width: 60px;
+    background: #f5f5f5;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+}
+
+.model-editing-bar button {
+    padding: 0.3rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.icon {
+    margin-right: 0.2rem;
+}

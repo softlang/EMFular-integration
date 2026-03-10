@@ -1,0 +1,10 @@
+<div class="modeling-container">
+    <svg #svg id="svg" class="canvas-svg" [attr.width]="svgwidth" [attr.height]="svgheigth">
+        <g referencable-box
+           [referencable]="modelService.model"
+           [position]="initialBBox"
+           (chooseElement)="choose($event)"
+        >
+        </g>
+    </svg>
+</div>

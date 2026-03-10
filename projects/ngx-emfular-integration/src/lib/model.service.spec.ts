@@ -2,22 +2,16 @@ import { TestBed } from '@angular/core/testing';
 
 import {HISTORY_SERVICE, ModelService, provideHistoryForModel} from './model.service';
 import {HistoryService, IoService } from 'ngx-emfular-helper';
-import { Referencable } from 'emfular';
 import {BehaviorSubject} from "rxjs";
+import {DummyReferencable} from './test/dummy-referencable';
+import {JsonOf} from "emfular";
 
-class DummyModel extends Referencable<any>{
-  id = 'x';
-  constructor() {
-    super();
-  }
-}
-
-class DummyModelService extends ModelService<DummyModel> {
+class DummyModelService extends ModelService<DummyReferencable> {
   constructor(
-      history: HistoryService<DummyModel>,
+      history: HistoryService<JsonOf<DummyReferencable>>,
       io: IoService
   ) {
-    super(history, io, DummyModel);
+    super(history, io, DummyReferencable);
   }
 
   id: string = "service"

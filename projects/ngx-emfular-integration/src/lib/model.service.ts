@@ -1,4 +1,4 @@
-import {Inject, Injectable, InjectionToken} from '@angular/core';
+import {Inject, Injectable, InjectionToken, PLATFORM_ID} from '@angular/core';
 import {Deserializer, JsonDeserializable, JsonOf, Referencable} from "emfular";
 import {HistoryService, IoService} from "ngx-emfular-helper";
 
@@ -11,7 +11,8 @@ export function provideHistoryForModel<M>(
 ) {
   return {
     provide: HISTORY_SERVICE,
-    useFactory: () => new HistoryService<JsonOf<M>>(prefix, bufferSize)
+    useFactory: (platformId: Object) => new HistoryService<JsonOf<M>>(prefix, bufferSize, platformId),
+    deps: [PLATFORM_ID]
   };
 }
 
@@ -57,6 +58,11 @@ export abstract class ModelService<M extends Referencable<any>> {
   // override by either a fixed string or sth from the current model itself
   public fileTitle(): string {
     return "model"
+  }
+
+  newModel() {
+    this.model = new this.modelClass()
+    this.saveCurrentState()
   }
 
   serialize(): JsonOf<M> {

@@ -1,0 +1,35 @@
+<input id="openModel" type="file" class="file-upload" style="display: none" (change)="modelService.loadFromFile($event)" (click)="InputHandler.clearElem($event)">
+<mat-toolbar class="file-level-bar">
+    <button (click)="modelService.newModel()">
+        <mat-icon aria-hidden="false" fontIcon="insert_drive_file" ></mat-icon>
+        New
+    </button>
+    <button (click)="openModel()">
+        <mat-icon aria-hidden="false" fontIcon="file_upload" ></mat-icon>
+        Open
+    </button>
+    <hr/>
+    <button (click)="modelService.historyService.undo()" [disabled]="modelService.historyService.isUndoNotPossible()">
+        <mat-icon aria-hidden="false" fontIcon="undo" ></mat-icon>
+        Undo</button>
+    <button (click)="modelService.historyService.redo()" [disabled]="modelService.historyService.isRedoNotPossible()">
+        <mat-icon aria-hidden="false" fontIcon="redo" ></mat-icon>
+        Redo</button>
+    <hr />
+    <button (click)="modelService.save()">
+        <mat-icon aria-hidden="false" fontIcon="file_download" ></mat-icon>
+        Save
+    </button>
+    <button (click)="saveSVG()">
+        <mat-icon aria-hidden="false" fontIcon="photo_library" ></mat-icon>
+        Save SVG
+    </button>
+    <button (click)="saveSVGasPNG()">
+        <mat-icon aria-hidden="false" fontIcon="photo_library" ></mat-icon>
+        Save PNG
+    </button>
+    <button (click)="saveSVGasJPEG()">
+        <mat-icon aria-hidden="false" fontIcon="photo_library" ></mat-icon>
+        Save JPEG
+    </button>
+</mat-toolbar>

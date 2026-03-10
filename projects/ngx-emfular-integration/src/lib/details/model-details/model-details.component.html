@@ -1,0 +1,31 @@
+<h1>Detail-Editor</h1>
+<h2>{{model.getEClass()}}</h2>
+<div class="attribute-list">
+    <div class="attribute-row" *ngFor="let attr of attributes">
+        <label>{{ attr.key }}</label>
+        <input
+                type="text"
+                [(ngModel)]="$any(model)[attr.key]"
+        />
+    </div>
+</div>
+<h3>References</h3>
+<div class="reference-list">
+    <container-details
+            *ngFor="let container of getChildren()"
+            [container]="container"
+            [isTree]="true"
+            [modelService]="modelService"
+            [detailsService]="detailsService"
+    >
+    </container-details>
+    <container-details
+        *ngFor="let container of getLinks()"
+        [container]="container"
+        [isTree]="false"
+        [modelService]="modelService"
+        [detailsService]="detailsService"
+    >
+    </container-details>
+</div>
+
