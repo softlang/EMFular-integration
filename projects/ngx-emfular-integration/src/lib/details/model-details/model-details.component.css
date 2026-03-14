@@ -14,6 +14,9 @@
     margin-bottom: 4px;
 }
 
+.alert-ref {
+    color: red;
+}
 
 /* Left side: icon + type + label */
 .ref-info {

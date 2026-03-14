@@ -3,7 +3,7 @@ import {AttributeOptions, Referencable, ReLinkContainer, ReTreeChildrenContainer
 import {ModelService} from "../../model.service";
 import { getAllAttributes } from "emfular";
 import {FormsModule} from "@angular/forms";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {
   ContainerDetailsComponent
 } from "../container-details/container-details.component";
@@ -15,7 +15,8 @@ import {IdHelper} from "../../utils/id-helper";
   imports: [
     FormsModule,
     NgForOf,
-    ContainerDetailsComponent
+    ContainerDetailsComponent,
+    NgIf
   ],
   templateUrl: './model-details.component.html',
   styleUrl: './model-details.component.css'
