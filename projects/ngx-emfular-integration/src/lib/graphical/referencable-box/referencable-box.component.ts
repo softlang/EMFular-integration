@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Referencable} from 'emfular';
+import {Referencable, ReTreeChildrenContainer} from 'emfular';
 import {ArrowBetweenElemsComponent, BoundingBox, RectangleWithTextComponent, PositionHelper} from 'ngx-svg-graphics';
 import {GraphicalHelper} from "../../utils/graphical-helper";
 import {IdHelper} from "../../utils/id-helper";
@@ -15,19 +15,33 @@ export class ReferencableBoxComponent {
   @Input() position!: BoundingBox
   @Input() color?: string = "#efad78"
   @Output() chooseElement: EventEmitter<Referencable<any>> = new EventEmitter();
-
+  @Output() chooseReference: EventEmitter<ReTreeChildrenContainer<any>> = new EventEmitter();
 
   isExpandedArray: boolean[] = []
 
+  constructor() {}
+
   toggleExpand(i: number) {
     this.isExpandedArray[i]= !this.isExpandedArray[i];
+  }
+
+  createBoxInLastPart(bb: BoundingBox): BoundingBox {
+    return {
+      x: bb.x+bb.w -25,
+      y: bb.y+bb.h -25,
+      w: 25,
+      h: 25
+    }
   }
 
   choose(element: Referencable<any>) {
     this.chooseElement.emit(element);
   }
 
-  constructor() {}
+  chooseRef(ref: ReTreeChildrenContainer<any>) {
+    this.chooseReference.emit(ref)
+  }
+
 
   protected readonly GraphicalHelper = GraphicalHelper;
   protected readonly PositionHelper = PositionHelper

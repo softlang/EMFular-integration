@@ -8,6 +8,7 @@ import {
   ContainerDetailsComponent
 } from "../container-details/container-details.component";
 import {ModelDetailsService} from "../model-details-service";
+import {IdHelper} from "../../utils/id-helper";
 
 @Component({
   selector: 'lib-model-details',
@@ -33,7 +34,7 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
       options
     }));
   }
-  
+
   getLinks(): ReLinkContainer<any, any>[] {
     return this.model.$otherReferences
   }
@@ -42,4 +43,19 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
     return this.model.$treeChildren
   }
 
+  chooseParent() {
+    this.detailsService
+        .openParentChoice(this.modelService)
+        .subscribe(chosen => {
+          if (!chosen) return; // user cancelled
+          // todo what about type mismatches? and user should actually pick the container, not the parent
+          let oldParent = this.model.parent
+          this.model.setParent(chosen)
+          if (this.model.parent != oldParent) { //todo should we catch wrong undefined setting?
+            this.modelService.saveCurrentState();
+          }
+        });
+  }
+
+  protected readonly IdHelper = IdHelper;
 }

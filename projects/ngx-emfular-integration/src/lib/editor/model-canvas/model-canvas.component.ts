@@ -1,7 +1,7 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ReferencableBoxComponent} from "../../graphical/referencable-box/referencable-box.component";
 import {ModelService} from "../../model.service";
-import { Referencable } from 'emfular';
+import { Referencable, ReTreeChildrenContainer } from 'emfular';
 import { BoundingBox } from 'ngx-svg-graphics';
 
 @Component({
@@ -19,6 +19,7 @@ export class ModelCanvasComponent<M extends Referencable<any>> implements OnInit
 
   @Input() modelService!: ModelService<M>
   @Output() chooseElement: EventEmitter<Referencable<any>> = new EventEmitter();
+  @Output() chooseReference: EventEmitter<ReTreeChildrenContainer<any>> = new EventEmitter();
   @Output() svgReady: EventEmitter<SVGSVGElement> = new EventEmitter<SVGSVGElement>();
   @ViewChild('svg', { static: true })
   svg!: ElementRef<SVGSVGElement>;
@@ -30,6 +31,10 @@ export class ModelCanvasComponent<M extends Referencable<any>> implements OnInit
 
   choose(element: Referencable<any>): void {
     this.chooseElement.emit(element);
+  }
+
+  chooseRef(reference: ReTreeChildrenContainer<any>) {
+    this.chooseReference.emit(reference);
   }
 
 }
