@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Referencable } from 'emfular';
+import { Referencable, ReTreeChildrenContainer } from 'emfular';
 import {ModelService} from "../model.service";
 import {ModelDetailsComponent} from "./model-details/model-details.component";
 import { Overlay } from '@angular/cdk/overlay';
@@ -58,6 +58,37 @@ export class BasicModelDetailsService<M extends Referencable<any>> implements Mo
 
         ref.instance.modelService = modelService;
         ref.instance.chooseElement.subscribe(next => {
+            subject.next(next);
+            subject.complete();
+            overlayRef.dispose();
+        });
+
+        overlayRef.backdropClick().subscribe(() => {
+            subject.complete();
+            overlayRef.dispose();
+        });
+
+        return subject.asObservable();
+    }
+
+    openParentChoice(
+        modelService: ModelService<M>
+    ): Observable<ReTreeChildrenContainer<any>> {
+        const subject = new Subject<ReTreeChildrenContainer<any>>();
+
+        const overlayRef = this.overlay.create({
+            hasBackdrop: true,
+            backdropClass: 'cdk-overlay-dark-backdrop',
+            panelClass: 'basic-details-panel',
+            positionStrategy: this.overlay.position()
+                .global().centerHorizontally().centerVertically()
+        });
+
+        const portal = new ComponentPortal(ModelCanvasComponent<M>);
+        const ref = overlayRef.attach(portal);
+
+        ref.instance.modelService = modelService;
+        ref.instance.chooseReference.subscribe(next => {
             subject.next(next);
             subject.complete();
             overlayRef.dispose();

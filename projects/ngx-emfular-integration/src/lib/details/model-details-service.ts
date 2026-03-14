@@ -1,4 +1,4 @@
-import { Referencable } from "emfular";
+import { Referencable, ReTreeChildrenContainer } from "emfular";
 import {ModelService} from "../model.service";
 import {Observable} from "rxjs";
 
@@ -15,5 +15,9 @@ export interface ModelDetailsService<M extends Referencable<any>> {
     openModelChoice(
         modelService: ModelService<M>
     ): Observable<Referencable<any>>
+
+    openParentChoice(
+        modelService: ModelService<M>
+    ): Observable<ReTreeChildrenContainer<any>>
 
 }

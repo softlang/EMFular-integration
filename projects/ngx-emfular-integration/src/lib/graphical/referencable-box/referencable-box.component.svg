@@ -23,13 +23,19 @@
 
         <!-- reference box -->
         <g rectangle-with-text
-           (click)="toggleExpand(i)"
+           (click)="chooseRef(container)"
            [id]="containerKey + '_ref'"
            [text]="container.referenceName"
            [position]="containerAnchorBox"
            color="#ede679"
         >
         </g>
+        <g rectangle-with-text
+           (click)="toggleExpand(i)"
+           [id]="containerKey + '_toggle'"
+           [text]="isExpandedArray[i]?'_':'V'"
+           [position]="createBoxInLastPart(containerAnchorBox)"
+        ></g>
 
         <!-- arrow from main box to reference -->
         <g arrowElems

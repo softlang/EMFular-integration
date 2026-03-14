@@ -1,5 +1,15 @@
 <h1>Detail-Editor</h1>
 <h2>{{model.getEClass()}}</h2>
+<div class="parent-choice">
+    <label>Current Parent</label>
+    <div class="ref-info">
+        <span class="ref-icon">🔗</span>
+        <span class="ref-type">{{ model.getParentReferencable().getEClass() }}</span>
+        <span class="ref-label">{{ IdHelper.getLabel(model.getParentReferencable()) }}</span>
+    </div>
+    <button (click)="chooseParent()">
+    </button>
+</div>
 <div class="attribute-list">
     <div class="attribute-row" *ngFor="let attr of attributes">
         <label>{{ attr.key }}</label>
