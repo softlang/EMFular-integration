@@ -1,6 +1,6 @@
 {
   "name": "ngx-emfular-integration",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Integrates emfular with its ngx-helper to provide modeling services",
   "keywords": ["EMFular","Angular", "Modeling"],
   "author": {

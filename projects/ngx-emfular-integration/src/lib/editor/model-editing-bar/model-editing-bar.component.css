@@ -16,6 +16,8 @@
     text-align: left;
     width: 100%;
     box-sizing: border-box;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
 
 .icon {
