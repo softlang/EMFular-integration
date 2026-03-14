@@ -6,6 +6,7 @@ import {ModelService} from "../../model.service";
 import {ModelCanvasComponent} from "../model-canvas/model-canvas.component";
 import {ModelDetailsService} from "../../details/model-details-service";
 import {BasicModelDetailsService} from "../../details/basic-model-details.service";
+import {EditButtonDef} from "../edit-button-def";
 
 @Component({
   selector: 'emfular-tree-editor',
@@ -21,11 +22,7 @@ export class TreeEditorComponent<M extends Referencable<any>> {
     svgElement!: SVGSVGElement;
     @Input() modelService!: ModelService<M>
     @Input() detailsService?: ModelDetailsService<M>
-    @Input() customButtons: Array<{
-      label: string;
-      icon?: string;
-      action: () => void;
-    }> | null = null;
+    @Input() customButtons: Array<EditButtonDef> | null = null;
 
     constructor(private basicDetailsService: BasicModelDetailsService<M>) {}
 
