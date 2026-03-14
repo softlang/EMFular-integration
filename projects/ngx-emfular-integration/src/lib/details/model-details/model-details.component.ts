@@ -49,11 +49,12 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
         .openParentChoice(this.modelService)
         .subscribe(chosen => {
           if (!chosen) return; // user cancelled
-          // todo what about type mismatches? and user should actually pick the container, not the parent
-          let oldParent = this.model.parent
-          if(chosen == oldParent) return;
-          this.model.setParent(chosen)
-          if (this.model.parent && this.model.parent != oldParent) { //todo should we catch wrong undefined setting?
+          // todo what about type mismatches?
+          const res = chosen._parent.addToReferencableContainer(
+              chosen.referenceName,
+              this.model
+          )
+          if (res) {
             this.modelService.saveCurrentState();
           }
         });
