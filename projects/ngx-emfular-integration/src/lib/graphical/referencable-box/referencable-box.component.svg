@@ -33,7 +33,7 @@
         <g rectangle-with-text
            (click)="toggleExpand(i)"
            [id]="containerKey + '_toggle'"
-           [text]="isExpandedArray[i]?'X':'V'"
+           [text]="isExpandedArray[i]?'◊':'V'"
            [position]="createBoxInLastPart(containerAnchorBox)"
            color="transparent"
         ></g>

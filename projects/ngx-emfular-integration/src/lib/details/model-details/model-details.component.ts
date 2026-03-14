@@ -50,8 +50,9 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
           if (!chosen) return; // user cancelled
           // todo what about type mismatches? and user should actually pick the container, not the parent
           let oldParent = this.model.parent
+          if(chosen == oldParent) return;
           this.model.setParent(chosen)
-          if (this.model.parent != oldParent) { //todo should we catch wrong undefined setting?
+          if (this.model.parent && this.model.parent != oldParent) { //todo should we catch wrong undefined setting?
             this.modelService.saveCurrentState();
           }
         });
