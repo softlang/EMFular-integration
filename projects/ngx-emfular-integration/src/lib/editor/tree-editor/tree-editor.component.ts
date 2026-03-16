@@ -37,8 +37,11 @@ export class TreeEditorComponent<M extends Referencable<any>> {
     }
 
     onSvgReady(svg: SVGSVGElement) {
-        this.svgElement = svg;
+        queueMicrotask(() => {
+            this.svgElement = svg;
+        });
     }
+
 
     choose(element: Referencable<any>) {
       this.effectiveDetailsService.openDetails(element, this.modelService)
