@@ -6,12 +6,12 @@ import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import {TreeCanvasComponent} from "../editor/tree-canvas/tree-canvas.component";
 import {Observable, Subject} from "rxjs";
-import {ModelDetailsService} from "./model-details-service";
+import {TreeDetailsService} from "./tree-details-service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TreeModelDetailsService<M extends Referencable<any>> implements ModelDetailsService<M> {
+export class TreeModelDetailsService<M extends Referencable<any>> implements TreeDetailsService<M> {
 
   constructor( private overlay: Overlay) { }
 

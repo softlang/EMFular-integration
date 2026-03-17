@@ -7,7 +7,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {
   ContainerDetailsComponent
 } from "../container-details/container-details.component";
-import {ModelDetailsService} from "../model-details-service";
+import {TreeDetailsService} from "../tree-details-service";
 import {IdHelper} from "../../utils/id-helper";
 
 @Component({
@@ -24,7 +24,7 @@ import {IdHelper} from "../../utils/id-helper";
 export class ModelDetailsComponent<T extends Referencable<any>, M extends Referencable<any>> implements OnInit {
   @Input() model!: T
   @Input() modelService!: ModelService<M>
-  @Input() detailsService!: ModelDetailsService<M>
+  @Input() detailsService!: TreeDetailsService<M>
 
   attributes: Array<{ key: string; options: AttributeOptions }> = [];
 

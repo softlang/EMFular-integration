@@ -4,16 +4,21 @@ import {FileLevelBarComponent} from "../file-level-bar/file-level-bar.component"
 import {ModelEditingBarComponent} from "../model-editing-bar/model-editing-bar.component";
 import {ModelService} from "../../model.service";
 import {TreeCanvasComponent} from "../tree-canvas/tree-canvas.component";
-import {ModelDetailsService} from "../../details/model-details-service";
+import {TreeDetailsService} from "../../details/tree-details-service";
 import {TreeModelDetailsService} from "../../details/tree-model-details.service";
 import {EditButtonDef} from "../edit-button-def";
+import {BasicEditorComponent} from "../basic-editor/basic-editor.component";
+import {ReferencableBoxComponent} from "../../graphical/referencable-box/referencable-box.component";
+import { BoundingBox } from 'ngx-svg-graphics';
 
 @Component({
   selector: 'emfular-tree-editor',
     imports: [
         FileLevelBarComponent,
         ModelEditingBarComponent,
-        TreeCanvasComponent
+        TreeCanvasComponent,
+        BasicEditorComponent,
+        ReferencableBoxComponent
     ],
   templateUrl: './tree-editor.component.html',
   styleUrl: './tree-editor.component.css'
@@ -21,8 +26,12 @@ import {EditButtonDef} from "../edit-button-def";
 export class TreeEditorComponent<M extends Referencable<any>> {
     svgElement!: SVGSVGElement;
     @Input() modelService!: ModelService<M>
-    @Input() detailsService?: ModelDetailsService<M>
+    @Input() detailsService?: TreeDetailsService<M>
     @Input() customButtons: Array<EditButtonDef> | null = null;
+    svgwidth = 1500;
+    svgheigth = 1000;
+    initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 25}
+
 
     constructor(private basicDetailsService: TreeModelDetailsService<M>) {}
 
@@ -32,7 +41,7 @@ export class TreeEditorComponent<M extends Referencable<any>> {
           return[{label: "test", action: () => {console.log("Button on model edition works")}}];
     }
 
-    get effectiveDetailsService(): ModelDetailsService<M> {
+    get effectiveDetailsService(): TreeDetailsService<M> {
         return this.detailsService ?? this.basicDetailsService;
     }
 

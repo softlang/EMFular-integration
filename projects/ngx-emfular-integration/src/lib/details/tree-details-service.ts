@@ -2,7 +2,7 @@ import { Referencable, ReTreeChildrenContainer } from "emfular";
 import {ModelService} from "../model.service";
 import {Observable} from "rxjs";
 
-export interface ModelDetailsService<M extends Referencable<any>> {
+export interface TreeDetailsService<M extends Referencable<any>> {
 
     //actually T must be somewhere on M
     openDetails<T extends Referencable<any>>(

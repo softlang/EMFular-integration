@@ -1,22 +1,19 @@
-<div class="tree-editor" id="tree-editor">
-    <emfular-file-level-bar
-            [svg]="svgElement"
-            [modelService]="modelService">
-    </emfular-file-level-bar>
-    <div class="editor-main">
-        <!-- vertical model bar -->
-        <emfular-model-editing-bar
-                class="model-bar"
-                [buttons]="sidebarButtons">
-        </emfular-model-editing-bar>
+<emfular-basic-editor
+    [svgwidth]="svgwidth"
+    [svgheight]="svgheigth"
+    [modelService]="modelService"
+>
+    <!-- Default sidebar -->
+    <emfular-model-editing-bar
+            sidebar
+            [buttons]="sidebarButtons">
+    </emfular-model-editing-bar>
 
-
-        <tree-canvas
-                [modelService]="modelService"
-                (svgReady)="onSvgReady($event)"
-                (chooseElement)="choose($event)"
-        >
-        </tree-canvas>
-    </div>
-</div>
-
+    <!-- Default canvas content -->
+    <g canvas
+       referencable-box
+       [referencable]="modelService.model"
+       [position]="initialBBox"
+       (chooseElement)="choose($event)">
+    </g>
+</emfular-basic-editor>
