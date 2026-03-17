@@ -5,7 +5,7 @@ import {ModelEditingBarComponent} from "../model-editing-bar/model-editing-bar.c
 import {ModelService} from "../../model.service";
 import {TreeCanvasComponent} from "../tree-canvas/tree-canvas.component";
 import {ModelDetailsService} from "../../details/model-details-service";
-import {BasicModelDetailsService} from "../../details/basic-model-details.service";
+import {TreeModelDetailsService} from "../../details/tree-model-details.service";
 import {EditButtonDef} from "../edit-button-def";
 
 @Component({
@@ -24,7 +24,7 @@ export class TreeEditorComponent<M extends Referencable<any>> {
     @Input() detailsService?: ModelDetailsService<M>
     @Input() customButtons: Array<EditButtonDef> | null = null;
 
-    constructor(private basicDetailsService: BasicModelDetailsService<M>) {}
+    constructor(private basicDetailsService: TreeModelDetailsService<M>) {}
 
     get sidebarButtons() {
       if (this.customButtons) return this.customButtons;

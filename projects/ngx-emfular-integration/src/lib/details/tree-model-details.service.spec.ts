@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BasicModelDetailsService } from './basic-model-details.service';
+import { TreeModelDetailsService } from './tree-model-details.service';
 
 describe('BasicModelDetailsService', () => {
-  let service: BasicModelDetailsService;
+  let service: TreeModelDetailsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(BasicModelDetailsService);
+    service = TestBed.inject(TreeModelDetailsService);
   });
 
   it('should be created', () => {

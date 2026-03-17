@@ -11,7 +11,7 @@ import {ModelDetailsService} from "./model-details-service";
 @Injectable({
   providedIn: 'root'
 })
-export class BasicModelDetailsService<M extends Referencable<any>> implements ModelDetailsService<M> {
+export class TreeModelDetailsService<M extends Referencable<any>> implements ModelDetailsService<M> {
 
   constructor( private overlay: Overlay) { }
 
