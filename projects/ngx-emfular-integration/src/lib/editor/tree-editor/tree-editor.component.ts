@@ -1,9 +1,7 @@
 import {Component, Input} from '@angular/core';
 import { Referencable} from "emfular";
-import {FileLevelBarComponent} from "../file-level-bar/file-level-bar.component";
 import {ModelEditingBarComponent} from "../model-editing-bar/model-editing-bar.component";
 import {ModelService} from "../../model.service";
-import {TreeCanvasComponent} from "../tree-canvas/tree-canvas.component";
 import {TreeDetailsService} from "../../details/tree-details-service";
 import {TreeModelDetailsService} from "../../details/tree-model-details.service";
 import {EditButtonDef} from "../edit-button-def";
@@ -14,9 +12,7 @@ import { BoundingBox } from 'ngx-svg-graphics';
 @Component({
   selector: 'emfular-tree-editor',
     imports: [
-        FileLevelBarComponent,
         ModelEditingBarComponent,
-        TreeCanvasComponent,
         BasicEditorComponent,
         ReferencableBoxComponent
     ],
@@ -24,7 +20,6 @@ import { BoundingBox } from 'ngx-svg-graphics';
   styleUrl: './tree-editor.component.css'
 })
 export class TreeEditorComponent<M extends Referencable<any>> {
-    svgElement!: SVGSVGElement;
     @Input() modelService!: ModelService<M>
     @Input() detailsService?: TreeDetailsService<M>
     @Input() customButtons: Array<EditButtonDef> | null = null;
@@ -44,13 +39,6 @@ export class TreeEditorComponent<M extends Referencable<any>> {
     get effectiveDetailsService(): TreeDetailsService<M> {
         return this.detailsService ?? this.basicDetailsService;
     }
-
-    onSvgReady(svg: SVGSVGElement) {
-        queueMicrotask(() => {
-            this.svgElement = svg;
-        });
-    }
-
 
     choose(element: Referencable<any>) {
       this.effectiveDetailsService.openDetails(element, this.modelService)
