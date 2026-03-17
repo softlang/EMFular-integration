@@ -1,6 +1,11 @@
 <div class="model-editing-bar">
     <button *ngFor="let b of buttons" (click)="b.action()">
-        <span *ngIf="b.icon" class="icon">{{ b.icon }}</span>
+        <img
+                *ngIf="b.icon"
+                class="icon"
+                [src]="b.icon"
+                alt="Icon for {{b.label}}"
+        />
         {{ b.label }}
     </button>
 </div>

@@ -22,4 +22,8 @@
 
 .icon {
     margin-right: 0.2rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    object-fit: contain;
+    vertical-align: middle;
 }
