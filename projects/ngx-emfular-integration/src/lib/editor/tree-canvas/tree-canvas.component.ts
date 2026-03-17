@@ -5,14 +5,14 @@ import { Referencable, ReTreeChildrenContainer } from 'emfular';
 import { BoundingBox } from 'ngx-svg-graphics';
 
 @Component({
-  selector: 'model-canvas',
+  selector: 'tree-canvas',
     imports: [
         ReferencableBoxComponent
     ],
-  templateUrl: './model-canvas.component.html',
-  styleUrl: './model-canvas.component.css'
+  templateUrl: './tree-canvas.component.html',
+  styleUrl: './tree-canvas.component.css'
 })
-export class ModelCanvasComponent<M extends Referencable<any>> implements OnInit {
+export class TreeCanvasComponent<M extends Referencable<any>> implements OnInit {
   svgwidth = 1500;
   svgheigth = 1000;
   initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 25}

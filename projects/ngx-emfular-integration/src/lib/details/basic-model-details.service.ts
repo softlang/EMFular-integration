@@ -4,7 +4,7 @@ import {ModelService} from "../model.service";
 import {ModelDetailsComponent} from "./model-details/model-details.component";
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import {ModelCanvasComponent} from "../editor/model-canvas/model-canvas.component";
+import {TreeCanvasComponent} from "../editor/tree-canvas/tree-canvas.component";
 import {Observable, Subject} from "rxjs";
 import {ModelDetailsService} from "./model-details-service";
 
@@ -53,7 +53,7 @@ export class BasicModelDetailsService<M extends Referencable<any>> implements Mo
                 .global().centerHorizontally().centerVertically()
         });
 
-        const portal = new ComponentPortal(ModelCanvasComponent<M>);
+        const portal = new ComponentPortal(TreeCanvasComponent<M>);
         const ref = overlayRef.attach(portal);
 
         ref.instance.modelService = modelService;
@@ -84,7 +84,7 @@ export class BasicModelDetailsService<M extends Referencable<any>> implements Mo
                 .global().centerHorizontally().centerVertically()
         });
 
-        const portal = new ComponentPortal(ModelCanvasComponent<M>);
+        const portal = new ComponentPortal(TreeCanvasComponent<M>);
         const ref = overlayRef.attach(portal);
 
         ref.instance.modelService = modelService;

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModelCanvasComponent } from './model-canvas.component';
+import { TreeCanvasComponent } from './tree-canvas.component';
 
 describe('ModelCanvasComponent', () => {
-  let component: ModelCanvasComponent;
-  let fixture: ComponentFixture<ModelCanvasComponent>;
+  let component: TreeCanvasComponent;
+  let fixture: ComponentFixture<TreeCanvasComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModelCanvasComponent]
+      imports: [TreeCanvasComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ModelCanvasComponent);
+    fixture = TestBed.createComponent(TreeCanvasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

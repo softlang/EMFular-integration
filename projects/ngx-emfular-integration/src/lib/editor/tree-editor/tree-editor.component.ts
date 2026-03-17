@@ -3,7 +3,7 @@ import { Referencable} from "emfular";
 import {FileLevelBarComponent} from "../file-level-bar/file-level-bar.component";
 import {ModelEditingBarComponent} from "../model-editing-bar/model-editing-bar.component";
 import {ModelService} from "../../model.service";
-import {ModelCanvasComponent} from "../model-canvas/model-canvas.component";
+import {TreeCanvasComponent} from "../tree-canvas/tree-canvas.component";
 import {ModelDetailsService} from "../../details/model-details-service";
 import {BasicModelDetailsService} from "../../details/basic-model-details.service";
 import {EditButtonDef} from "../edit-button-def";
@@ -13,7 +13,7 @@ import {EditButtonDef} from "../edit-button-def";
     imports: [
         FileLevelBarComponent,
         ModelEditingBarComponent,
-        ModelCanvasComponent
+        TreeCanvasComponent
     ],
   templateUrl: './tree-editor.component.html',
   styleUrl: './tree-editor.component.css'
