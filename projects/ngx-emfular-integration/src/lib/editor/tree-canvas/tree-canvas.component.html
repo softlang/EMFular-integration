@@ -1,11 +1,13 @@
-<div class="modeling-container">
-    <svg #svg id="svg" class="canvas-svg" [attr.width]="svgwidth" [attr.height]="svgheigth">
-        <g referencable-box
+<model-canvas
+    [svgwidth]="svgwidth"
+    [svgheigth]="svgheigth"
+    (svgReady)="svgReady.emit($event)"
+>
+    <g referencable-box
            [referencable]="modelService.model"
            [position]="initialBBox"
            (chooseElement)="choose($event)"
            (chooseReference)="chooseRef($event)"
         >
-        </g>
-    </svg>
-</div>
+    </g>
+</model-canvas>
