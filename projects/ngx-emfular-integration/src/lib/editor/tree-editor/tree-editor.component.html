@@ -9,11 +9,12 @@
             [buttons]="sidebarButtons">
     </emfular-model-editing-bar>
 
-    <!-- Default canvas content -->
-    <g canvas
-       referencable-box
-       [referencable]="modelService.model"
-       [position]="initialBBox"
-       (chooseElement)="choose($event)">
-    </g>
+    <!-- Default canvas content, needs svg namespace just like components -->
+    <svg:g canvas>
+        <g referencable-box
+        [referencable]="modelService.model"
+        [position]="initialBBox"
+        (chooseElement)="choose($event)">
+        </g>
+    </svg:g>
 </emfular-basic-editor>
