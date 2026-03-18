@@ -3,6 +3,7 @@
     [svgheigth]="svgheigth"
     (svgReady)="svgReady.emit($event)"
 >
+    <svg:g canvas>
     <g referencable-box
            [referencable]="modelService.model"
            [position]="initialBBox"
@@ -10,4 +11,5 @@
            (chooseReference)="chooseRef($event)"
         >
     </g>
+    </svg:g>
 </model-canvas>
