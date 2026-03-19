@@ -1,0 +1,33 @@
+@if (showRelationships) {
+  <svg:defs>
+    <svg:marker
+      id="relationshipArrow"
+      markerWidth="10"
+      markerHeight="10"
+      refX="10"
+      refY="3"
+      orient="auto"
+      markerUnits="strokeWidth"
+    >
+      <svg:path d="M0,0 L0,6 L9,3 z"></svg:path>
+    </svg:marker>
+  </svg:defs>
+
+  @for (e of edges; track e.id) {
+    <svg:polyline
+      [attr.points]="e.points"
+      fill="none"
+      stroke="#333"
+      stroke-width="2"
+      marker-end="url(#relationshipArrow)"
+    ></svg:polyline>
+
+    <svg:text
+      [attr.x]="e.labelX"
+      [attr.y]="e.labelY"
+      font-size="12"
+    >
+      {{ e.label }}
+    </svg:text>
+  }
+}

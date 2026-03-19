@@ -16,5 +16,13 @@
         [position]="initialBBox"
         (chooseElement)="choose($event)">
         </g>
+
+        @if (showRelationships) {
+            <svg:g
+                relationship-layer
+                [rootElement]="modelService.model"
+                [showRelationships]="showRelationships">
+            </svg:g>
+        }
     </svg:g>
 </emfular-basic-editor>

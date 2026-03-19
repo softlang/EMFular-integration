@@ -1,0 +1,21 @@
+<model-canvas
+  [svgwidth]="svgwidth"
+  [svgheigth]="svgheigth"
+  (svgReady)="svgReady.emit($event)"
+>
+  <!-- Layer 1: normal tree -->
+  <svg:g class="tree-layer">
+    <g
+      referencable-box
+      [referencable]="modelService.model"
+      [position]="initialBBox"
+      (chooseElement)="choose($event)"
+      (chooseReference)="chooseRef($event)"
+    >
+    </g>
+  </svg:g>
+
+  <svg:g class="relationships-layer">
+  </svg:g>
+
+</model-canvas>

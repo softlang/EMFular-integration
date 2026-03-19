@@ -3,23 +3,21 @@ import { Referencable, ReTreeChildrenContainer } from 'emfular';
 import { BoundingBox } from 'ngx-svg-graphics';
 
 import { ModelService } from '../../model.service';
-import { ReferencableBoxComponent } from '../../graphical/referencable-box/referencable-box.component';
 import { ModelCanvasComponent } from '../model-canvas/model-canvas.component';
-import { VisibleNodeRegistry } from '../merged-tree-relations-canvas/services/visible-node-registry.service';
-import { RelationshipLayerComponent } from '../relationship-layer/relationship-layer.component';
+import { ReferencableBoxComponent } from '../../graphical/referencable-box/referencable-box.component';
+import { VisibleNodeRegistry } from "./services/visible-node-registry.service";
 
 @Component({
-  selector: 'tree-canvas',
-  imports: [
-    ReferencableBoxComponent,
-    ModelCanvasComponent,
-    RelationshipLayerComponent
-  ],
+  selector: 'merged-tree-relations-canvas',
   providers: [VisibleNodeRegistry],
-  templateUrl: './tree-canvas.component.html',
-  styleUrl: './tree-canvas.component.css'
+  imports: [
+    ModelCanvasComponent,
+    ReferencableBoxComponent
+  ],
+  templateUrl: './merged-tree-relations-canvas.component.html',
+  styleUrl: './merged-tree-relations-canvas.component.css'
 })
-export class TreeCanvasComponent<M extends Referencable<any>> {
+export class MergedTreeRelationsCanvasComponent<M extends Referencable<any>> {
   svgwidth = 1500;
   svgheigth = 1000;
 
@@ -44,4 +42,5 @@ export class TreeCanvasComponent<M extends Referencable<any>> {
     this.chooseReference.emit(reference);
   }
 
+  constructor() {}
 }

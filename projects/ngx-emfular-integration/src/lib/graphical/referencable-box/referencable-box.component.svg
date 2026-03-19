@@ -1,4 +1,4 @@
-<svg:g [attr.id]="referencable.$gId">
+<svg:g [attr.id]="referencable.$gId" (mousedown)="startDrag($event)">
 
     <g rectangle-with-text
        (click)="choose(referencable)"
@@ -52,13 +52,15 @@
 
             @for (elem of realChildren; track elem.$gId; let j = $index) {
 
-                @let elemBox = PositionHelper.computeChildBBox(
+                @let computedElemBox = PositionHelper.computeChildBBox(
                     j,
                     realChildren.length,
                     containerAnchorBox
                 );
+            @let elemBox = getResolvedChildPosition(elem, computedElemBox);
                 <g referencable-box
                    (chooseElement)="choose($event)"
+                    (chooseReference)="chooseRef($event)"
                    [referencable]="elem"
                    [position]="elemBox"
                 >
