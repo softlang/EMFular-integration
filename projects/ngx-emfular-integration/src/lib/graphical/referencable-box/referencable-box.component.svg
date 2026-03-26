@@ -1,18 +1,47 @@
-<svg:g [attr.id]="referencable.$gId">
-
-    <g rectangle-with-text
-       (click)="choose(referencable)"
-       [id]="referencable.$gId + '_main'"
-       [text]="IdHelper.getLabel(referencable)"
-       [position]="position"
-       [color]="color"
+<svg:g
+    [attr.id]="referencable.$gId"
+    class="node-group"
+>
+    <g
+        [attr.id]="referencable.$gId + '_main'"
+        (click)="choose(referencable)"
     >
+        <rect
+            [attr.x]="position.x"
+            [attr.y]="position.y"
+            [attr.width]="position.w"
+            [attr.height]="position.h"
+            rx="14"
+            ry="14"
+            fill="#ffffff"
+            stroke="#cbd5e1"
+            stroke-width="1.2"
+        ></rect>
+
+        <rect
+            [attr.x]="position.x"
+            [attr.y]="position.y + 2"
+            width="6"
+            [attr.height]="position.h - 4"
+            rx="6"
+            ry="6"
+            fill="#3b82f6"
+        ></rect>
+
+        <text
+            [attr.x]="position.x + 18"
+            [attr.y]="position.y + (position.h / 2) + 1"
+            dominant-baseline="middle"
+            fill="#0f172a"
+            font-size="11"
+            font-weight="700"
+        >
+            {{ IdHelper.getLabel(referencable) }}
+        </text>
     </g>
 
-    <!-- containers -->
     @for (container of referencable.$treeChildren;
-        track referencable.$gId + '_' + container.referenceName
-            ; let i = $index) {
+        track referencable.$gId + '_' + container.referenceName; let i = $index) {
 
         @let containerKey = referencable.$gId + '_' + container.referenceName;
         @let containerAnchorBox = PositionHelper.computeChildBBox(
@@ -21,24 +50,65 @@
             position
         );
 
-        <!-- reference box -->
-        <g rectangle-with-text
-           (click)="chooseRef(container)"
-           [id]="containerKey + '_ref'"
-           [text]="container.referenceName"
-           [position]="containerAnchorBox"
-           color="#ede679"
+        <g
+            [attr.id]="containerKey + '_ref'"
+            (click)="chooseRef(container)"
         >
-        </g>
-        <g rectangle-with-text
-           (click)="toggleExpand(i)"
-           [id]="containerKey + '_toggle'"
-           [text]="isExpandedArray[i]?'◊':'V'"
-           [position]="createBoxInLastPart(containerAnchorBox)"
-           color="transparent"
-        ></g>
+            <rect
+                [attr.x]="containerAnchorBox.x"
+                [attr.y]="containerAnchorBox.y"
+                [attr.width]="containerAnchorBox.w"
+                [attr.height]="containerAnchorBox.h"
+                rx="12"
+                ry="12"
+                fill="#f8fafc"
+                stroke="#cbd5e1"
+                stroke-width="1.1"
+            ></rect>
 
-        <!-- arrow from main box to reference -->
+            <text
+                [attr.x]="containerAnchorBox.x + 12"
+                [attr.y]="containerAnchorBox.y + (containerAnchorBox.h / 2) + 1"
+                dominant-baseline="middle"
+                fill="#1e293b"
+                font-size="11"
+                font-weight="600"
+            >
+                {{ container.referenceName }}
+            </text>
+        </g>
+
+        <g
+            [attr.id]="containerKey + '_toggle'"
+            (click)="toggleExpand(i)"
+        >
+            @let toggleBox = createBoxInLastPart(containerAnchorBox);
+
+            <rect
+                [attr.x]="toggleBox.x"
+                [attr.y]="toggleBox.y"
+                [attr.width]="toggleBox.w"
+                [attr.height]="toggleBox.h"
+                rx="12"
+                ry="12"
+                fill="#ffffff"
+                stroke="#94a3b8"
+                stroke-width="1.1"
+            ></rect>
+
+            <text
+                [attr.x]="toggleBox.x + (toggleBox.w / 2)"
+                [attr.y]="toggleBox.y + (toggleBox.h / 2) + 1"
+                text-anchor="middle"
+                dominant-baseline="middle"
+                fill="#334155"
+                font-size="14"
+                font-weight="700"
+            >
+                {{ isExpandedArray[i] ? '−' : '+' }}
+            </text>
+        </g>
+
         <g arrowElems
            [startGID]="referencable.$gId"
            startSuffix="_main"
@@ -51,17 +121,17 @@
             @let realChildren = GraphicalHelper.getAsList(container);
 
             @for (elem of realChildren; track elem.$gId; let j = $index) {
-
-                @let elemBox = PositionHelper.computeChildBBox(
+                @let computedElemBox = PositionHelper.computeChildBBox(
                     j,
                     realChildren.length,
                     containerAnchorBox
                 );
+
                 <g referencable-box
                    (chooseElement)="choose($event)"
+                   (chooseReference)="chooseRef($event)"
                    [referencable]="elem"
-                   [position]="elemBox"
-                >
+                   [position]="computedElemBox">
                 </g>
                 <!-- arrow from reference to child box -->
                 <g arrowElems

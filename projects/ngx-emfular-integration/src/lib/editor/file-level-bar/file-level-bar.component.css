@@ -1,4 +1,52 @@
-.file-level-bar { display:flex; align-items:center; gap:0.4rem; padding:0.3rem 0.5rem; background:#f0f0f0; border-bottom:1px solid #ccc; }
-.file-level-bar button { padding:0.25rem 0.5rem; font-size:0.85rem; cursor:pointer; }
-.file-level-bar button:disabled { opacity:0.5; cursor:default; }
-.separator { width:1px; height:1rem; background:#ccc; margin:0 0.3rem; }
+.file-level-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    padding: 0.85rem 1rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 247, 251, 0.95) 100%);
+    border-bottom: 1px solid #dde5ef;
+    box-sizing: border-box;
+}
+
+.file-level-bar button {
+    appearance: none;
+    border: 1px solid #d6deea;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 0.52rem 0.9rem;
+    min-height: 38px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1f2937;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+.file-level-bar button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: #f8fbff;
+    border-color: #b9c7da;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.file-level-bar button:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.file-level-bar button:disabled {
+    opacity: 0.42;
+    cursor: default;
+    color: #9aa4b2;
+    background: #f8fafc;
+    box-shadow: none;
+}
+
+.separator {
+    width: 1px;
+    align-self: stretch;
+    min-height: 2rem;
+    background: linear-gradient(180deg, transparent 0%, #d0d9e4 18%, #d0d9e4 82%, transparent 100%);
+    margin: 0 0.2rem;
+}

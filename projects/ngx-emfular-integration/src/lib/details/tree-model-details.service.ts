@@ -25,6 +25,7 @@ export class TreeModelDetailsService<M extends Referencable<any>> implements Tre
     const overlayRef = this.overlay.create(
         { hasBackdrop: true,
           backdropClass: 'cdk-overlay-dark-backdrop',
+          maxHeight: "70%",
           panelClass: 'basic-details-panel',
           positionStrategy: this.overlay.position()
               .global() .centerHorizontally() .centerVertically()

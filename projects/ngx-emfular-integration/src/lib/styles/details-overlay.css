@@ -1,30 +1,54 @@
 /* Backdrop: slightly darkened */
 .cdk-overlay-dark-backdrop {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(15, 23, 42, 0.42);
+    backdrop-filter: blur(3px);
 }
 
 /* Outer container of the details panel */
 .basic-details-panel {
-    background: #ffffff;
-    border-radius: 12px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #dbe4ef;
+    border-radius: 18px;
     padding: 24px;
     box-sizing: border-box;
-    max-width: 700px;
-    max-height: 90vh;
-    overflow: hidden;
+    width: min(760px, calc(100vw - 32px));
+    max-width: 760px;
+    max-height: 80vh;
+    overflow: auto;
+    overscroll-behavior: contain;
     box-shadow:
-            0 4px 12px rgba(0, 0, 0, 0.15),
-            0 2px 4px rgba(0, 0, 0, 0.1);
-    animation: detailsFadeIn 120ms ease-out;
+        0 24px 60px rgba(15, 23, 42, 0.18),
+        0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+.basic-details-panel::-webkit-scrollbar {
+    width: 10px;
+}
+
+.basic-details-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.basic-details-panel::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.basic-details-panel::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+    border: 2px solid transparent;
+    background-clip: padding-box;
 }
 
 @keyframes detailsFadeIn {
     from {
         opacity: 0;
-        transform: scale(0.96);
+        transform: translateY(10px) scale(0.98);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0) scale(1);
     }
 }

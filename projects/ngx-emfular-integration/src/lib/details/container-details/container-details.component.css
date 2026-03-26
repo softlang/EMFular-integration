@@ -1,76 +1,76 @@
+:host {
+    display: block;
+}
+
 h4 {
-    margin-top: 0;
-    margin-bottom: 4px;
+    margin: 0 0 0.45rem;
+    font-size: 0.92rem;
+    color: #334155;
 }
 
 .add-ref {
-    margin-top: 0;
-    margin-bottom: 8px;  /* spacing before the list */
-    padding: 6px 12px;
-    border-radius: 6px;
-    border: 1px solid #b5b5b5;
+    margin: 0 0 0.85rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 10px;
+    border: 1px solid #d0dcec;
     background: #ffffff;
     cursor: pointer;
-    font-size: 13px;
-    transition: background 120ms ease, border-color 120ms ease;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #334155;
 }
 
 .add-ref:hover {
-    background: #f2f2f2;
-    border-color: #999;
+    transform: translateY(-1px);
+    background: #f8fbff;
+    border-color: #b7c8de;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
 }
 
-.add-ref:active {
-    background: #e6e6e6;
-}
-
-.reference-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 12px;
-}
-
-.reference-row {
+.container-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 8px;
-    border: 1px solid #d0d0d0;
-    border-radius: 6px;
-    background: #fafafa;
-    transition: background 120ms ease;
+    gap: 0.75rem;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid #dbe4ef;
+    border-radius: 12px;
+    background: #ffffff;
+    margin-bottom: 0.6rem;
 }
 
-.reference-row:hover {
-    background: #f2f2f2;
+.container-row:hover {
+    transform: translateY(-1px);
+    border-color: #c4d3e5;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
 }
 
-/* Left side: icon + type + label */
 .ref-info {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.55rem;
     min-width: 0;
 }
 
 .ref-icon {
     opacity: 0.7;
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
-/* Type hint (EClass) */
 .ref-type {
-    font-weight: 600;
-    font-size: 13px;
-    color: #333;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #334155;
     white-space: nowrap;
+    padding: 0.18rem 0.48rem;
+    border-radius: 999px;
+    background: #eef4fa;
 }
 
 .ref-label {
-    font-size: 13px;
-    color: #555;
-    max-width: 200px;
+    font-size: 0.86rem;
+    color: #475569;
+    max-width: 240px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -78,28 +78,24 @@ h4 {
 
 .ref-actions {
     display: flex;
-    gap: 6px;
+    gap: 0.45rem;
+    flex-shrink: 0;
 }
 
-/* Buttons: always visible, with border + background */
 .ref-actions button {
-    border: 1px solid #b5b5b5;
+    border: 1px solid #d0dcec;
     background: #ffffff;
     cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    color: #333;
-    min-width: 32px;
-    text-align: center;
-    transition: background 120ms ease, border-color 120ms ease;
+    padding: 0.42rem 0.72rem;
+    border-radius: 9px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #334155;
 }
 
 .ref-actions button:hover {
-    background: #e6e6e6;
-    border-color: #999;
-}
-
-.ref-actions button:active {
-    background: #dcdcdc;
+    transform: translateY(-1px);
+    background: #f8fbff;
+    border-color: #b7c8de;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
 }

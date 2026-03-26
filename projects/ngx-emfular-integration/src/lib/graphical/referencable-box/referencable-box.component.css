@@ -1,0 +1,7 @@
+:host {
+    pointer-events: auto;
+}
+
+.node-group g:hover rect {
+    opacity: 0.96;
+}
