@@ -20,7 +20,7 @@ export class TreeModelDetailsService<M extends Referencable<any>> implements Tre
       T extends Referencable<any>
   >(elem: T, modelService: ModelService<M>) {
     // instead of opening the generic ModeldetailsCompoennt you might like to consider opening a specific one
-    //by determining the eClass and switching based on elem.getEClass()
+    //by determining the eClass and switching based on elem.$getEClass()
 
     const overlayRef = this.overlay.create(
         { hasBackdrop: true,
