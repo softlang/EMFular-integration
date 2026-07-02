@@ -1,0 +1,39 @@
+{
+  "name": "ngx-emfular-integration",
+  "version": "1.0.0",
+  "description": "Integrates emfular with its ngx-helper to provide modeling services",
+  "keywords": ["EMFular","Angular", "Modeling"],
+  "author": {
+    "name": "Susanne Göbel",
+    "email": "goebel@uni-koblenz.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/softlang/EMFular/tree/main/projects/integration"
+  },
+  "exports": {
+    "./*": { "default": "./*" },
+    "./public-api": {
+      "default": "./public-api.js"
+    },
+    "./details-overlay.css": {
+      "default": "./details-overlay.css"
+    }
+  },
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/cdk": "^19.2.0",
+    "@angular/material": "^19.2.0",
+    "emfular-core": "^1.0.0",
+    "ngx-emfular-tool": "^1.0.0",
+    "ngx-emfular-diagram": "^1.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "emfular-core": "^1.0.0"
+  },
+  "sideEffects": false
+}
