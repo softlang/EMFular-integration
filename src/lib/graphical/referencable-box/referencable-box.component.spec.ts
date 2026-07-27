@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReferencableBoxComponent } from './referencable-box.component';
@@ -22,6 +23,10 @@ describe('ReferencableBoxComponent', () => {
       h: 20
     }
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
   });
 
   it('should create', () => {

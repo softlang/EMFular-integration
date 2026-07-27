@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FileLevelBarMaterialComponent } from './file-level-bar-material.component';
 import { DummyReferencable } from '../../test/dummy-referencable';
@@ -21,6 +22,10 @@ describe('FileLevelBarMaterialComponent', () => {
     component.svg = createTestSvg();
 
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
   });
 
   it('should create', () => {

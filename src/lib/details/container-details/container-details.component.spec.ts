@@ -1,10 +1,12 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContainerDetailsComponent } from './container-details.component';
+import {DummyReferencable} from "../../test/dummy-referencable";
 
-describe('TreeContainerAdapterComponent', () => {
-  let component: ContainerDetailsComponent;
-  let fixture: ComponentFixture<ContainerDetailsComponent>;
+describe('ContainerDetailsComponent', () => {
+  let component: ContainerDetailsComponent<DummyReferencable>;
+  let fixture: ComponentFixture<ContainerDetailsComponent<DummyReferencable>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -12,9 +14,12 @@ describe('TreeContainerAdapterComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ContainerDetailsComponent);
+    fixture = TestBed.createComponent(ContainerDetailsComponent<DummyReferencable>);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
   });
 
   it('should create', () => {

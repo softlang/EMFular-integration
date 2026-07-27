@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModelCanvasComponent } from './model-canvas.component';
@@ -15,6 +16,10 @@ describe('ModelCanvasComponent', () => {
     fixture = TestBed.createComponent(ModelCanvasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
   });
 
   it('should create', () => {
