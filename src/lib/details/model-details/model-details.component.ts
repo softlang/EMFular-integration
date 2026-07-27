@@ -37,7 +37,7 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
   }
 
   getLinks(): ReLinkContainer<any, any>[] {
-    return this.model.$otherReferences
+    return this.model.$otherLinks
   }
 
   getChildren(): ReTreeChildrenContainer<any>[] {
