@@ -1,6 +1,8 @@
+import { vi } from 'vitest';
+
 export class HistoryServiceStub {
-    undo = jasmine.createSpy('undo');
-    redo = jasmine.createSpy('redo');
+    undo = vi.fn();
+    redo = vi.fn();
     isUndoNotPossible = () => false;
     isRedoNotPossible = () => false;
 }

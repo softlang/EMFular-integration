@@ -15,7 +15,7 @@ describe('ModelCanvasComponent', () => {
 
     fixture = TestBed.createComponent(ModelCanvasComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   afterEach(() => {

@@ -16,7 +16,7 @@ describe('BasicEditorComponent', () => {
 
     fixture = TestBed.createComponent(BasicEditorComponent<DummyReferencable>);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   afterEach(() => {

@@ -16,7 +16,7 @@ describe('TreeEditorComponent', () => {
 
     fixture = TestBed.createComponent(TreeEditorComponent<DummyReferencable>);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   afterEach(() => {

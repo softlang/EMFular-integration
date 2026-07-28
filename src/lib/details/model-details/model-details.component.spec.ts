@@ -16,7 +16,7 @@ describe('ModelDetailsComponent', () => {
 
     fixture = TestBed.createComponent(ModelDetailsComponent<DummyReferencable, DummyReferencable>);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   afterEach(() => {

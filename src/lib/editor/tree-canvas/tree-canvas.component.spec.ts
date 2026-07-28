@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TreeCanvasComponent } from './tree-canvas.component';
 import {DummyReferencable} from "../../test/dummy-referencable";
 
-describe('ModelCanvasComponent', () => {
+describe('TreeCanvasComponent', () => {
   let component: TreeCanvasComponent<DummyReferencable>;
   let fixture: ComponentFixture<TreeCanvasComponent<DummyReferencable>>;
 
@@ -16,7 +16,7 @@ describe('ModelCanvasComponent', () => {
 
     fixture = TestBed.createComponent(TreeCanvasComponent<DummyReferencable>);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   afterEach(() => {
