@@ -45,12 +45,11 @@
     "@angular/core": "^19.2.7",
     "@angular/forms": "^19.2.7",
     "@angular/material": "^19.2.7",
-    "@types/uuid": "^10.0.0"
-  },
-  "dependencies": {
     "emfular-core": "^1.1.0",
     "ngx-emfular-diagram": "^1.0.1",
-    "ngx-emfular-tool": "^1.0.0",
+    "ngx-emfular-tool": "^1.0.0"
+  },
+  "dependencies": {
     "tslib": "^2.3.0"
   },
   "devDependencies": {
