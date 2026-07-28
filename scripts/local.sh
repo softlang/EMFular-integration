@@ -12,8 +12,8 @@ npm uninstall \
 
 npm install \
   "$ROOT/EMFular-core" \
-  "$ROOT/EMFular-tool" \
-  "$ROOT/EMFular-diagram"
+  "$ROOT/EMFular-tool/dist" \
+  "$ROOT/EMFular-diagram/dist"
 
 echo
 npm ls \
