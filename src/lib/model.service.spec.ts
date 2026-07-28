@@ -83,6 +83,10 @@ describe('ModelService with HistoryService emitting immediately', () => {
     });
   });
 
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  });
+
   it('should be created', () => {
     const service = TestBed.inject(DummyModelService);
     expect(service).toBeTruthy();
