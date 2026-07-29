@@ -16,6 +16,22 @@ export default defineConfig({
             '@angular/forms',
             '@angular/core/testing',
             '@angular/platform-browser-dynamic/testing',
+
+            '@angular/material/dialog',
+            '@angular/material/icon',
+            '@angular/material/button',
+            '@angular/material/toolbar',
+
+            '@angular/cdk/overlay',
+            '@angular/cdk/portal',
+
+            'reflect-metadata',
+            'uuid',
+
+            'ngx-emfular-tool',
+            'ngx-emfular-diagram',
+            'emfular-core',
+
             'zone.js',
             'zone.js/testing'
         ]

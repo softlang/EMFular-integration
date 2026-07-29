@@ -5,12 +5,8 @@ ROOT=".."
 
 echo "Using local EMFular repositories..."
 
-npm uninstall \
-  emfular-core \
-  ngx-emfular-tool \
-  ngx-emfular-diagram || true
 
-npm install \
+npm install --save-peer --no-save \
   "$ROOT/EMFular-core" \
   "$ROOT/EMFular-tool/dist" \
   "$ROOT/EMFular-diagram/dist"
