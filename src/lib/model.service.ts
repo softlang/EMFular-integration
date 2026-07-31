@@ -70,7 +70,7 @@ export abstract class ModelService<M extends Referencable<any>> {
   }
 
   deserialize(modelJson: JsonOf<M>): M {
-    let modelEClass = new this.modelClass().getEClass();
+    let modelEClass = new this.modelClass().$getEClass();
     return Deserializer.fromJSON<M>(modelJson, modelEClass);
   }
 

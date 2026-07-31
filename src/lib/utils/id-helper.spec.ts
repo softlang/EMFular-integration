@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { IdHelper } from './id-helper';
 
 describe('IdHelper', () => {

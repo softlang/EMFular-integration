@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { DummyReferencable } from './dummy-referencable';
 
 describe('DummyReferencable', () => {

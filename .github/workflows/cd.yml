@@ -1,0 +1,101 @@
+name: CD
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    name: Publish package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify tag is on main
+        run: |
+          git fetch origin main
+
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "You may only create releases from main."
+            echo "The tagged commit $GITHUB_SHA is not part of origin/main."
+            exit 1
+          fi
+
+          echo "Tag points to a commit on main"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+
+      - run: npm ci
+
+      - name: Install Playwright browsers (for vitest browser tests)
+        run: npx playwright install --with-deps chromium
+
+      - name: test
+        run: npm run test
+
+      - run: npm run build
+
+      - name: Verify generated package
+        run: |
+          test -f dist/package.json
+          test -f dist/index.d.ts
+          echo "dist package created successfully"
+
+      - name: Check tag vs package.json version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TAG=${GITHUB_REF#refs/tags/v}
+          
+          if [ "$VERSION" != "$TAG" ]; then
+            echo "Version mismatch!"
+            echo "package.json contains version $VERSION"
+            echo "but the tag is v$TAG"
+            exit 1
+          fi
+          echo "Src versions match: $VERSION"
+
+      - name: Check tag vs dist/package.json version
+        run: |
+          VERSION=$(node -p "require('./dist/package.json').version")
+          TAG=${GITHUB_REF#refs/tags/v}
+          
+          if [ "$VERSION" != "$TAG" ]; then
+            echo "Version mismatch!"
+            echo "dist/package.json contains version $VERSION"
+            echo "but the tag is v$TAG"
+            exit 1
+          fi
+          echo "Artifact versions match: $VERSION"
+
+      - name: Publish
+        id: publish
+        working-directory: dist
+        continue-on-error: true
+        run: npm publish
+
+      - name: Show npm debug log
+        if: always()
+        run: |
+          echo "===== npm logs ====="
+          ls -l /home/runner/.npm/_logs
+          for f in /home/runner/.npm/_logs/*; do
+            echo
+            echo "===== $f ====="
+            cat "$f"
+          done
+
+      - name: Fail if publish failed
+        if: steps.publish.outcome != 'success'
+        run: exit 1
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2

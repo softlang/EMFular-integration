@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 
 import {HISTORY_SERVICE, ModelService, provideHistoryForModel} from './model.service';
@@ -40,6 +41,10 @@ describe('ModelServiceService', () => {
     service = TestBed.inject(DummyModelService);
   });
 
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  });
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
@@ -76,6 +81,10 @@ describe('ModelService with HistoryService emitting immediately', () => {
               ) }
       ]
     });
+  });
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
   });
 
   it('should be created', () => {

@@ -2,7 +2,11 @@
   "name": "ngx-emfular-integration",
   "version": "1.0.0",
   "description": "Integrates emfular with its ngx-helper to provide modeling services",
-  "keywords": ["EMFular","Angular", "Modeling"],
+  "keywords": [
+    "EMFular",
+    "Angular",
+    "Modeling"
+  ],
   "author": {
     "name": "Susanne Göbel",
     "email": "goebel@uni-koblenz.de"
@@ -11,8 +15,23 @@
     "type": "git",
     "url": "https://github.com/softlang/EMFular-integration"
   },
+  "scripts": {
+    "use:local": "./scripts/local.sh",
+    "use:public": "./scripts/public.sh",
+    "test": "vitest --config vitest.config.ts",
+    "test:watch": "vitest --config vitest.config.ts",
+    "test:local": "npm run use:local && npm run test  --run",
+    "test:public": "npm run use:public && npm run test  --run",
+    "build": "ng-packagr -p ng-package.json",
+    "build:local": "npm run use:local && npm run build",
+    "build:public": "npm run use:public && npm run build",
+    "verify:local": "npm run use:local && npm run test && npm run build",
+    "verify:public": "npm run use:public && npm run test && npm run build"
+  },
   "exports": {
-    "./*": { "default": "./*" },
+    "./*": {
+      "default": "./*"
+    },
     "./public-api": {
       "default": "./public-api.js"
     },
@@ -21,19 +40,33 @@
     }
   },
   "peerDependencies": {
-    "@angular/common": "^19.2.0",
-    "@angular/core": "^19.2.0",
-    "@angular/cdk": "^19.2.0",
-    "@angular/material": "^19.2.0",
-    "emfular-core": "^1.0.0",
-    "ngx-emfular-tool": "^1.0.0",
-    "ngx-emfular-diagram": "^1.0.0"
+    "@angular/cdk": "^19.2.7",
+    "@angular/common": "^19.2.7",
+    "@angular/core": "^19.2.7",
+    "@angular/forms": "^19.2.7",
+    "@angular/material": "^19.2.7",
+    "emfular-core": "^1.1.0",
+    "ngx-emfular-diagram": "^1.0.1",
+    "ngx-emfular-tool": "^1.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "emfular-core": "^1.0.0"
+    "@analogjs/vite-plugin-angular": "^1.19.2",
+    "@angular-devkit/build-angular": "^19.2.25",
+    "@angular/build": "^19.2.25",
+    "@angular/compiler": "^19.2.7",
+    "@angular/platform-browser": "^19.2.7",
+    "@angular/platform-browser-dynamic": "^19.2.7",
+    "@testing-library/dom": "^10.4.1",
+    "@vitest/browser": "^4.1.10",
+    "@vitest/browser-playwright": "^4.1.10",
+    "jsdom": "^29.1.1",
+    "ng-packagr": "^19.2.2",
+    "playwright": "^1.61.1",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10"
   },
   "sideEffects": false
 }

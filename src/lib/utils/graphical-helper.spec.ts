@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { GraphicalHelper } from './graphical-helper';
 
 describe('GraphicalHelper', () => {

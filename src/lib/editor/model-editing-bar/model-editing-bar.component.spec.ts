@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModelEditingBarComponent } from './model-editing-bar.component';
@@ -15,6 +16,10 @@ describe('ModelEditingBarComponent', () => {
     fixture = TestBed.createComponent(ModelEditingBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
   });
 
   it('should create', () => {
