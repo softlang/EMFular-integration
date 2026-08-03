@@ -1,63 +1,41 @@
-# NgxEmfularIntegration
+# EMFular-Integration
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+This project is part of [EMFular](https://github.com/softlang/EMFular).
+It wires the other EMFular packages into ready-to-use editors and helpful services and components for your own graphical modeling editors.
+Please refer to the version compatibilities listed below for more details.
 
-## Code scaffolding
+## Current Features
+EMFular-integration currently offers:
+* **editor-level services and components:** model service, on top of model-edit-service, history-service of EMFular-tool; editor toolbars to wire the model service methods with buttons; drawing canvas with or without tree components, ready editor shells, connecting the toolbars, canvas and services into one component.
+* **details services and components:** Detail views (tree-based) and services to open and close them. Components wire the service actions to their click events.
+* **graphical components**: all basic components from EMFular-diagram plus the referencable box.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Versions
+From **integration version 1.0.0** on, we switch to the new packages:
+    
+    `"emfular-core": "^1.1.0",
+    "ngx-emfular-diagram": "^1.0.1",
+    "ngx-emfular-tool": "^1.0.0"`
 
-```bash
-ng generate component component-name
-```
+The functionality in integration itself is the same as off 0.4.1, but since a newer core version is used, many improvements are included.
+Older versions from 0.1.0 on all required the same version range for the core, tool, and diagram libraries, so we recommend using the latest version (0.4.1), if you must stay with `"emfular": ">=9.0.0 <11.0.0"`.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Older Versions
+| **Integration Version** | **Features** | **Required Core, Tool, and Diagram** |
+| --- | --- | --- |
+| 0.4.1 | Details components, Tree-based Editors and single re-usable graphical components |  "emfular": ">=9.0.0 <11.0.0", "ngx-emfular-helper": "^1.0.0", "ngx-svg-graphics": "^3.0.0" | 
+| 0.1.0 | Referencable box component, basic wiring of core + tool |   "emfular": ">=9.0.0 <11.0.0", "ngx-emfular-helper": "^1.0.0", "ngx-svg-graphics": "^3.0.0" |
 
-```bash
-ng generate --help
-```
 
-## Building
 
-To build the library, run:
+## Support
+Support is currently offered by the main developer, Susanne Göbel under goebel@uni-koblenz.de.
 
-```bash
-ng build ngx-emfular-integration
-```
+## Contributing
+We are open to contributors. Maybe you would like to write your bachelor's or master's thesis on EMFular? Read our [arXiv-paper](https://arxiv.org/abs/2606.11442) and get in touch with Susanne Göbel goebel@uni-koblenz.de.
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/ngx-emfular-integration
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## License
+EMFular-integration is subject to (C) 2026, SoftLang Research Team, University of Koblenz, Faculty of CS, contact Susanne Göbel or Ralf Lämmel.
+It is provided under the ***CC BY 4.0 license***.
+Basically, you are free to share and adapt the material as long as you give proper credit to us and our project.
+Feel free to include EMFular into your research but please cite us.
