@@ -58,7 +58,7 @@ class HistoryServiceStub<T> {
     this.subject.next(value);
   }
 
-  get stream() {
+  get state$() {
     return this.subject.asObservable();
   }
 }
