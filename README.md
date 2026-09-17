@@ -11,18 +11,10 @@ EMFular-integration currently offers:
 * **graphical components**: all basic components from EMFular-diagram plus the referencable box.
 
 ## Versions
-From **integration version 1.0.0** on, we switch to the new packages:
-    
-    `"emfular-core": "^1.1.0",
-    "ngx-emfular-diagram": "^1.0.1",
-    "ngx-emfular-tool": "^1.0.0"`
 
-The functionality in integration itself is the same as off 0.4.1, but since a newer core version is used, many improvements are included.
-Older versions from 0.1.0 on all required the same version range for the core, tool, and diagram libraries, so we recommend using the latest version (0.4.1), if you must stay with `"emfular": ">=9.0.0 <11.0.0"`.
-
-### Older Versions
 | **Integration Version** | **Features** | **Required Core, Tool, and Diagram** |
 | --- | --- | --- |
+| 1.0.0 | Functionality in integration itself is the same as off 0.4.1, but integrates substantial improvements from core | "emfular-core": ">=1.1.0",  "ngx-emfular-tool": ">=1.0.0",     "ngx-emfular-diagram": ">=1.0.1", |  
 | 0.4.1 | Details components, Tree-based Editors and single re-usable graphical components |  "emfular": ">=9.0.0 <11.0.0", "ngx-emfular-helper": "^1.0.0", "ngx-svg-graphics": "^3.0.0" | 
 | 0.1.0 | Referencable box component, basic wiring of core + tool |   "emfular": ">=9.0.0 <11.0.0", "ngx-emfular-helper": "^1.0.0", "ngx-svg-graphics": "^3.0.0" |
 
