@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
 import { Referencable} from "emfular-core";
-import {ModelEditingBarComponent} from "../model-editing-bar/model-editing-bar.component";
+import {ModelEditingBarComponent} from "../creation-palettes/model-editing-bar/model-editing-bar.component";
 import {ModelService} from "../../model.service";
 import {TreeDetailsService} from "../../details/tree-details-service";
 import {TreeModelDetailsService} from "../../details/tree-model-details.service";
-import {EditButtonDef} from "../edit-button-def";
+import {EditButtonDef} from "../creation-palettes/edit-button-def";
 import {BasicEditorComponent} from "../basic-editor/basic-editor.component";
 import {ReferencableBoxComponent} from "../../graphical/referencable-box/referencable-box.component";
 import { BoundingBox } from 'ngx-emfular-diagram';

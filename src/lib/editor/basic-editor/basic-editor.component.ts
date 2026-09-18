@@ -1,8 +1,8 @@
 import { Referencable } from "emfular-core";
 import {Component, Input} from "@angular/core";
 import {ModelService} from "../../model.service";
-import {ModelCanvasComponent} from "../model-canvas/model-canvas.component";
-import {FileLevelBarComponent} from "../file-level-bar/file-level-bar.component";
+import {ModelCanvasComponent} from "../canvases/model-canvas/model-canvas.component";
+import {FileLevelBarComponent} from "../editor-bars/file-level-bar/file-level-bar.component";
 
 @Component({
   selector: 'emfular-basic-editor',

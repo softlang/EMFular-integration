@@ -1,10 +1,10 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FileLevelBarComponent } from './file-level-bar.component';
-import { DummyReferencable } from '../../test/dummy-referencable';
+import { DummyReferencable } from '../../../test/dummy-referencable';
 
-import { ModelServiceStub } from '../../test/model-service-stub';
-import { createTestSvg } from '../../test/svg-test-utils';
+import { ModelServiceStub } from '../../../test/model-service-stub';
+import { createTestSvg } from '../../../test/svg-test-utils';
 
 describe('FileLevelBarComponent', () => {
   let component: FileLevelBarComponent<DummyReferencable>;

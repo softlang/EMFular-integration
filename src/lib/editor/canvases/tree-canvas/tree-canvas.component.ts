@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {ReferencableBoxComponent} from "../../graphical/referencable-box/referencable-box.component";
-import {ModelService} from "../../model.service";
+import {ReferencableBoxComponent} from "../../../graphical/referencable-box/referencable-box.component";
+import {ModelService} from "../../../model.service";
 import { Referencable, ReTreeChildrenContainer } from 'emfular-core';
 import { BoundingBox } from 'ngx-emfular-diagram';
 import {ModelCanvasComponent} from "../model-canvas/model-canvas.component";

@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TreeCanvasComponent } from './tree-canvas.component';
-import {DummyReferencable} from "../../test/dummy-referencable";
+import {DummyReferencable} from "../../../test/dummy-referencable";
 
 describe('TreeCanvasComponent', () => {
   let component: TreeCanvasComponent<DummyReferencable>;

@@ -5,13 +5,13 @@
 export * from './lib/model.service';
 
 export * from './lib/editor/tree-editor/tree-editor.component'
-export * from './lib/editor/file-level-bar/file-level-bar.component';
-export * from './lib/editor/file-level-bar-material/file-level-bar-material.component';
-export * from './lib/editor/model-editing-bar/model-editing-bar.component';
-export * from './lib/editor/tree-canvas/tree-canvas.component';
-export * from './lib/editor/model-canvas/model-canvas.component';
+export * from './lib/editor/editor-bars/file-level-bar/file-level-bar.component';
+export * from './lib/editor/editor-bars/file-level-bar-material/file-level-bar-material.component';
+export * from './lib/editor/creation-palettes/model-editing-bar/model-editing-bar.component';
+export * from './lib/editor/canvases/tree-canvas/tree-canvas.component';
+export * from './lib/editor/canvases/model-canvas/model-canvas.component';
 export * from './lib/editor/basic-editor/basic-editor.component';
-export * from './lib/editor/edit-button-def';
+export * from './lib/editor/creation-palettes/edit-button-def';
 
 export * from './lib/graphical/referencable-box/referencable-box.component';
 

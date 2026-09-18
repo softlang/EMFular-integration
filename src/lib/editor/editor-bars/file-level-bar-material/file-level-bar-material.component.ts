@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {ModelService} from "../../model.service";
+import {ModelService} from "../../../model.service";
 
 @Component({
   selector: 'emfular-file-level-bar-material',
