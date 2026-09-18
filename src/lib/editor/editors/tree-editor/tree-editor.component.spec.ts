@@ -1,20 +1,20 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BasicEditorComponent } from './basic-editor.component';
-import {DummyReferencable} from "../../test/dummy-referencable";
+import { TreeEditorComponent } from './tree-editor.component';
+import {DummyReferencable} from "../../../test/dummy-referencable";
 
-describe('BasicEditorComponent', () => {
-  let component: BasicEditorComponent<DummyReferencable>;
-  let fixture: ComponentFixture<BasicEditorComponent<DummyReferencable>>;
+describe('TreeEditorComponent', () => {
+  let component: TreeEditorComponent<DummyReferencable>;
+  let fixture: ComponentFixture<TreeEditorComponent<DummyReferencable>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BasicEditorComponent]
+      imports: [TreeEditorComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BasicEditorComponent<DummyReferencable>);
+    fixture = TestBed.createComponent(TreeEditorComponent<DummyReferencable>);
     component = fixture.componentInstance;
     //fixture.detectChanges();
   });
