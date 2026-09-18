@@ -10,3 +10,26 @@
     <li>the model-specific palette for creating new model elements</li>
 </ul>
 
+<h2>Modeling Canvas</h2>
+
+<p>
+    You can use the normal canvas of EMFular-diagram to project your own components onto.
+    However, you can also choose the tree-based canvas that has the tree-component already wired in.
+</p>
+
+<!--<tree-canvas>
+
+</tree-canvas> -->
+
+<h2>Editor bars</h2>
+
+
+
+<h2>Creation Palettes</h2>
+
+<p>We offer a simple abstraction for creation buttons:</p>
+<demo-highlighted-code [code]="editButtonDef"></demo-highlighted-code>
+<p>
+    It should be sufficient to define a button with a label, and an associated action, as well as an optional icon (via ist string name), and a disabled flag.
+    We provide a palette, that consumes such button definitions to display creation buttons (or other buttons you specify).
+</p>
