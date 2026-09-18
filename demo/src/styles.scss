@@ -16,7 +16,7 @@ $color-light: #f8f9fa;
 
 $color-secondary: antiquewhite;
 
-$color-accent: #f77777;
+$color-accent: #7777f7;
 
 
 // -----------------------------
@@ -71,7 +71,7 @@ p {
 
 
 a {
-  color: $color-dark;
+  color: $color-accent;
   text-decoration: none;
 
   &:hover {
