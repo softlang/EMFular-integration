@@ -7,8 +7,8 @@
     justify-content: space-between; //flex-end for left alignment of nav to branding
 gap: 1rem;
     padding: 1rem 1.5rem;
-    background: $color-gray-light;
-    border-bottom: 3px solid $color-orange-primary;
+    background: $color-light;
+    border-bottom: 3px solid $color-primary;
 
     /* Wide screens: branding left, nav right */
     @media (min-width: 700px) {
@@ -27,7 +27,7 @@ gap: 1rem;
     color: inherit;
 
     &:hover .title {
-        color: $color-orange-primary;
+        color: $color-primary;
     }
 }
 
@@ -45,13 +45,13 @@ gap: 1rem;
     margin: 0;
     font-size: 1.6rem;
     font-weight: 600;
-    color: $color-orange-dark;
+    color: $color-dark;
 }
 
 .subtitle {
     margin: 0;
     font-size: 0.9rem;
-    color: $color-gray-dark;
+    color: $color-dark;
 }
 
 /* Navigation */
@@ -69,17 +69,17 @@ gap: 1rem;
 .nav a {
     text-decoration: none;
     font-size: 1rem;
-    color: $color-gray-dark;
+    color: $color-dark;
     padding-bottom: 0.3rem;
     border-bottom: 2px solid transparent;
     transition: color 0.2s, border-color 0.2s;
 }
 
 .nav a:hover {
-    color: $color-orange-dark;
+    color: $color-dark;
 }
 
 .nav a.active {
-    border-color: $color-orange-primary;
-    color: $color-orange-primary;
+    border-color: $color-primary;
+    color: $color-primary;
 }

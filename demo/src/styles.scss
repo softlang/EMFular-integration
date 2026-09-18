@@ -9,14 +9,14 @@
 // -----------------------------
 // Diagram Color Scheme
 // -----------------------------
-$color-orange-primary: #f57c00;
-$color-orange-dark: #e65100;
-$color-orange-light: #ffb74d;
 
-$color-gray-dark: #444;
-$color-gray-light: #f8f9fa;
+$color-primary: grey;
+$color-dark: #555555;
+$color-light: #f8f9fa;
 
-$color-accent-blue: #007acc;
+$color-secondary: antiquewhite;
+
+$color-accent: #f77777;
 
 
 // -----------------------------
@@ -26,7 +26,7 @@ $color-accent-blue: #007acc;
 body {
   font-family: "Inter", "Segoe UI", Arial, sans-serif;
 
-  color: $color-gray-dark;
+  color: $color-dark;
   line-height: 1.5;
 }
 
@@ -42,7 +42,7 @@ h4 {
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   font-weight: 600;
-  color: $color-orange-dark;
+  color: $color-dark;
 }
 
 
@@ -52,7 +52,7 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
-  border-bottom: 2px solid $color-orange-light;
+  border-bottom: 2px solid $color-light;
   padding-bottom: 0.25rem;
 }
 
@@ -71,11 +71,11 @@ p {
 
 
 a {
-  color: $color-orange-dark;
+  color: $color-dark;
   text-decoration: none;
 
   &:hover {
-    color: $color-orange-primary;
+    color: $color-primary;
   }
 }
 
@@ -89,7 +89,7 @@ code {
 }
 
 pre {
-  background: $color-gray-light;
+  background: $color-light;
   border-radius: 4px;
   padding: 1rem;
 }
