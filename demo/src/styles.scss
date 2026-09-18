@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// -----------------------------
+// Diagram Color Scheme
+// -----------------------------
+$color-orange-primary: #f57c00;
+$color-orange-dark: #e65100;
+$color-orange-light: #ffb74d;
+
+$color-gray-dark: #444;
+$color-gray-light: #f8f9fa;
+
+$color-accent-blue: #007acc;
+
+
+// -----------------------------
+// Global Typography
+// -----------------------------
+
+body {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+  color: $color-gray-dark;
+  line-height: 1.5;
+}
+
+
+// -----------------------------
+// Headings
+// -----------------------------
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: $color-orange-dark;
+}
+
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  border-bottom: 2px solid $color-orange-light;
+  padding-bottom: 0.25rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+
+// -----------------------------
+// Text elements
+// -----------------------------
+
+p {
+  margin: 0.75rem 0;
+}
+
+
+a {
+  color: $color-orange-dark;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-orange-primary;
+  }
+}
+
+
+// -----------------------------
+// Code
+// -----------------------------
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+pre {
+  background: $color-gray-light;
+  border-radius: 4px;
+  padding: 1rem;
+}

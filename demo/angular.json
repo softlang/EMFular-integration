@@ -1,0 +1,61 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm"
+  },
+  "projects": {
+    "emfular-integration-demo": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "demo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "browser": "src/main.ts",
+            "outputPath": "dist/emfular-integration-demo",
+            "index": "src/index.html",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": ["src/assets"],
+            "styles": ["src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [],
+              "outputHashing": "all",
+              "baseHref": "/EMFular-integration/",
+              "deployUrl": "/EMFular-integration/"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "tsConfig": "tsconfig.dev.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "emfular-integration-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "emfular-integration-demo:build:production"
+            },
+            "development": {
+              "buildTarget": "emfular-integration-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  }
+}
