@@ -1,5 +1,5 @@
 <div class="model-editing-bar">
-    <button *ngFor="let b of buttons" (click)="b.action()">
+    <button *ngFor="let b of buttons" (click)="b.action()" [disabled]="b.disabled">
         <img
                 *ngIf="b.icon"
                 class="icon"
