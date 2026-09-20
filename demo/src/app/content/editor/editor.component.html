@@ -21,16 +21,26 @@
 
 </tree-canvas> -->
 
-<h2>Editor bars</h2>
+<h2>Editor Bar</h2>
+
+<p>
+    The editor bar is concerned with global model operations, like loading and saving models, downloading graphical representations, undo and redo of edit operations and any other concerns you want to give it.
+    It needs two inputs: the model service, since it controls model editions and coordinates them with the history service, and an svg element, usually just the one from the drawing canvas, so that it can offer jpeg, png and svg downloads of it.
+</p>
+
+<emfular-file-level-bar
+        [svg]=""
+        [modelService]="demoModelService"
+>
+</emfular-file-level-bar>
 
 
-
-<h2>Creation Palettes</h2>
+<h2>Creation Palette</h2>
 
 <p>We offer a simple abstraction for creation buttons:</p>
 <demo-highlighted-code [code]="editButtonDef"></demo-highlighted-code>
 <p>
-    It should be sufficient to define a button with a label, and an associated action, as well as an optional icon (via ist string name), and a disabled flag.
+    It should be sufficient to define a button with a label, and an associated action, as well as an optional icon (via its string name), and a disabled flag.
     We provide a palette, that consumes such button definitions to display creation buttons (or other buttons you specify).
 </p>
 <div class="button0-container">

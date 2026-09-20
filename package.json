@@ -47,7 +47,7 @@
     "@angular/material": "^19.2.7",
     "emfular-core": "^1.1.0",
     "ngx-emfular-diagram": "^1.0.1",
-    "ngx-emfular-tool": "^1.0.0"
+    "ngx-emfular-tool": "^1.1.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"

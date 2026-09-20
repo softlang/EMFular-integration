@@ -15,7 +15,7 @@ export const DemoElementMeta: ModelDefinition = {
     uri: "demo//",
     classes: {
         DemoElement1: {
-            references: {}
+            references: elem1Refs
         }
     }
 }

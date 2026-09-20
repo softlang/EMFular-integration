@@ -2,20 +2,25 @@ import { Component } from '@angular/core';
 import {HighlightedCodeComponent} from "../../layout/highlighted-code/highlighted-code.component";
 import {editButtonDef} from "./editor.component.code";
 import {
-  EditButtonDef,
+  EditButtonDef, FileLevelBarComponent,
   ModelEditingBarComponent
 } from "ngx-emfular-integration";
+import {DemoModelService} from "../running-example/demo-model.service";
 
 @Component({
   selector: 'demo-editor',
   imports: [
     HighlightedCodeComponent,
-    ModelEditingBarComponent
+    ModelEditingBarComponent,
+    FileLevelBarComponent
   ],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.css'
 })
 export class EditorComponent {
+
+  constructor(public readonly demoModelService: DemoModelService) {
+  }
 
   buttons0: EditButtonDef[] = [
     {label: "label1", action: () =>this.buttonAction("label1")},
