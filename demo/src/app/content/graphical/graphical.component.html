@@ -1,0 +1,17 @@
+<h1>Graphical Element Representation</h1>
+
+<p>We offer a default graphical representation that is agnostic of the concrete model element, but depicts all elements in their position in the model's tree backbone.</p>
+
+<h2>Ecore's Tree Backbone</h2>
+
+<p>
+    EMF elements are related via containment and non-containment references (called links).
+    The containment hierarchy forms the tree backbone of the model and is central to our visualization, but also to serialization.
+    Serialization into XMI and EMFJson serializes all tree children as elements and treats all other links as simple references, basically typed pointers to tree navigation.
+</p>
+
+<h2>Visualizing the Backbone</h2>
+
+<p>
+    We model each element as 
+</p>
