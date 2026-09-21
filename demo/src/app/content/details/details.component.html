@@ -1,10 +1,109 @@
 <h1>Details</h1>
 
 <p>
+    When modifying a single element with several properties, a details view (usually presented as a modal) can be helpful.
+    We provide a generic element details component that displays all attributes and references of its metamodel.
+    It relies on a details service, that manages details opening and choice dialogues for other elements, and an auxiliary reference details component.
+</p>
+
+<h2>The Reference Details Component</h2>
+
+<p>
+    Every reference is a connection to other model elements.
+    While there are singleton and list references, the modifications can be performed uniformly across both.
+    We need a way to add (singleton set) another element, to remove it and to open its details in a new view to inspect the other element and determine if the relationship is intentional.
+</p>
+
+<h3>The Details Service</h3>
+<p>
+    While removal only requires a simple button, setting and adding must provide a way to choose another model element of fitting type.
+    Depending on the domain, different visualizations or even simple radio buttons can offer appropriate handles.
+    To account for that, the contract of the DetailsService is deliberately simple and open.
+</p>
+<p>
+    If you trigger the choice from a link reference, you can just choose another element and it will be clear over which relationships to connect.
+    This is different for the definition of the parent, since a chosen element might have several children-references that could be meant.
+    Hence, parent choice does not connect to another element, but to a specific container under such an element instead.
+    This is reflected in the methods below:
+</p>
+
+<demo-highlighted-code
+[code]="detailsServiceContract">
+</demo-highlighted-code>
+
+<h2>The Element Details Component</h2>
+
+<p>
+    The element details component provides a generic view for editing a single model element.
+    It contains a section for serializable attributes and a section for references.
+    There is one additional section to re-organize the parent relationship in the tree-backbone.
+</p>
+
+<div>
+    <lib-model-details
+            [model]="model01"
+            [modelService]="demoModelService"
+    >
+    </lib-model-details>
+</div>
+
+<p>
+    Attributes can be edited using ordinary form controls. References and the
+    parent relationship, however, require the user to select another model
+    element. The details component therefore delegates these choices to a
+    <code>TreeDetailsService</code>.
+</p>
+
+<h2>The Tree Details Service</h2>
+
+<p>
+    <code>TreeDetailsService</code> defines the interaction required by the
+    generic details component. It provides three operations:
+</p>
+
+<ul>
+    <li>
+        opening a details view for an element,
+    </li>
+    <li>
+        choosing a model element for a reference, and
+    </li>
+    <li>
+        choosing a new parent for an element in the tree backbone.
+    </li>
+</ul>
+
+<p>
+    The service is deliberately separated from the details component. This
+    allows an application to replace the generic details view or the way
+    elements are selected without having to modify the generic editing logic.
+</p>
+
+<p>
+    The library provides a default implementation. Applications can provide
+    their own implementation if a different presentation or selection mechanism
+    is more appropriate for their model.
+</p>
+
+<p>
+    The default implementation uses the same tree-based graphical
+    representation that is used by the model editor. Thus, users can select
+    referenced or parent elements in a representation they already know.
+    An application could instead provide, for example, a list or radio-button
+    based selection. Which representation is appropriate depends on how the
+    identity and relevant relationships of the application's model are best
+    communicated to its users.
+</p>
+
+
+<h1>Details</h1>
+
+<p>
     When modifying a single element with several properties, a details view (usually as a modal) can be helpful.
     We offer a generic (element) details component that takes all attributes and all relationships of the metamodel into account.
     It uses a container details component to display the specific properties for each relationship.
 </p>
+
 
 <h2>The Element Details Component</h2>
 

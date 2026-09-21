@@ -9,6 +9,14 @@ export const elem1Refs = {
     } satisfies ReferenceMeta
 }
 
+export const elem2Refs = {
+    friends: {
+        target: "DemoElement2",
+        min: 0,
+        max: -1,
+    } satisfies ReferenceMeta
+}
+
 export const DemoElementMeta: ModelDefinition = {
     name: "demo",
     prefix: "demo",
@@ -18,7 +26,7 @@ export const DemoElementMeta: ModelDefinition = {
             references: elem1Refs
         },
         DemoElement2: {
-            references: {}
+            references: elem2Refs
         }
     }
 }
@@ -48,5 +56,8 @@ export class DemoElement2 extends Referencable<any>{
         super();
         this.id = id;
     }
+
+    @reference(elem2Refs.friends)
+    declare friends: ModelList<DemoElement2>
 
 }

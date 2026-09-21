@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import {ModelDetailsComponent} from "ngx-emfular-integration";
+import {ContainerDetailsComponent, ModelDetailsComponent} from "ngx-emfular-integration";
 import {DemoElement1, DemoElement2} from "../running-example/demo-model";
 import {DemoModelService} from "../running-example/demo-model.service";
+import {HighlightedCodeComponent} from "../../layout/highlighted-code/highlighted-code.component";
+import {detailsServiceContract} from "./details.component.code";
 
 @Component({
   selector: 'demo-details',
-    imports: [
-        ModelDetailsComponent
-    ],
+  imports: [
+    ModelDetailsComponent,
+    ContainerDetailsComponent,
+    HighlightedCodeComponent
+  ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
@@ -23,8 +27,9 @@ export class DetailsComponent {
     this.model01 = new DemoElement2('model01')
     this.model02 = new DemoElement2('model02')
     this.model0.children.push(this.model01, this.model02)
+    this.model01.friends.push(this.model02)
   }
 
 
-
+  protected readonly detailsServiceContract = detailsServiceContract;
 }
