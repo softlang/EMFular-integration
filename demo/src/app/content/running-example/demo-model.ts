@@ -1,4 +1,4 @@
-import {eClass, ModelDefinition, ModelList, Referencable, reference, ReferenceMeta} from "emfular-core";
+import {attribute, eClass, ModelDefinition, ModelList, Referencable, reference, ReferenceMeta} from "emfular-core";
 
 export const elem1Refs = {
     children: {
@@ -12,10 +12,13 @@ export const elem1Refs = {
 export const DemoElementMeta: ModelDefinition = {
     name: "demo",
     prefix: "demo",
-    uri: "demo//",
+    uri: "demo#//",
     classes: {
         DemoElement1: {
             references: elem1Refs
+        },
+        DemoElement2: {
+            references: {}
         }
     }
 }
@@ -23,19 +26,27 @@ export const DemoElementMeta: ModelDefinition = {
 @eClass(DemoElementMeta, "DemoElement1")
 export class DemoElement1 extends Referencable<any>{
 
-    constructor() {
+    constructor(name?: string) {
         super();
+        this.name = name;
     }
+
+    @attribute()
+    name?: string;
 
     @reference(elem1Refs.children)
     declare children: ModelList<DemoElement2>
 }
 
-@eClass(DemoElementMeta, "DemoElement1")
+@eClass(DemoElementMeta, "DemoElement2")
 export class DemoElement2 extends Referencable<any>{
 
-    constructor() {
+    @attribute()
+    id?: string;
+
+    constructor(id?: string) {
         super();
+        this.id = id;
     }
 
 }

@@ -12,13 +12,17 @@
     We offer a functionality to re-organize the element within the tree-backbone by assigning a different parent element.
     There is also a dedicated section for all serializable attributes, and a final one for all references.
 </p>
-
-<lib-model-details
-        [model]="model01"
-        [modelService]="demoModelService"
->
-</lib-model-details>
+<div>
+    <lib-model-details
+       [model]="model01"
+       [modelService]="demoModelService"
+    >
+    </lib-model-details>
+</div>
 
 <p>
-    The choice of
+    While the setting of attributes can happen by normal form handling,
+    the choice of parent and other referenced elements might require a better fitting view.
+    We offer a default, that provides the same tree based graphical model as the canvas has, so that users can choose another model element in the representation they know.
+    Other approaches, even with simple radio buttons are possible but require a different understanding of what is sufficient to encode the model's identity.
 </p>
