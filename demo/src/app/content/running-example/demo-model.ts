@@ -33,4 +33,9 @@ export class DemoElement1 extends Referencable<any>{
 
 @eClass(DemoElementMeta, "DemoElement1")
 export class DemoElement2 extends Referencable<any>{
+
+    constructor() {
+        super();
+    }
+
 }
