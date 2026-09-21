@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ContainerDetailsComponent, ModelDetailsComponent} from "ngx-emfular-integration";
+import {ModelDetailsComponent} from "ngx-emfular-integration";
 import {DemoElement1, DemoElement2} from "../running-example/demo-model";
 import {DemoModelService} from "../running-example/demo-model.service";
 import {HighlightedCodeComponent} from "../../layout/highlighted-code/highlighted-code.component";
@@ -9,7 +9,6 @@ import {detailsServiceContract} from "./details.component.code";
   selector: 'demo-details',
   imports: [
     ModelDetailsComponent,
-    ContainerDetailsComponent,
     HighlightedCodeComponent
   ],
   templateUrl: './details.component.html',
