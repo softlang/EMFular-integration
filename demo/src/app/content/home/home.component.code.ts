@@ -1,4 +1,4 @@
-import {attribute, eClass, ModelDefinition, ModelList, Referencable, reference, ReferenceMeta} from "emfular-core";
+export const runningExample = `import {attribute, eClass, ModelDefinition, ModelList, Referencable, reference, ReferenceMeta} from "emfular-core";
 
 export const elem1Refs = {
     children: {
@@ -59,4 +59,4 @@ export class DemoElement2 extends Referencable<any>{
 
     @reference(elem2Refs.friends)
     declare friends: ModelList<DemoElement2>
-}
+}`

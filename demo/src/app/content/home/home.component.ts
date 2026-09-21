@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {HighlightedCodeComponent} from "../../layout/highlighted-code/highlighted-code.component";
+import {runningExample} from "./home.component.code";
 
 @Component({
   selector: 'demo-home',
@@ -11,4 +12,5 @@ import {HighlightedCodeComponent} from "../../layout/highlighted-code/highlighte
 })
 export class HomeComponent {
 
+  protected readonly runningExample = runningExample;
 }
