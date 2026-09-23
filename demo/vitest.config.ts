@@ -5,8 +5,7 @@ import {defineConfig} from "vitest/config";
 export default defineConfig(({mode}) => ({
     plugins: [
         angular({
-            tsconfig: './tsconfig.spec.json',
-            fastCompile: true
+            tsconfig: './tsconfig.spec.json'
         })
     ],
 
