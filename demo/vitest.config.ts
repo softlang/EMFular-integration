@@ -1,13 +1,24 @@
-import { defineConfig } from 'vitest/config'
-import { playwright } from '@vitest/browser-playwright'
+import {playwright} from "@vitest/browser-playwright";
 import angular from "@analogjs/vite-plugin-angular";
+import {defineConfig} from "vitest/config";
 
-//we use only browser config since the lib is mostly for graphical components and hence heavily depends on the DOM
-
-export default defineConfig(({mode})=>({
+export default defineConfig(({mode}) => ({
     plugins: [
-        angular()
+        angular({
+            tsconfig: './tsconfig.spec.json',
+            fastCompile: true
+        })
     ],
+
+    esbuild: {
+        tsconfigRaw: {
+            compilerOptions: {
+                experimentalDecorators: true,
+                useDefineForClassFields: false
+            }
+        }
+    },
+
     resolve: mode === 'development'
         ? {
             alias: {
