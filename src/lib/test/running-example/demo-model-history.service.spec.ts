@@ -10,6 +10,10 @@ describe('DemoModelHistoryService', () => {
     service = TestBed.inject(DemoModelHistoryService);
   });
 
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  });
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });

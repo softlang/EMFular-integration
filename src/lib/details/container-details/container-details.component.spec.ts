@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContainerDetailsComponent } from './container-details.component';
-import {DemoElement1} from "../../test/running-example/demo-model";
+import {DemoElement1, DemoElement2} from "../../test/running-example/demo-model";
 import {DemoModelService} from "../../test/running-example/demo-model.service";
 import {TreeModelDetailsService} from "../tree-model-details.service";
 
@@ -17,6 +17,8 @@ describe('ContainerDetailsComponent', () => {
     .compileComponents();
 
     const elem = new DemoElement1()
+    const child = new DemoElement2()
+    elem.children.push(child)
 
     fixture = TestBed.createComponent(ContainerDetailsComponent<DemoElement1>);
     component = fixture.componentInstance;
