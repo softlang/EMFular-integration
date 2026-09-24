@@ -38,6 +38,7 @@ export default defineConfig({
     },
     test: {
         setupFiles: ['./vitest.setup.ts'],
+        globals: true,
         exclude: [
             '**/node_modules/**',
             '**/.git/**',

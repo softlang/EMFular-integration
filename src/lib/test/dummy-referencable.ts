@@ -1,5 +1,5 @@
 import {Referencable} from "emfular-core"
-/*
+
 import {ModelDefinition, eClass } from "emfular-core";
 
 export const DummyMeta: ModelDefinition = {
@@ -13,7 +13,7 @@ export const DummyMeta: ModelDefinition = {
     }
 }
 
-@eClass(DummyMeta, "DummyReferencable")*/
+@eClass(DummyMeta, "DummyReferencable")
 export class DummyReferencable extends Referencable<any>{
     id = 'x';
     constructor() {

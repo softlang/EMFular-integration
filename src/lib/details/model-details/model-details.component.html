@@ -7,7 +7,7 @@
     </div>
     <div class="ref-info" *ngIf="model.$getEParent()">
         <span class="ref-icon">🔗</span>
-<!--        <span class="ref-type">{{ model.$getEParent().getEClass() }}</span> -->
+        <span class="ref-type">{{ model.$getEParent().$getEClass() }}</span>
         <span class="ref-label">{{ IdHelper.getLabel(model.$getEParent()) }}</span>
     </div>
     <button (click)="chooseParent()">

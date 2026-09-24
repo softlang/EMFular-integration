@@ -2,11 +2,13 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContainerDetailsComponent } from './container-details.component';
-import {DummyReferencable} from "../../test/dummy-referencable";
+import {DemoElement1} from "../../test/running-example/demo-model";
+import {DemoModelService} from "../../test/running-example/demo-model.service";
+import {TreeModelDetailsService} from "../tree-model-details.service";
 
 describe('ContainerDetailsComponent', () => {
-  let component: ContainerDetailsComponent<DummyReferencable>;
-  let fixture: ComponentFixture<ContainerDetailsComponent<DummyReferencable>>;
+  let component: ContainerDetailsComponent<DemoElement1>;
+  let fixture: ComponentFixture<ContainerDetailsComponent<DemoElement1>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -14,8 +16,15 @@ describe('ContainerDetailsComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ContainerDetailsComponent<DummyReferencable>);
+    const elem = new DemoElement1()
+
+    fixture = TestBed.createComponent(ContainerDetailsComponent<DemoElement1>);
     component = fixture.componentInstance;
+    component.container = elem.$treeChildren[0]
+    component.isTree = true;
+    component.modelService = {} as DemoModelService;
+    component.detailsService = {} as TreeModelDetailsService<DemoElement1>;
+    fixture.detectChanges();
   });
 
   afterEach(() => {

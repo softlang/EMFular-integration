@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModelDetailsComponent } from './model-details.component';
 import {DummyReferencable} from "../../test/dummy-referencable";
+import {ModelService} from "../../model.service";
 
 describe('ModelDetailsComponent', () => {
   let component: ModelDetailsComponent<DummyReferencable, DummyReferencable>;
@@ -14,9 +15,13 @@ describe('ModelDetailsComponent', () => {
     })
     .compileComponents();
 
+    const model = new DummyReferencable();
+
     fixture = TestBed.createComponent(ModelDetailsComponent<DummyReferencable, DummyReferencable>);
     component = fixture.componentInstance;
-    //fixture.detectChanges();
+    component.model = model
+    component.modelService = {} as ModelService<DummyReferencable>
+    fixture.detectChanges();
   });
 
   afterEach(() => {
