@@ -1,0 +1,50 @@
+<h1>Editor Components</h1>
+
+<p>
+    We provide completely wired editors, as well as all the necessary primitives for building a more tailored editor of your own.
+    Our general assumption is that an editor consists of three parts:
+</p>
+<ul>
+    <li>the modeling canvas</li>
+    <li>the editor bar, providing file-level functionality such as loading and saving models</li>
+    <li>the model-specific palette for creating new model elements</li>
+</ul>
+
+<h2>Modeling Canvas</h2>
+
+<p>
+    You can use the normal canvas of EMFular-diagram to project your own components onto.
+    However, you can also choose the tree-based canvas that has the tree-component already wired in.
+</p>
+
+<!--<tree-canvas>
+
+</tree-canvas> -->
+
+<h2>Editor Bar</h2>
+
+<p>
+    The editor bar is concerned with a fixed set of global model operations: creating, loading and saving models, undo and redo of edit operations, and downloading graphical representations.
+    It needs two inputs: the model service, since it controls model editions and coordinates them with the history service, and an svg element, usually just the one from the drawing canvas, so that it can offer jpeg, png and svg downloads of it.
+</p>
+
+<emfular-file-level-bar
+        [svg]=""
+        [modelService]="demoModelService"
+>
+</emfular-file-level-bar>
+
+<h2>Creation Palette</h2>
+
+<p>We offer a simple abstraction for model-specific buttons:</p>
+<demo-highlighted-code [code]="editButtonDef"></demo-highlighted-code>
+<p>
+    It should be sufficient to define a button with a label, and an associated action, as well as an optional icon (via its string name), and a disabled flag.
+    We provide a palette, that consumes such button definitions to display creation buttons (or other buttons you specify).
+</p>
+<div class="button0-container">
+    <emfular-model-editing-bar [buttons]="buttons0">
+    </emfular-model-editing-bar>
+    <span class="output">{{ buttonMessage0 }}</span>
+</div>
+

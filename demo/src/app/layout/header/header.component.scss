@@ -1,0 +1,85 @@
+@use 'src/styles.scss' as *;
+
+.header {
+    display: flex;
+    flex-direction: column; /* stacked by default */
+    align-items: flex-end;
+    justify-content: space-between; //flex-end for left alignment of nav to branding
+gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: $color-light;
+    border-bottom: 3px solid $color-primary;
+
+    /* Wide screens: branding left, nav right */
+    @media (min-width: 700px) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Branding block */
+.branding {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover .title {
+        color: $color-primary;
+    }
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+}
+
+.title-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: $color-dark;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 0.9rem;
+    color: $color-dark;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    gap: 1.5rem;
+
+    justify-content: left;
+
+    @media (min-width: 700px) {
+        justify-content: left;
+    }
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: $color-dark;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.nav a:hover {
+    color: $color-dark;
+}
+
+.nav a.active {
+    border-color: $color-primary;
+    color: $color-primary;
+}

@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// -----------------------------
+// Diagram Color Scheme
+// -----------------------------
+
+$color-primary: grey;
+$color-dark: #555555;
+$color-light: #f8f9fa;
+
+$color-secondary: antiquewhite;
+
+$color-accent: #7777f7;
+
+
+// -----------------------------
+// Global Typography
+// -----------------------------
+
+body {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+  color: $color-dark;
+  line-height: 1.5;
+}
+
+
+// -----------------------------
+// Headings
+// -----------------------------
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: $color-dark;
+}
+
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  border-bottom: 2px solid $color-light;
+  padding-bottom: 0.25rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+
+// -----------------------------
+// Text elements
+// -----------------------------
+
+p {
+  margin: 0.75rem 0;
+}
+
+
+a {
+  color: $color-accent;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+
+// -----------------------------
+// Code
+// -----------------------------
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+pre {
+  background: $color-light;
+  border-radius: 4px;
+  padding: 1rem;
+}

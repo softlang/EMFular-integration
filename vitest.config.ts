@@ -38,6 +38,15 @@ export default defineConfig({
     },
     test: {
         setupFiles: ['./vitest.setup.ts'],
+        globals: true,
+        exclude: [
+            '**/node_modules/**',
+            '**/.git/**',
+            '**/dist/**',
+            '**/cypress/**',
+            '**/.{idea,git,cache,output,temp}/**',
+            'demo/**'
+        ],
         browser: {
             enabled: true,
             provider: playwright(),

@@ -1,0 +1,54 @@
+  # Demo release tags:
+  #   demo-v<N>
+
+  name: Demo CD
+
+  on:
+    push:
+      tags:
+        - 'demo-v*'
+
+  permissions:
+    contents: write
+
+  concurrency:
+    group: github-pages
+    cancel-in-progress: true
+
+  jobs:
+    build-test-deploy:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Setup Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: 24
+            cache: npm
+            cache-dependency-path: demo/package-lock.json
+
+        - name: Install dependencies
+          working-directory: demo
+          run: npm ci
+
+        - name: Install Playwright browsers (for vitest browser tests)
+          working-directory: demo
+          run: npx playwright install --with-deps chromium
+
+        - name: Test demo
+          working-directory: demo
+          run: npm run test:ci
+
+        - name: Build demo
+          working-directory: demo
+          run: npx ng build --configuration production
+
+        - name: Deploy to gh-pages
+          uses: peaceiris/actions-gh-pages@v4
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: demo/dist/emfular-integration-demo/browser
+

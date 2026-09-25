@@ -4,7 +4,7 @@ import {ModelService} from "../model.service";
 import {ModelDetailsComponent} from "./model-details/model-details.component";
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import {TreeCanvasComponent} from "../editor/tree-canvas/tree-canvas.component";
+import {TreeCanvasComponent} from "../editor/canvases/tree-canvas/tree-canvas.component";
 import {Observable, Subject} from "rxjs";
 import {TreeDetailsService} from "./tree-details-service";
 

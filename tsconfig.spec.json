@@ -3,6 +3,7 @@
 {
   "extends": "tsconfig.lib.json",
   "compilerOptions": {
+    "experimentalDecorators": true,
     "module": "ESNext",
     "target": "ES2022",
     "moduleResolution": "Bundler",
