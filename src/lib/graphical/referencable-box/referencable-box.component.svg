@@ -1,22 +1,16 @@
 <svg:g [attr.id]="referencable.$gId">
 
-    <g rectangleG
-       (click)="choose(referencable)"
-       [id]="referencable.$gId + '_main'"
-       [position]="position"
-       [color]="color"
-    >
-    </g>
-    <g text-area-svg
-       [id]="referencable.$gId + '_main_text'"
-       [x]="position.x"
-       [y]="position.y"
-       [w]="position.w"
-       [h]="position.h"
-       [text]="IdHelper.getLabel(referencable)"
-    >
-    </g>
-    
+    <ng-container
+            (click)="choose(referencable)"
+            [ngTemplateOutlet]="rectangleWithText"
+            [ngTemplateOutletContext]="{
+                id: referencable.$gId + '_main',
+                position: position,
+                color: color,
+                text: IdHelper.getLabel(referencable)
+            }"
+    ></ng-container>
+
     <!-- containers -->
     @for (container of referencable.$treeChildren;
         track referencable.$gId + '_' + container.referenceName
@@ -30,9 +24,10 @@
         );
 
         <!-- reference box -->
-        <ng-container (click)="chooseRef(container)"
-            *ngTemplateOutlet="rectangleWithText;
-            context: {
+        <ng-container
+            (click)="chooseRef(container)"
+            [ngTemplateOutlet]="rectangleWithText"
+            [ngTemplateOutletContext]="{
                 id: containerKey + '_ref',
                 position: containerAnchorBox,
                 color: '#ede679',
@@ -52,11 +47,9 @@
 
         <!-- arrow from main box to reference -->
         <g arrow-elements
-           [startGID]="referencable.$gId"
-           startSuffix="_main"
-           [endGID]="containerKey"
-           endSuffix="_ref">
-        </g>
+           [startGID]="referencable.$gId+'_main'"
+           [endGID]="containerKey+'_ref'"
+        ></g>
 
         @if (isExpandedArray[i]) {
             <!-- real children inside this reference -->
@@ -77,11 +70,9 @@
                 </g>
                 <!-- arrow from reference to child box -->
                 <g arrow-elements
-                   [startGID]="containerKey"
-                   startSuffix="_ref"
-                   [endGID]="elem.$gId"
-                   endSuffix="_main">
-                </g>
+                   [startGID]="containerKey+'_ref'"
+                   [endGID]="elem.$gId+'_main'"
+                ></g>
             }
 
         }
@@ -95,17 +86,17 @@
              let-color="color"
              let-text="text">
 
-    <g rectangleG
+    <svg:g rectangleG
        [id]="id"
        [position]="position"
        [color]="color">
-    </g>
-    <g text-area-svg
+    </svg:g>
+    <svg:g text-area-svg
        [id]="id + '_text'"
        [x]="position.x"
        [y]="position.y"
        [w]="position.w"
        [h]="position.h"
        [text]="text">
-    </g>
+    </svg:g>
 </ng-template>
