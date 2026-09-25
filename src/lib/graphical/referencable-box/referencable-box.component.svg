@@ -1,15 +1,16 @@
 <svg:g [attr.id]="referencable.$gId">
 
-    <ng-container
-            (click)="choose(referencable)"
-            [ngTemplateOutlet]="rectangleWithText"
-            [ngTemplateOutletContext]="{
+    <g  (click)="choose(referencable)">
+        <ng-container
+             [ngTemplateOutlet]="rectangleWithText"
+             [ngTemplateOutletContext]="{
                 id: referencable.$gId + '_main',
                 position: position,
                 color: color,
                 text: IdHelper.getLabel(referencable)
             }"
-    ></ng-container>
+        ></ng-container>
+    </g>
 
     <!-- containers -->
     @for (container of referencable.$treeChildren;
@@ -24,25 +25,28 @@
         );
 
         <!-- reference box -->
-        <ng-container
-            (click)="chooseRef(container)"
-            [ngTemplateOutlet]="rectangleWithText"
-            [ngTemplateOutletContext]="{
-                id: containerKey + '_ref',
-                position: containerAnchorBox,
-                color: '#ede679',
-                text: container.referenceName
-            }"
-        ></ng-container>
-        <ng-container (click)="toggleExpand(i)"
-                      *ngTemplateOutlet="rectangleWithText;
-            context: {
-                id: containerKey + '_toggle',
-                position: createBoxInLastPart(containerAnchorBox),
-                color: 'transparent',
-                text: isExpandedArray[i]?'◊':'V'
-            }"
-        ></ng-container>
+        <g (click)="chooseRef(container)">
+            <ng-container
+               [ngTemplateOutlet]="rectangleWithText"
+               [ngTemplateOutletContext]="{
+                   id: containerKey + '_ref',
+                   position: containerAnchorBox,
+                   color: '#ede679',
+                   text: container.referenceName
+               }"
+            ></ng-container>
+        </g>
+        <g (click)="toggleExpand(i)">
+            <ng-container
+               [ngTemplateOutlet]="rectangleWithText"
+               [ngTemplateOutletContext]="{
+                   id: containerKey + '_toggle',
+                   position: createBoxInLastPart(containerAnchorBox),
+                   color: 'transparent',
+                   text: isExpandedArray[i]?'◊':'V'
+               }"
+            ></ng-container>
+        </g>
 
 
         <!-- arrow from main box to reference -->
