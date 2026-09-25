@@ -22,9 +22,9 @@ import { BoundingBox } from 'ngx-emfular-diagram';
 export class TreeEditorComponent<M extends Referencable<any>> {
     @Input() modelService!: ModelService<M>
     @Input() detailsService?: TreeDetailsService<M>
-    @Input() customButtons: Array<EditButtonDef> | null = null;
-    svgwidth = 1500;
-    svgheigth = 1000;
+    @Input() customButtons: EditButtonDef[] = [];
+    @Input() svgwidth = 1500;
+    @Input() svgheight = 1000;
     initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 25}
 
 
