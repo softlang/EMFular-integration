@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
     "emfular-core": "^1.1.0",
-    "ngx-emfular-diagram": "^1.0.1",
+    "ngx-emfular-diagram": "^2.0.0",
     "ngx-emfular-tool": "^1.1.1",
     "ngx-emfular-integration": "^1.0.0",
     "rxjs": "~7.8.0",
