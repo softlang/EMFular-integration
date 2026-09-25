@@ -1,12 +1,18 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output } from '@angular/core';
 import {Referencable, ReTreeChildrenContainer} from 'emfular-core';
-import {ArrowBetweenElemsComponent, BoundingBox, RectangleWithTextComponent, PositionHelper} from 'ngx-emfular-diagram';
+import {ArrowBetweenElemsComponent, BoundingBox, RectangleComponent, TextAreaSvgComponent} from 'ngx-emfular-diagram';
 import {GraphicalHelper} from "../../utils/graphical-helper";
 import {IdHelper} from "../../utils/id-helper";
+import {NgTemplateOutlet} from "@angular/common";
 
 @Component({
   selector: '[referencable-box]',
-  imports: [RectangleWithTextComponent, ArrowBetweenElemsComponent],
+  imports: [
+    RectangleComponent,
+    TextAreaSvgComponent,
+    ArrowBetweenElemsComponent,
+    NgTemplateOutlet,
+  ],
   templateUrl: './referencable-box.component.svg',
   styleUrl: './referencable-box.component.css'
 })
@@ -34,6 +40,19 @@ export class ReferencableBoxComponent {
     }
   }
 
+  private computeOffset(index: number, length: number): number {
+    const middle = (length-1)/2;
+    return index - middle;
+  }
+  computeChildBBox(index: number, length: number, parentBox: BoundingBox): BoundingBox {
+    return {
+      x: parentBox.x + this.computeOffset(index, length)*(parentBox.w+5),
+      y: parentBox.y+parentBox.h*2,
+      w: parentBox.w,
+      h: parentBox.h
+    }
+  }
+
   choose(element: Referencable<any>) {
     this.chooseElement.emit(element);
   }
@@ -44,6 +63,5 @@ export class ReferencableBoxComponent {
 
 
   protected readonly GraphicalHelper = GraphicalHelper;
-  protected readonly PositionHelper = PositionHelper
   protected readonly IdHelper = IdHelper;
 }
