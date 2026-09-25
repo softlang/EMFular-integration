@@ -59,7 +59,7 @@ export class EditorComponent {
     this.adaptResetButton(true);
   }
 
-  positionCompleteFirstElem = {x: 300, y: 0, w:80, h: 20};
+  positionCompleteFirstElem = {x: 300, y: 0, w:200, h: 50};
 
 
   protected readonly editButtonDef = editButtonDef;
