@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {OnInit, Component} from '@angular/core';
 import {HighlightedCodeComponent} from "../../layout/highlighted-code/highlighted-code.component";
 import {editButtonDef} from "./editor.component.code";
 import {
@@ -26,16 +26,17 @@ import {DemoElement2} from "../running-example/demo-model";
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.css'
 })
-export class EditorComponent {
+export class EditorComponent implements OnInit {
 
-  constructor(public readonly demoModelService: DemoModelService) {
+  constructor(public readonly demoModelService: DemoModelService) {}
+
+  ngOnInit() {
       this.demoModelService.model.name = 'model0'
       const model01 = new DemoElement2('model01')
       const model02 = new DemoElement2('model02')
       this.demoModelService.model.children.push(model01, model02)
       model01.friends.push(model02)
   }
-
 
   buttons0: EditButtonDef[] = [
     {label: "label1", action: () =>this.buttonAction("label1")},
