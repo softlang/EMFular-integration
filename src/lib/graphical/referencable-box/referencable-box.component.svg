@@ -1,6 +1,9 @@
 <svg:g [attr.id]="referencable.$gId">
 
-    <g  (click)="choose(referencable)">
+    <g
+        (click)="choose(referencable)"
+        [id]="referencable.$gId + '_main'"
+    >
         <ng-container
              [ngTemplateOutlet]="rectangleWithText"
              [ngTemplateOutletContext]="{
@@ -25,7 +28,10 @@
         );
 
         <!-- reference box -->
-        <g (click)="chooseRef(container)">
+        <g
+            (click)="chooseRef(container)"
+            [id]="containerKey + '_ref'"
+        >
             <ng-container
                [ngTemplateOutlet]="rectangleWithText"
                [ngTemplateOutletContext]="{
@@ -36,17 +42,15 @@
                }"
             ></ng-container>
         </g>
-        <g (click)="toggleExpand(i)">
-            <ng-container
-               [ngTemplateOutlet]="rectangleWithText"
-               [ngTemplateOutletContext]="{
-                   id: containerKey + '_toggle',
-                   position: createBoxInLastPart(containerAnchorBox),
-                   color: 'transparent',
-                   text: isExpandedArray[i]?'◊':'V'
-               }"
-            ></ng-container>
-        </g>
+        <g text-area-svg
+           [id]="containerKey + '_toggle'"
+           [text]="isExpandedArray[i]?'◊':'V'"
+           [x]="createBoxInLastPart(containerAnchorBox).x"
+           [y]="createBoxInLastPart(containerAnchorBox).y"
+           [w]="createBoxInLastPart(containerAnchorBox).w"
+           [h]="createBoxInLastPart(containerAnchorBox).h"
+           (click)="toggleExpand(i)"
+        ></g>
 
 
         <!-- arrow from main box to reference -->
@@ -91,7 +95,7 @@
              let-text="text">
 
     <svg:g rectangleG
-       [id]="id"
+       [id]="id + '_rect'"
        [position]="position"
        [color]="color">
     </svg:g>
