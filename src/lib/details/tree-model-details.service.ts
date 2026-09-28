@@ -3,7 +3,7 @@ import { Referencable, ReTreeChildrenContainer } from 'emfular-core';
 import {ModelService} from "../model.service";
 import {ModelDetailsComponent} from "./model-details/model-details.component";
 import { Overlay } from '@angular/cdk/overlay';
-import {TreeCanvasComponent} from "../editor/canvases/tree-canvas/tree-canvas.component";
+import {TreeCanvasComponent} from "./tree-canvas/tree-canvas.component";
 import {Observable} from "rxjs";
 import {TreeDetailsService} from "./tree-details-service";
 import {ModalInstance, ModalService} from "ngx-emfular-tool";
