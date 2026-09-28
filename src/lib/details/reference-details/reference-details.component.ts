@@ -7,15 +7,15 @@ import {ModelService} from "../../model.service";
 import {DetailsService} from "../details-service";
 
 @Component({
-  selector: 'container-details',
+  selector: 'reference-details',
   imports: [
     NgForOf,
     NgIf,
   ],
-  templateUrl: './container-details.component.html',
-  styleUrl: './container-details.component.css'
+  templateUrl: './reference-details.component.html',
+  styleUrl: './reference-details.component.css'
 })
-export class ContainerDetailsComponent<M extends Referencable<any>> {
+export class ReferenceDetailsComponent<M extends Referencable<any>> {
   @Input() container!: ReContainer<any, any>
   @Input() isTree!: boolean
   @Input() modelService!: ModelService<M>

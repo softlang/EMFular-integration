@@ -5,8 +5,8 @@ import { getAllAttributes } from "emfular-core";
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {
-  ContainerDetailsComponent
-} from "../container-details/container-details.component";
+  ReferenceDetailsComponent
+} from "../reference-details/reference-details.component";
 import {DetailsService} from "../details-service";
 import {IdHelper} from "../../utils/id-helper";
 
@@ -15,7 +15,7 @@ import {IdHelper} from "../../utils/id-helper";
   imports: [
     FormsModule,
     NgForOf,
-    ContainerDetailsComponent,
+    ReferenceDetailsComponent,
     NgIf
   ],
   templateUrl: './model-details.component.html',
