@@ -3,9 +3,8 @@ import { Referencable, ReTreeChildrenContainer } from 'emfular-core';
 import {ModelService} from "../model.service";
 import {ModelDetailsComponent} from "./model-details/model-details.component";
 import { Overlay } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
 import {TreeCanvasComponent} from "../editor/canvases/tree-canvas/tree-canvas.component";
-import {Observable, Subject} from "rxjs";
+import {Observable} from "rxjs";
 import {TreeDetailsService} from "./tree-details-service";
 import {ModalInstance, ModalService} from "ngx-emfular-tool";
 
@@ -44,7 +43,6 @@ export class TreeModelDetailsService<M extends Referencable<any>> implements Tre
     openModelChoice(
         modelService: ModelService<M>
     ): Observable<Referencable<any>> {
-
         const modalInstance: ModalInstance<TreeCanvasComponent<M>, Referencable<any>> =
             this.modalService.createModal(
                 TreeCanvasComponent<M>,
@@ -66,32 +64,22 @@ export class TreeModelDetailsService<M extends Referencable<any>> implements Tre
     openParentChoice(
         modelService: ModelService<M>
     ): Observable<ReTreeChildrenContainer<any>> {
-        const subject = new Subject<ReTreeChildrenContainer<any>>();
-
-        const overlayRef = this.overlay.create({
-            hasBackdrop: true,
-            backdropClass: 'cdk-overlay-dark-backdrop',
-            panelClass: 'basic-details-panel',
-            positionStrategy: this.overlay.position()
-                .global().centerHorizontally().centerVertically()
+        const modalInstance: ModalInstance<TreeCanvasComponent<M>, ReTreeChildrenContainer<any>> =
+            this.modalService.createModal(
+                TreeCanvasComponent<M>,
+                {
+                    hasBackdrop: true,
+                    backdropClass: 'cdk-overlay-dark-backdrop',
+                    panelClass: 'basic-details-panel',
+                    positionStrategy: this.overlay.position()
+                        .global().centerHorizontally().centerVertically()
+                }
+            )
+        modalInstance.componentRef.instance.modelService = modelService
+        modalInstance.componentRef.instance.chooseReference.subscribe(chosen => {
+            modalInstance.ref.close(chosen);
         });
-
-        const portal = new ComponentPortal(TreeCanvasComponent<M>);
-        const ref = overlayRef.attach(portal);
-
-        ref.instance.modelService = modelService;
-        ref.instance.chooseReference.subscribe(next => {
-            subject.next(next);
-            subject.complete();
-            overlayRef.dispose();
-        });
-
-        overlayRef.backdropClick().subscribe(() => {
-            subject.complete();
-            overlayRef.dispose();
-        });
-
-        return subject.asObservable();
+        return modalInstance.ref.closed
     }
 
 }
