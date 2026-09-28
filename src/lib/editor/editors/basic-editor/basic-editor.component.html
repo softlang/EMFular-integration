@@ -13,12 +13,12 @@
         <div class="editor-sidebar">
             <ng-content select="[sidebar]"></ng-content>
         </div>
-        <model-canvas
-                [svgwidth]="svgheight"
-                [svgheigth]="svgheight"
+
+        <svg-canvas
+                [viewBox]="viewBox"
                 (svgReady)="onSvgReady($event)"
         >
             <ng-content select="[canvas]"></ng-content>
-        </model-canvas>
+        </svg-canvas>
     </div>
 </div>

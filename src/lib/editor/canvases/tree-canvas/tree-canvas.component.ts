@@ -2,21 +2,21 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ReferencableBoxComponent} from "../../../graphical/referencable-box/referencable-box.component";
 import {ModelService} from "../../../model.service";
 import { Referencable, ReTreeChildrenContainer } from 'emfular-core';
-import { BoundingBox } from 'ngx-emfular-diagram';
-import {ModelCanvasComponent} from "../model-canvas/model-canvas.component";
+import { BoundingBox, SvgCanvasComponent } from 'ngx-emfular-diagram';
 
 @Component({
   selector: 'tree-canvas',
   imports: [
     ReferencableBoxComponent,
-    ModelCanvasComponent
+    SvgCanvasComponent
   ],
   templateUrl: './tree-canvas.component.html',
   styleUrl: './tree-canvas.component.css'
 })
 export class TreeCanvasComponent<M extends Referencable<any>> {
   svgwidth = 1500;
-  svgheigth = 1000;
+  //svgheigth = 1000;
+  viewBox = '0 0 1500 1000';
   initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 25}
 
   @Input() modelService!: ModelService<M>

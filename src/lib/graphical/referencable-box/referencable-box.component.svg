@@ -1,12 +1,18 @@
 <svg:g [attr.id]="referencable.$gId">
 
-    <g rectangle-with-text
-       (click)="choose(referencable)"
-       [id]="referencable.$gId + '_main'"
-       [text]="IdHelper.getLabel(referencable)"
-       [position]="position"
-       [color]="color"
+    <g
+        (click)="choose(referencable)"
+        [id]="referencable.$gId + '_main'"
     >
+        <ng-container
+             [ngTemplateOutlet]="rectangleWithText"
+             [ngTemplateOutletContext]="{
+                id: referencable.$gId + '_main',
+                position: position,
+                color: color,
+                text: IdHelper.getLabel(referencable)
+            }"
+        ></ng-container>
     </g>
 
     <!-- containers -->
@@ -15,36 +21,43 @@
             ; let i = $index) {
 
         @let containerKey = referencable.$gId + '_' + container.referenceName;
-        @let containerAnchorBox = PositionHelper.computeChildBBox(
+        @let containerAnchorBox = computeChildBBox(
             i,
             referencable.$treeChildren.length,
             position
         );
 
         <!-- reference box -->
-        <g rectangle-with-text
-           (click)="chooseRef(container)"
-           [id]="containerKey + '_ref'"
-           [text]="container.referenceName"
-           [position]="containerAnchorBox"
-           color="#ede679"
+        <g
+            (click)="chooseRef(container)"
+            [id]="containerKey + '_ref'"
         >
+            <ng-container
+               [ngTemplateOutlet]="rectangleWithText"
+               [ngTemplateOutletContext]="{
+                   id: containerKey + '_ref',
+                   position: containerAnchorBox,
+                   color: '#ede679',
+                   text: container.referenceName
+               }"
+            ></ng-container>
         </g>
-        <g rectangle-with-text
-           (click)="toggleExpand(i)"
+        <g text-area-svg
            [id]="containerKey + '_toggle'"
            [text]="isExpandedArray[i]?'◊':'V'"
-           [position]="createBoxInLastPart(containerAnchorBox)"
-           color="transparent"
+           [x]="createBoxInLastPart(containerAnchorBox).x"
+           [y]="createBoxInLastPart(containerAnchorBox).y"
+           [w]="createBoxInLastPart(containerAnchorBox).w"
+           [h]="createBoxInLastPart(containerAnchorBox).h"
+           (click)="toggleExpand(i)"
         ></g>
 
+
         <!-- arrow from main box to reference -->
-        <g arrowElems
-           [startGID]="referencable.$gId"
-           startSuffix="_main"
-           [endGID]="containerKey"
-           endSuffix="_ref">
-        </g>
+        <g arrow-elements
+           [startGID]="referencable.$gId+'_main'"
+           [endGID]="containerKey+'_ref'"
+        ></g>
 
         @if (isExpandedArray[i]) {
             <!-- real children inside this reference -->
@@ -52,7 +65,7 @@
 
             @for (elem of realChildren; track elem.$gId; let j = $index) {
 
-                @let elemBox = PositionHelper.computeChildBBox(
+                @let elemBox = computeChildBBox(
                     j,
                     realChildren.length,
                     containerAnchorBox
@@ -64,14 +77,34 @@
                 >
                 </g>
                 <!-- arrow from reference to child box -->
-                <g arrowElems
-                   [startGID]="containerKey"
-                   startSuffix="_ref"
-                   [endGID]="elem.$gId"
-                   endSuffix="_main">
-                </g>
+                <g arrow-elements
+                   [startGID]="containerKey+'_ref'"
+                   [endGID]="elem.$gId+'_main'"
+                ></g>
             }
 
         }
     }
 </svg:g>
+
+
+<ng-template #rectangleWithText
+             let-id="id"
+             let-position="position"
+             let-color="color"
+             let-text="text">
+
+    <svg:g rectangleG
+       [id]="id + '_rect'"
+       [position]="position"
+       [color]="color">
+    </svg:g>
+    <svg:g text-area-svg
+       [id]="id + '_text'"
+       [x]="position.x"
+       [y]="position.y"
+       [w]="position.w"
+       [h]="position.h"
+       [text]="text">
+    </svg:g>
+</ng-template>
