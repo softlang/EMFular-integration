@@ -7,7 +7,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {
   ContainerDetailsComponent
 } from "../container-details/container-details.component";
-import {TreeDetailsService} from "../tree-details-service";
+import {DetailsService} from "../details-service";
 import {IdHelper} from "../../utils/id-helper";
 
 @Component({
@@ -24,7 +24,7 @@ import {IdHelper} from "../../utils/id-helper";
 export class ModelDetailsComponent<T extends Referencable<any>, M extends Referencable<any>> implements OnInit {
   @Input() model!: T
   @Input() modelService!: ModelService<M>
-  @Input() detailsService!: TreeDetailsService<M>
+  @Input() detailsService!: DetailsService<M>
 
   attributes: Array<{ key: string; options: AttributeOptions }> = [];
 
@@ -46,7 +46,7 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
 
   chooseParent() {
     this.detailsService
-        .openParentChoice(this.modelService)
+        .openTreeReferenceChoice(this.modelService)
         .subscribe(chosen => {
           if (!chosen) return; // user cancelled
           // todo what about type mismatches?

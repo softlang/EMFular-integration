@@ -5,13 +5,13 @@ import {ModelDetailsComponent} from "./model-details/model-details.component";
 import { Overlay } from '@angular/cdk/overlay';
 import {TreeCanvasComponent} from "./tree-canvas/tree-canvas.component";
 import {Observable} from "rxjs";
-import {TreeDetailsService} from "./tree-details-service";
+import {DetailsService} from "./details-service";
 import {ModalInstance, ModalService} from "ngx-emfular-tool";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TreeModelDetailsService<M extends Referencable<any>> implements TreeDetailsService<M> {
+export class TreeModelDetailsService<M extends Referencable<any>> implements DetailsService<M> {
 
   constructor(
       private readonly modalService: ModalService,
@@ -40,7 +40,7 @@ export class TreeModelDetailsService<M extends Referencable<any>> implements Tre
     modalInstance.componentRef.instance.detailsService = this
   }
 
-    openModelChoice(
+    openElementChoice(
         modelService: ModelService<M>
     ): Observable<Referencable<any>> {
         const modalInstance: ModalInstance<TreeCanvasComponent<M>, Referencable<any>> =
@@ -61,7 +61,7 @@ export class TreeModelDetailsService<M extends Referencable<any>> implements Tre
         return modalInstance.ref.closed
     }
 
-    openParentChoice(
+    openTreeReferenceChoice(
         modelService: ModelService<M>
     ): Observable<ReTreeChildrenContainer<any>> {
         const modalInstance: ModalInstance<TreeCanvasComponent<M>, ReTreeChildrenContainer<any>> =
