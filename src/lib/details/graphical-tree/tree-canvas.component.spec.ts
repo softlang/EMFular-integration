@@ -2,7 +2,8 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TreeCanvasComponent } from './tree-canvas.component';
-import {DummyReferencable} from "../../../test/dummy-referencable";
+import {DummyReferencable} from "../../test/dummy-referencable";
+import {ModelService} from "../../model.service";
 
 describe('TreeCanvasComponent', () => {
   let component: TreeCanvasComponent<DummyReferencable>;
@@ -16,7 +17,13 @@ describe('TreeCanvasComponent', () => {
 
     fixture = TestBed.createComponent(TreeCanvasComponent<DummyReferencable>);
     component = fixture.componentInstance;
-    //fixture.detectChanges();
+    const model = new DummyReferencable()
+    const modelService = {
+      get model(): DummyReferencable { return model
+      }
+    } as ModelService<DummyReferencable>
+    component.modelService = modelService
+    fixture.detectChanges();
   });
 
   afterEach(() => {

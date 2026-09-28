@@ -4,22 +4,22 @@ import {GraphicalHelper} from "../../utils/graphical-helper";
 import {NgForOf, NgIf} from "@angular/common";
 import {IdHelper} from "../../utils/id-helper";
 import {ModelService} from "../../model.service";
-import {TreeDetailsService} from "../tree-details-service";
+import {DetailsService} from "../details-service";
 
 @Component({
-  selector: 'container-details',
+  selector: 'reference-details',
   imports: [
     NgForOf,
     NgIf,
   ],
-  templateUrl: './container-details.component.html',
-  styleUrl: './container-details.component.css'
+  templateUrl: './reference-details.component.html',
+  styleUrl: './reference-details.component.css'
 })
-export class ContainerDetailsComponent<M extends Referencable<any>> {
+export class ReferenceDetailsComponent<M extends Referencable<any>> {
   @Input() container!: ReContainer<any, any>
   @Input() isTree!: boolean
   @Input() modelService!: ModelService<M>
-  @Input() detailsService!: TreeDetailsService<M>  //todo just enforce interface?
+  @Input() detailsService!: DetailsService<M>  //todo just enforce interface?
 
   open(ref: Referencable<any>) {
     this.detailsService.openDetails(ref, this.modelService)
@@ -37,7 +37,7 @@ export class ContainerDetailsComponent<M extends Referencable<any>> {
       console.log("Creation for several possible sub types is not solved in a meta-agnostic scenario")
     } else {
       this.detailsService
-          .openModelChoice(this.modelService)
+          .openElementChoice(this.modelService)
           .subscribe(chosen => {
             if (!chosen) return; // user cancelled
             // todo what about type mismatches?

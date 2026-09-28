@@ -2,8 +2,8 @@ import {Component, Input} from '@angular/core';
 import { Referencable} from "emfular-core";
 import {ModelEditingBarComponent} from "../../creation-palettes/model-editing-bar/model-editing-bar.component";
 import {ModelService} from "../../../model.service";
-import {TreeDetailsService} from "../../../details/tree-details-service";
-import {TreeModelDetailsService} from "../../../details/tree-model-details.service";
+import {DetailsService} from "../../../details/details-service";
+import {GraphicalTreeDetailsService} from "../../../details/graphical-tree-details.service";
 import {EditButtonDef} from "../../creation-palettes/edit-button-def";
 import {BasicEditorComponent} from "../basic-editor/basic-editor.component";
 import {ReferencableBoxComponent} from "../../../graphical/referencable-box/referencable-box.component";
@@ -21,14 +21,14 @@ import { BoundingBox } from 'ngx-emfular-diagram';
 })
 export class TreeEditorComponent<M extends Referencable<any>> {
     @Input() modelService!: ModelService<M>
-    @Input() detailsService?: TreeDetailsService<M>
+    @Input() detailsService?: DetailsService<M>
     @Input() customButtons: EditButtonDef[] = [];
     @Input() svgwidth = 1500;
     @Input() svgheight = 1000;
     initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 25}
 
 
-    constructor(private basicDetailsService: TreeModelDetailsService<M>) {}
+    constructor(private basicDetailsService: GraphicalTreeDetailsService<M>) {}
 
     get sidebarButtons() {
       if (this.customButtons) return this.customButtons;
@@ -36,7 +36,7 @@ export class TreeEditorComponent<M extends Referencable<any>> {
           return[{label: "test", action: () => {console.log("Button on model edition works")}}];
     }
 
-    get effectiveDetailsService(): TreeDetailsService<M> {
+    get effectiveDetailsService(): DetailsService<M> {
         return this.detailsService ?? this.basicDetailsService;
     }
 
