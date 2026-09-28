@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContainerDetailsComponent } from './container-details.component';
 import {DemoElement1, DemoElement2} from "../../test/running-example/demo-model";
 import {DemoModelService} from "../../test/running-example/demo-model.service";
-import {TreeModelDetailsService} from "../tree-model-details.service";
+import {GraphicalTreeDetailsService} from "../graphical-tree-details.service";
 
 describe('ContainerDetailsComponent', () => {
   let component: ContainerDetailsComponent<DemoElement1>;
@@ -25,7 +25,7 @@ describe('ContainerDetailsComponent', () => {
     component.container = elem.$treeChildren[0]
     component.isTree = true;
     component.modelService = {} as DemoModelService;
-    component.detailsService = {} as TreeModelDetailsService<DemoElement1>;
+    component.detailsService = {} as GraphicalTreeDetailsService<DemoElement1>;
     fixture.detectChanges();
   });
 

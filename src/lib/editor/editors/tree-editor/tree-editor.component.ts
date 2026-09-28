@@ -3,7 +3,7 @@ import { Referencable} from "emfular-core";
 import {ModelEditingBarComponent} from "../../creation-palettes/model-editing-bar/model-editing-bar.component";
 import {ModelService} from "../../../model.service";
 import {DetailsService} from "../../../details/details-service";
-import {TreeModelDetailsService} from "../../../details/tree-model-details.service";
+import {GraphicalTreeDetailsService} from "../../../details/graphical-tree-details.service";
 import {EditButtonDef} from "../../creation-palettes/edit-button-def";
 import {BasicEditorComponent} from "../basic-editor/basic-editor.component";
 import {ReferencableBoxComponent} from "../../../graphical/referencable-box/referencable-box.component";
@@ -28,7 +28,7 @@ export class TreeEditorComponent<M extends Referencable<any>> {
     initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 25}
 
 
-    constructor(private basicDetailsService: TreeModelDetailsService<M>) {}
+    constructor(private basicDetailsService: GraphicalTreeDetailsService<M>) {}
 
     get sidebarButtons() {
       if (this.customButtons) return this.customButtons;

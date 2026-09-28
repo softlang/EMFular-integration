@@ -11,7 +11,7 @@ import {ModalInstance, ModalService} from "ngx-emfular-tool";
 @Injectable({
   providedIn: 'root'
 })
-export class TreeModelDetailsService<M extends Referencable<any>> implements DetailsService<M> {
+export class GraphicalTreeDetailsService<M extends Referencable<any>> implements DetailsService<M> {
 
   constructor(
       private readonly modalService: ModalService,
