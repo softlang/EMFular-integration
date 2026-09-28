@@ -17,11 +17,6 @@ export default defineConfig({
             '@angular/core/testing',
             '@angular/platform-browser-dynamic/testing',
 
-            '@angular/material/dialog',
-            '@angular/material/icon',
-            '@angular/material/button',
-            '@angular/material/toolbar',
-
             '@angular/cdk/overlay',
             '@angular/cdk/portal',
 

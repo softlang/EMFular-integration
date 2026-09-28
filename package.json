@@ -44,7 +44,6 @@
     "@angular/common": "^19.2.7",
     "@angular/core": "^19.2.7",
     "@angular/forms": "^19.2.7",
-    "@angular/material": "^19.2.7",
     "emfular-core": "^1.1.0",
     "ngx-emfular-diagram": "^2.0.0",
     "ngx-emfular-tool": "^1.1.1"
