@@ -61,7 +61,7 @@
 
         @if (isExpandedArray[i]) {
             <!-- real children inside this reference -->
-            @let realChildren = GraphicalHelper.getAsList(container);
+            @let realChildren = container.getAsList();
 
             @for (elem of realChildren; track elem.$gId; let j = $index) {
 

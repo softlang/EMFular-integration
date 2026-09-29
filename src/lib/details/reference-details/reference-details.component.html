@@ -3,7 +3,7 @@
 <button *ngIf="!isTree" class="add-ref" (click)="add()">Add</button>
 
 <div class="container-row"
-     *ngFor="let elem of GraphicalHelper.getAsList(container)">
+     *ngFor="let elem of container.getAsList()">
     <div class="ref-info">
         <span class="ref-icon">🔗</span>
         <span class="ref-type">{{ elem.$getEClass() }}</span>

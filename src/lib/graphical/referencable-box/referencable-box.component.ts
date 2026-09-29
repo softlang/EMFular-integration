@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, Output } from '@angular/core';
 import {Referencable, ReTreeChildrenContainer} from 'emfular-core';
 import {ArrowBetweenElemsComponent, BoundingBox, RectangleComponent, TextAreaSvgComponent} from 'ngx-emfular-diagram';
-import {GraphicalHelper} from "../../utils/graphical-helper";
 import {IdHelper} from "../../utils/id-helper";
 import {NgTemplateOutlet} from "@angular/common";
 
@@ -62,6 +61,5 @@ export class ReferencableBoxComponent {
   }
 
 
-  protected readonly GraphicalHelper = GraphicalHelper;
   protected readonly IdHelper = IdHelper;
 }
