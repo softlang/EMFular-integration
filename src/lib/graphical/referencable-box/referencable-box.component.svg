@@ -15,44 +15,35 @@
                 text: referencable.$label
             }"
         ></ng-container>
-        <g text-area-svg
-           [id]="referencable.$gId  + '_toggle'"
-           [text]="isExpanded ? '▲' : '▼'"
-           [x]="createBoxInLastPart(position).x"
-           [y]="createBoxInLastPart(position).y"
-           [w]="25"
-           [h]="25"
-           (click)="toggleMainExpand()"
+        <g expand-toggle
+           [(expanded)] ="isExpanded"
+           [x]="position.x+position.w-25"
+           [y]="position.y+position.h-25"
         ></g>
     </g>
 
     @if (isExpanded) {
-        <!-- containers -->
         @for (container of references; track container.id; let i = $index) {
 
-            <!-- references -->
+            <!-- reference box -->
             <g
                     (click)="chooseRef(container.self)"
                     [id]="container.id + '_ref'"
             >
                 <ng-container
-                        [ngTemplateOutlet]="rectangleWithText"
-                        [ngTemplateOutletContext]="{
-                   id: container.id + '_ref',
-                   position: container.position,
-                   color: '#ede679',
-                   text: container.referenceName
-               }"
+                    [ngTemplateOutlet]="rectangleWithText"
+                    [ngTemplateOutletContext]="{
+                        id: container.id + '_ref',
+                        position: container.position,
+                        color: '#ede679',
+                        text: container.referenceName
+                    }"
                 ></ng-container>
             </g>
-            <g text-area-svg
-               [id]="container.id + '_toggle'"
-               [text]="container.expanded ? '▲' : '▼'"
-               [x]="createBoxInLastPart(container.position).x"
-               [y]="createBoxInLastPart(container.position).y"
-               [w]="25"
-               [h]="25"
-               (click)="container.expanded = !container.expanded"
+            <g expand-toggle
+               [(expanded)] ="container.expanded"
+               [x]="container.position.x+container.position.w-25"
+               [y]="container.position.y+container.position.h-25"
             ></g>
 
             <!-- arrow from main box to reference -->
@@ -64,11 +55,8 @@
 
         <!-- recursive elements under the reference-->
             @if (container.expanded) {
-                <!-- real children inside this reference -->
                 @let realChildren = container.self.getAsList();
-
                 @for (elem of realChildren; track elem.$gId; let j = $index) {
-
                     @let elemBox = computeChildBBox(
                         j,
                         realChildren.length,
@@ -86,7 +74,6 @@
                        [endGID]="elem.$gId+'_main'"
                     ></g>
                 }
-
             }
         }
     }

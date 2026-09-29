@@ -9,6 +9,7 @@ import {
 } from 'ngx-emfular-diagram';
 import {NgTemplateOutlet} from "@angular/common";
 import {ReferenceModel} from "../reference-model";
+import {ExpandToggleComponent} from "../toggle-expand/toggle-expand.component";
 
 @Component({
   selector: '[referencable-box]',
@@ -18,6 +19,7 @@ import {ReferenceModel} from "../reference-model";
     ArrowBetweenElemsComponent,
     NgTemplateOutlet,
     DraggableDirective,
+    ExpandToggleComponent,
   ],
   templateUrl: './referencable-box.component.svg',
   styleUrl: './referencable-box.component.css'
@@ -32,25 +34,8 @@ export class ReferencableBoxComponent implements OnChanges {
   isExpanded = true;
   references: ReferenceModel[] = [];
 
-  isExpandedArray: boolean[] = []
-
   constructor() {}
 
-  toggleMainExpand() {
-    this.isExpanded = !this.isExpanded
-  }
-  toggleExpand(i: number) {
-    this.isExpandedArray[i]= !this.isExpandedArray[i];
-  }
-
-  createBoxInLastPart(bb: BoundingBox): BoundingBox {
-    return {
-      x: bb.x+bb.w -25,
-      y: bb.y+bb.h -25,
-      w: 25,
-      h: 25
-    }
-  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.referencable) {
