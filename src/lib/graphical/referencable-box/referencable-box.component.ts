@@ -28,10 +28,14 @@ export class ReferencableBoxComponent {
   @Output() chooseElement: EventEmitter<Referencable<any>> = new EventEmitter();
   @Output() chooseReference: EventEmitter<ReTreeChildrenContainer<any>> = new EventEmitter();
 
+  isExpanded = true;
   isExpandedArray: boolean[] = []
 
   constructor() {}
 
+  toggleMainExand() {
+    this.isExpanded = !this.isExpanded
+  }
   toggleExpand(i: number) {
     this.isExpandedArray[i]= !this.isExpandedArray[i];
   }

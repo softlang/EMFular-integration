@@ -15,76 +15,87 @@
                 text: referencable.$label
             }"
         ></ng-container>
+        <g text-area-svg
+           [id]="referencable.$gId  + '_toggle'"
+           [text]="isExpanded ? '▲' : '▼'"
+           [x]="createBoxInLastPart(position).x"
+           [y]="createBoxInLastPart(position).y"
+           [w]="createBoxInLastPart(position).w"
+           [h]="createBoxInLastPart(position).h"
+           (click)="toggleMainExand()"
+        ></g>
     </g>
 
-    <!-- containers -->
-    @for (container of referencable.$treeChildren;
-        track referencable.$gId + '_' + container.referenceName
-            ; let i = $index) {
+    @if (isExpanded) {
+        <!-- containers -->
+        @for (container of referencable.$treeChildren;
+            track referencable.$gId + '_' + container.referenceName
+                ; let i = $index) {
 
-        @let containerKey = referencable.$gId + '_' + container.referenceName;
-        @let containerAnchorBox = computeChildBBox(
-            i,
-            referencable.$treeChildren.length,
-            position
-        );
+            @let containerKey = referencable.$gId + '_' + container.referenceName;
+            @let containerAnchorBox = computeChildBBox(
+                i,
+                referencable.$treeChildren.length,
+                position
+            );
 
-        <!-- reference box -->
-        <g
-            (click)="chooseRef(container)"
-            [id]="containerKey + '_ref'"
-        >
-            <ng-container
-               [ngTemplateOutlet]="rectangleWithText"
-               [ngTemplateOutletContext]="{
+            <!-- reference box -->
+            <g
+                    (click)="chooseRef(container)"
+                    [id]="containerKey + '_ref'"
+            >
+                <ng-container
+                        [ngTemplateOutlet]="rectangleWithText"
+                        [ngTemplateOutletContext]="{
                    id: containerKey + '_ref',
                    position: containerAnchorBox,
                    color: '#ede679',
                    text: container.referenceName
                }"
-            ></ng-container>
-        </g>
-        <g text-area-svg
-           [id]="containerKey + '_toggle'"
-           [text]="isExpandedArray[i] ? '▲' : '▼'"
-           [x]="createBoxInLastPart(containerAnchorBox).x"
-           [y]="createBoxInLastPart(containerAnchorBox).y"
-           [w]="createBoxInLastPart(containerAnchorBox).w"
-           [h]="createBoxInLastPart(containerAnchorBox).h"
-           (click)="toggleExpand(i)"
-        ></g>
+                ></ng-container>
+            </g>
+            <g text-area-svg
+               [id]="containerKey + '_toggle'"
+               [text]="isExpandedArray[i] ? '▲' : '▼'"
+               [x]="createBoxInLastPart(containerAnchorBox).x"
+               [y]="createBoxInLastPart(containerAnchorBox).y"
+               [w]="createBoxInLastPart(containerAnchorBox).w"
+               [h]="createBoxInLastPart(containerAnchorBox).h"
+               (click)="toggleExpand(i)"
+            ></g>
 
 
-        <!-- arrow from main box to reference -->
-        <g arrow-elements
-           [startGID]="referencable.$gId+'_main'"
-           [endGID]="containerKey+'_ref'"
-        ></g>
+            <!-- arrow from main box to reference -->
+            <g arrow-elements
+               [startGID]="referencable.$gId+'_main'"
+               [endGID]="containerKey+'_ref'"
+            ></g>
 
-        @if (isExpandedArray[i]) {
-            <!-- real children inside this reference -->
-            @let realChildren = container.getAsList();
+            @if (isExpandedArray[i]) {
+                <!-- real children inside this reference -->
+                @let realChildren = container.getAsList();
 
-            @for (elem of realChildren; track elem.$gId; let j = $index) {
+                @for (elem of realChildren; track elem.$gId; let j = $index) {
 
-                @let elemBox = computeChildBBox(
-                    j,
-                    realChildren.length,
-                    containerAnchorBox
-                );
-                <g referencable-box
-                   (chooseElement)="choose($event)"
-                   [referencable]="elem"
-                   [position]="elemBox"
-                >
-                </g>
-                <!-- arrow from reference to child box -->
-                <g arrow-elements
-                   [startGID]="containerKey+'_ref'"
-                   [endGID]="elem.$gId+'_main'"
-                ></g>
+                    @let elemBox = computeChildBBox(
+                        j,
+                        realChildren.length,
+                        containerAnchorBox
+                    );
+                    <g referencable-box
+                       (chooseElement)="choose($event)"
+                       [referencable]="elem"
+                       [position]="elemBox"
+                    >
+                    </g>
+                    <!-- arrow from reference to child box -->
+                    <g arrow-elements
+                       [startGID]="containerKey+'_ref'"
+                       [endGID]="elem.$gId+'_main'"
+                    ></g>
+                }
+
             }
-
         }
     }
 </svg:g>
