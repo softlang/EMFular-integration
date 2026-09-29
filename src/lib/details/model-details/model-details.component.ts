@@ -8,7 +8,6 @@ import {
   ReferenceDetailsComponent
 } from "../reference-details/reference-details.component";
 import {DetailsService} from "../details-service";
-import {IdHelper} from "../../utils/id-helper";
 
 @Component({
   selector: 'lib-model-details',
@@ -60,5 +59,4 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
         });
   }
 
-  protected readonly IdHelper = IdHelper;
 }

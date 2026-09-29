@@ -10,7 +10,7 @@
                 id: referencable.$gId + '_main',
                 position: position,
                 color: color,
-                text: IdHelper.getLabel(referencable)
+                text: referencable.$label
             }"
         ></ng-container>
     </g>

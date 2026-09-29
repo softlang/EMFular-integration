@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {ReContainer, Referencable } from 'emfular-core';
 import {NgForOf, NgIf} from "@angular/common";
-import {IdHelper} from "../../utils/id-helper";
 import {ModelService} from "../../model.service";
 import {DetailsService} from "../details-service";
 
@@ -47,5 +46,4 @@ export class ReferenceDetailsComponent<M extends Referencable<any>> {
     }
   }
 
-  protected readonly IdHelper = IdHelper;
 }
