@@ -46,7 +46,7 @@
         </g>
         <g text-area-svg
            [id]="containerKey + '_toggle'"
-           [text]="isExpandedArray[i]?'◊':'V'"
+           [text]="isExpandedArray[i] ? '▲' : '▼'"
            [x]="createBoxInLastPart(containerAnchorBox).x"
            [y]="createBoxInLastPart(containerAnchorBox).y"
            [w]="createBoxInLastPart(containerAnchorBox).w"
