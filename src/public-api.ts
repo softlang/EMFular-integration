@@ -14,9 +14,7 @@ export * from './lib/editor/creation-palettes/edit-button-def';
 export * from './lib/graphical/referencable-box/referencable-box.component';
 
 export * from './lib/details/details-service'
-export { GraphicalTreeDetailsService as BasicModelDetailsService } from './lib/details/graphical-tree-details.service';
+export * from './lib/details/graphical-tree-details.service';
 export * from './lib/details/graphical-tree-details.service'
 export * from './lib/details/model-details/model-details.component';
 export * from './lib/details/reference-details/reference-details.component'
-
-export * from './lib/utils/id-helper'
