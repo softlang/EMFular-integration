@@ -20,67 +20,59 @@
            [text]="isExpanded ? '▲' : '▼'"
            [x]="createBoxInLastPart(position).x"
            [y]="createBoxInLastPart(position).y"
-           [w]="createBoxInLastPart(position).w"
-           [h]="createBoxInLastPart(position).h"
-           (click)="toggleMainExand()"
+           [w]="25"
+           [h]="25"
+           (click)="toggleMainExpand()"
         ></g>
     </g>
 
     @if (isExpanded) {
         <!-- containers -->
-        @for (container of referencable.$treeChildren;
-            track referencable.$gId + '_' + container.referenceName
-                ; let i = $index) {
+        @for (container of references; track container.id; let i = $index) {
 
-            @let containerKey = referencable.$gId + '_' + container.referenceName;
-            @let containerAnchorBox = computeChildBBox(
-                i,
-                referencable.$treeChildren.length,
-                position
-            );
-
-            <!-- reference box -->
+            <!-- references -->
             <g
-                    (click)="chooseRef(container)"
-                    [id]="containerKey + '_ref'"
+                    (click)="chooseRef(container.self)"
+                    [id]="container.id + '_ref'"
             >
                 <ng-container
                         [ngTemplateOutlet]="rectangleWithText"
                         [ngTemplateOutletContext]="{
-                   id: containerKey + '_ref',
-                   position: containerAnchorBox,
+                   id: container.id + '_ref',
+                   position: container.position,
                    color: '#ede679',
                    text: container.referenceName
                }"
                 ></ng-container>
             </g>
             <g text-area-svg
-               [id]="containerKey + '_toggle'"
-               [text]="isExpandedArray[i] ? '▲' : '▼'"
-               [x]="createBoxInLastPart(containerAnchorBox).x"
-               [y]="createBoxInLastPart(containerAnchorBox).y"
-               [w]="createBoxInLastPart(containerAnchorBox).w"
-               [h]="createBoxInLastPart(containerAnchorBox).h"
-               (click)="toggleExpand(i)"
+               [id]="container.id + '_toggle'"
+               [text]="container.expanded ? '▲' : '▼'"
+               [x]="createBoxInLastPart(container.position).x"
+               [y]="createBoxInLastPart(container.position).y"
+               [w]="25"
+               [h]="25"
+               (click)="container.expanded = !container.expanded"
             ></g>
-
 
             <!-- arrow from main box to reference -->
             <g arrow-elements
                [startGID]="referencable.$gId+'_main'"
-               [endGID]="containerKey+'_ref'"
+               [endGID]="container.id+'_ref'"
             ></g>
 
-            @if (isExpandedArray[i]) {
+
+        <!-- recursive elements under the reference-->
+            @if (container.expanded) {
                 <!-- real children inside this reference -->
-                @let realChildren = container.getAsList();
+                @let realChildren = container.self.getAsList();
 
                 @for (elem of realChildren; track elem.$gId; let j = $index) {
 
                     @let elemBox = computeChildBBox(
                         j,
                         realChildren.length,
-                        containerAnchorBox
+                        container.position
                     );
                     <g referencable-box
                        (chooseElement)="choose($event)"
@@ -90,7 +82,7 @@
                     </g>
                     <!-- arrow from reference to child box -->
                     <g arrow-elements
-                       [startGID]="containerKey+'_ref'"
+                       [startGID]="container.id+'_ref'"
                        [endGID]="elem.$gId+'_main'"
                     ></g>
                 }

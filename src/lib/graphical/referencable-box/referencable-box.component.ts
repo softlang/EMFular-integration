@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {Referencable, ReTreeChildrenContainer} from 'emfular-core';
 import {
   ArrowBetweenElemsComponent,
@@ -8,6 +8,7 @@ import {
   TextAreaSvgComponent
 } from 'ngx-emfular-diagram';
 import {NgTemplateOutlet} from "@angular/common";
+import {ReferenceModel} from "../reference-model";
 
 @Component({
   selector: '[referencable-box]',
@@ -21,7 +22,7 @@ import {NgTemplateOutlet} from "@angular/common";
   templateUrl: './referencable-box.component.svg',
   styleUrl: './referencable-box.component.css'
 })
-export class ReferencableBoxComponent {
+export class ReferencableBoxComponent implements OnChanges {
   @Input() referencable!: Referencable<any>;
   @Input() position!: BoundingBox
   @Input() color?: string = "#efad78"
@@ -29,11 +30,13 @@ export class ReferencableBoxComponent {
   @Output() chooseReference: EventEmitter<ReTreeChildrenContainer<any>> = new EventEmitter();
 
   isExpanded = true;
+  references: ReferenceModel[] = [];
+
   isExpandedArray: boolean[] = []
 
   constructor() {}
 
-  toggleMainExand() {
+  toggleMainExpand() {
     this.isExpanded = !this.isExpanded
   }
   toggleExpand(i: number) {
@@ -49,10 +52,35 @@ export class ReferencableBoxComponent {
     }
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.referencable) {
+      this.references = this.createReferenceModels(this.referencable)
+    }
+  }
+
+  private createReferenceModels(referencable: Referencable<any>): ReferenceModel[] {
+    return this.referencable.$treeChildren.map(
+        (container, i) => {
+          return {
+            id: referencable.$gId + '_' + container.referenceName,
+            referenceName: container.referenceName,
+            position: this.computeChildBBox(
+                i,
+                referencable.$treeChildren.length,
+                this.position
+            ),
+            expanded: false,
+            self: container
+          }
+        }
+    )
+  }
+
   private computeOffset(index: number, length: number): number {
     const middle = (length-1)/2;
     return index - middle;
   }
+
   computeChildBBox(index: number, length: number, parentBox: BoundingBox): BoundingBox {
     return {
       x: parentBox.x + this.computeOffset(index, length)*(parentBox.w+5),

@@ -35,22 +35,13 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
     }));
   }
 
-  getLinks(): ReLinkContainer<any, any>[] {
-    return this.model.$otherLinks
-  }
-
-  getChildren(): ReTreeChildrenContainer<any>[] {
-    return this.model.$treeChildren
-  }
-
   chooseParent() {
     this.detailsService
         .openTreeReferenceChoice(this.modelService)
-        .subscribe(chosen => {
+        .subscribe((chosen: ReTreeChildrenContainer<any>) => {
           if (!chosen) return; // user cancelled
           // todo what about type mismatches?
-          const res = chosen._parent.addToReferencableContainer(
-              chosen.referenceName,
+          const res = chosen.add(
               this.model
           )
           if (res) {
