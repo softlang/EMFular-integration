@@ -1,8 +1,10 @@
 <svg:g [attr.id]="referencable.$gId">
 
+    <!-- main element -->
     <g
-        (click)="choose(referencable)"
         [id]="referencable.$gId + '_main'"
+        [dragPosition]="position"
+        (elemReallyClicked)="choose(referencable)"
     >
         <ng-container
              [ngTemplateOutlet]="rectangleWithText"

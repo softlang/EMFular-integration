@@ -1,6 +1,12 @@
 import {Component, EventEmitter, Input, Output } from '@angular/core';
 import {Referencable, ReTreeChildrenContainer} from 'emfular-core';
-import {ArrowBetweenElemsComponent, BoundingBox, RectangleComponent, TextAreaSvgComponent} from 'ngx-emfular-diagram';
+import {
+  ArrowBetweenElemsComponent,
+  BoundingBox,
+  DraggableDirective,
+  RectangleComponent,
+  TextAreaSvgComponent
+} from 'ngx-emfular-diagram';
 import {NgTemplateOutlet} from "@angular/common";
 
 @Component({
@@ -10,6 +16,7 @@ import {NgTemplateOutlet} from "@angular/common";
     TextAreaSvgComponent,
     ArrowBetweenElemsComponent,
     NgTemplateOutlet,
+    DraggableDirective,
   ],
   templateUrl: './referencable-box.component.svg',
   styleUrl: './referencable-box.component.css'
@@ -53,6 +60,7 @@ export class ReferencableBoxComponent {
 
   choose(element: Referencable<any>) {
     this.chooseElement.emit(element);
+    console.log("Real click")
   }
 
   chooseRef(ref: ReTreeChildrenContainer<any>) {
