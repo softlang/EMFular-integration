@@ -17,8 +17,8 @@
         ></ng-container>
         <g expand-toggle
            [(expanded)] ="isExpanded"
-           [x]="position.x+position.w-25"
-           [y]="position.y+position.h-25"
+           [x]="position.x+position.w"
+           [y]="position.y+position.h"
         ></g>
     </g>
 
@@ -43,8 +43,8 @@
             </g>
             <g expand-toggle
                [(expanded)] ="container.expanded"
-               [x]="container.position.x+container.position.w-25"
-               [y]="container.position.y+container.position.h-25"
+               [x]="container.position.x+container.position.w"
+               [y]="container.position.y+container.position.h"
             ></g>
 
             <!-- arrow from main box to reference -->

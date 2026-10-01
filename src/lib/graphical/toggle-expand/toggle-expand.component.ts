@@ -1,19 +1,17 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
-import {TextAreaSvgComponent} from "ngx-emfular-diagram";
 
 @Component({
     selector: '[expand-toggle]',
     standalone: true,
-    imports: [TextAreaSvgComponent],
     template: `
-    <svg:g text-area-svg
-       [text]="expanded ? '▲' : '▼'"
-       [x]="x"
-       [y]="y"
-       [w]="25"
-       [h]="25"
-       (click)="toggle($event)">
-    </svg:g>
+    <svg:text [attr.x]="x"
+              [attr.y]="y"
+              text-anchor="end"
+              dominant-baseline="text-after-edge"
+              (click)="toggle($event)"
+    >
+        {{ expanded ? '▲' : '▼' }}
+    </svg:text>
   `
 })
 export class ExpandToggleComponent {
