@@ -25,7 +25,7 @@ export class TreeEditorComponent<M extends Referencable<any>> {
     @Input() customButtons: EditButtonDef[] = [];
     @Input() svgwidth = 1500;
     @Input() svgheight = 1000;
-    initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 25}
+    initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 50}
 
 
     constructor(private basicDetailsService: GraphicalTreeDetailsService<M>) {}

@@ -26,7 +26,7 @@
 <h3>References</h3>
 <div class="reference-list">
     <reference-details
-            *ngFor="let container of getChildren()"
+            *ngFor="let container of this.model.$treeChildren"
             [container]="container"
             [isTree]="true"
             [modelService]="modelService"
@@ -34,7 +34,7 @@
     >
     </reference-details>
     <reference-details
-        *ngFor="let container of getLinks()"
+        *ngFor="let container of this.model.$otherLinks"
         [container]="container"
         [isTree]="false"
         [modelService]="modelService"

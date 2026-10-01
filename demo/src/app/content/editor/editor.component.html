@@ -57,14 +57,16 @@
 </p>
 
 <emfular-basic-editor
-        [svgwidth]="550"
+        [svgwidth]="750"
         [svgheight]="300"
         [modelService]="demoModelService"
 >
     <svg:g canvas>
         <g referencable-box
            [referencable]="demoModelService.model"
-           [position]="positionCompleteFirstElem">
+           [position]="positionCompleteFirstElem"
+           [color]="'#ccb5b5'"
+        >
         </g>
     </svg:g>
 </emfular-basic-editor>
@@ -77,6 +79,8 @@
 
 <emfular-tree-editor
     [modelService]="demoModelService"
+    [svgwidth]="1000"
+    [svgheight]="500"
 >
 
 </emfular-tree-editor>
