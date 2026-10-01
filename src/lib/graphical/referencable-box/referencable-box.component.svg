@@ -29,7 +29,7 @@
             <g
                 [id]="container.id + '_ref'"
                 [dragPosition]="container.position"
-                (click)="chooseRef(container.self)"
+                (elemReallyClicked)="chooseRef(container.self)"
             >
                 <ng-container
                     [ngTemplateOutlet]="rectangleWithText"
@@ -59,7 +59,7 @@
                 @let realChildren = container.self.getAsList();
                 @for (elem of realChildren; track elem.$gId; let j = $index) {
                     <g referencable-box
-                       (chooseElement)="choose($event)"
+                       (chooseElement)="choose(elem)"
                        [referencable]="elem"
                        [position]="getOrCreateChildPosition(elem.$gId, j, container)"
                        [color]="color"

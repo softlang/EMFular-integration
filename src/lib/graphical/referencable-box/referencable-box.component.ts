@@ -94,7 +94,6 @@ export class ReferencableBoxComponent implements OnChanges {
 
   choose(element: Referencable<any>) {
     this.chooseElement.emit(element);
-    console.log("Real click")
   }
 
   chooseRef(ref: ReTreeChildrenContainer<any>) {

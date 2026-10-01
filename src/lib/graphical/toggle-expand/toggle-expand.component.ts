@@ -12,7 +12,7 @@ import {TextAreaSvgComponent} from "ngx-emfular-diagram";
        [y]="y"
        [w]="25"
        [h]="25"
-       (click)="toggle()">
+       (click)="toggle($event)">
     </svg:g>
   `
 })
@@ -22,7 +22,8 @@ export class ExpandToggleComponent {
     @Input() expanded = false;
     @Output() expandedChange = new EventEmitter<boolean>();
 
-    toggle(): void {
+    toggle($event: MouseEvent): void {
+        $event.stopPropagation()
         this.expandedChange.emit(!this.expanded);
     }
 }
