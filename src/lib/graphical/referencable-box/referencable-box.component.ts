@@ -5,7 +5,6 @@ import {
   BoundingBox,
   DraggableDirective,
   RectangleComponent,
-  TextAreaSvgComponent
 } from 'ngx-emfular-diagram';
 import {NgTemplateOutlet} from "@angular/common";
 import {ReferenceModel} from "../reference-model";
@@ -15,7 +14,6 @@ import {ExpandToggleComponent} from "../toggle-expand/toggle-expand.component";
   selector: '[referencable-box]',
   imports: [
     RectangleComponent,
-    TextAreaSvgComponent,
     ArrowBetweenElemsComponent,
     NgTemplateOutlet,
     DraggableDirective,

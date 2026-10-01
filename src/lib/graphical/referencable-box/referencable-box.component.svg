@@ -89,12 +89,11 @@
        [position]="position"
        [color]="color">
     </svg:g>
-    <svg:g text-area-svg
-       [id]="id + '_text'"
-       [x]="position.x"
-       [y]="position.y"
-       [w]="position.w"
-       [h]="position.h"
-       [text]="text">
-    </svg:g>
+    <svg:text
+            [attr.x]="position.x + position.w/ 2"
+            [attr.y]="position.y + position.h/ 2"
+            text-anchor="middle"
+            dominant-baseline="middle">
+        {{ text }}
+    </svg:text>
 </ng-template>
