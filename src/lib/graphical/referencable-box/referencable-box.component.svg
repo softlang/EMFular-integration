@@ -27,8 +27,9 @@
 
             <!-- reference box -->
             <g
-                    (click)="chooseRef(container.self)"
-                    [id]="container.id + '_ref'"
+                [id]="container.id + '_ref'"
+                [dragPosition]="container.position"
+                (click)="chooseRef(container.self)"
             >
                 <ng-container
                     [ngTemplateOutlet]="rectangleWithText"
