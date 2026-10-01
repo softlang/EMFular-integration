@@ -7,4 +7,5 @@ export interface ReferenceModel {
     position: BoundingBox
     expanded: boolean;
     self: ReTreeChildrenContainer<Referencable<any>>;
+    childrenPositionMap: Map<string, BoundingBox>
 }

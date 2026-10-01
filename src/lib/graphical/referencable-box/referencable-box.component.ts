@@ -56,10 +56,26 @@ export class ReferencableBoxComponent implements OnChanges {
                 this.position
             ),
             expanded: false,
-            self: container
+            self: container,
+            childrenPositionMap: new Map<string, BoundingBox>(),
           }
         }
     )
+  }
+
+  getOrCreateChildPosition(gId: string, index: number, referenceModel: ReferenceModel): BoundingBox {
+    const  lookup: BoundingBox|undefined = referenceModel.childrenPositionMap.get(gId)
+    if (lookup) {
+      return lookup
+    } else {
+      const entry =  this.computeChildBBox(
+          index,
+          referenceModel.self.getAsList().length,
+          referenceModel.position
+      )
+      referenceModel.childrenPositionMap.set(gId, entry)
+      return entry
+    }
   }
 
   private computeOffset(index: number, length: number): number {
@@ -67,7 +83,7 @@ export class ReferencableBoxComponent implements OnChanges {
     return index - middle;
   }
 
-  computeChildBBox(index: number, length: number, parentBox: BoundingBox): BoundingBox {
+  private computeChildBBox(index: number, length: number, parentBox: BoundingBox): BoundingBox {
     return {
       x: parentBox.x + this.computeOffset(index, length)*(parentBox.w+5),
       y: parentBox.y+parentBox.h*2,

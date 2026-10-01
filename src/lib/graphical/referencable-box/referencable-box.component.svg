@@ -57,15 +57,10 @@
             @if (container.expanded) {
                 @let realChildren = container.self.getAsList();
                 @for (elem of realChildren; track elem.$gId; let j = $index) {
-                    @let elemBox = computeChildBBox(
-                        j,
-                        realChildren.length,
-                        container.position
-                    );
                     <g referencable-box
                        (chooseElement)="choose($event)"
                        [referencable]="elem"
-                       [position]="elemBox"
+                       [position]="getOrCreateChildPosition(elem.$gId, j, container)"
                        [color]="color"
                        [referenceColor]="referenceColor"
                     >
