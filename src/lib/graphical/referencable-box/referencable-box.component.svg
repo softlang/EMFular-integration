@@ -35,7 +35,7 @@
                     [ngTemplateOutletContext]="{
                         id: container.id + '_ref',
                         position: container.position,
-                        color: '#ede679',
+                        color:  referenceColor,
                         text: container.referenceName
                     }"
                 ></ng-container>
@@ -66,6 +66,8 @@
                        (chooseElement)="choose($event)"
                        [referencable]="elem"
                        [position]="elemBox"
+                       [color]="color"
+                       [referenceColor]="referenceColor"
                     >
                     </g>
                     <!-- arrow from reference to child box -->

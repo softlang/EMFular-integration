@@ -27,7 +27,8 @@ import {ExpandToggleComponent} from "../toggle-expand/toggle-expand.component";
 export class ReferencableBoxComponent implements OnChanges {
   @Input() referencable!: Referencable<any>;
   @Input() position!: BoundingBox
-  @Input() color?: string = "#efad78"
+  @Input() color?: string = "rgba(126,117,117,0.5)"
+  @Input() referenceColor?: string = "rgba(126,117,117,0.2)"
   @Output() chooseElement: EventEmitter<Referencable<any>> = new EventEmitter();
   @Output() chooseReference: EventEmitter<ReTreeChildrenContainer<any>> = new EventEmitter();
 
