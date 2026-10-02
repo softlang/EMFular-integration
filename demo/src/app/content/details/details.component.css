@@ -2,26 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 100%;
     min-height: 500px;
     padding: 40px;
     box-sizing: border-box;
-
     background: rgba(0, 0, 0, 0.35);
-}
-
-.model-details {
-    width: 700px;
-    max-width: 90vw;
-    max-height: 70vh;
-    padding: 24px;
-    box-sizing: border-box;
-    overflow: auto;
-
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow:
-            0 4px 12px rgba(0, 0, 0, 0.15),
-            0 2px 4px rgba(0, 0, 0, 0.1);
 }

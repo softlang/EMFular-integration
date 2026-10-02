@@ -16,7 +16,7 @@
 </p>
 
 <div class="model-details-preview">
-    <div class="model-details">
+    <div class="basic-details-panel">
         <lib-model-details
                 [model]="model01"
                 [modelService]="demoModelService"
@@ -35,8 +35,8 @@
 <h3>The Details Service</h3>
 
 <p>
-    <code>DetailsService&lt;M extends Referencable&lt;any&gt;&gt;</code> is parametric in our model route.
-    It defines the interaction required by the generic details component, and by anyone who wants to open details.
+    <code>DetailsService&lt;M extends Referencable&lt;any&gt;&gt;</code> is parametric in our model root type M.
+    It defines the interaction required by the generic details component for any model element T, as well as the method to open details.
     It provides three operations:
 </p>
 <ul>
@@ -86,6 +86,8 @@
 </p>
 <pre><code>&#64;import "ngx-emfular-integration/details-overlay.css";</code></pre>
 
+
+<!--
 <h3>The Reference Details Component</h3>
 
 <p>
@@ -98,3 +100,4 @@
     Depending on the domain, different visualizations or even simple radio buttons can offer appropriate handles.
     We leave that decision to the application developer and only enforce a small contract on the details service.
 </p>
+-->
