@@ -21,7 +21,6 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/assets"],
-            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -29,13 +28,15 @@
               "budgets": [],
               "outputHashing": "all",
               "baseHref": "/EMFular-integration/",
-              "deployUrl": "/EMFular-integration/"
+              "deployUrl": "/EMFular-integration/",
+              "styles": ["src/styles.scss", "node_modules/ngx-emfular-integration/details-overlay.css"]
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "tsConfig": "tsconfig.dev.json"
+              "tsConfig": "tsconfig.dev.json",
+              "styles": ["src/styles.scss", "../src/lib/styles/details-overlay.css"]
             }
           },
           "defaultConfiguration": "production"
