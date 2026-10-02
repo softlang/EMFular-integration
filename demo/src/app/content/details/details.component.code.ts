@@ -2,7 +2,7 @@ export const detailsServiceContract = `import { Referencable, ReTreeChildrenCont
 import {ModelService} from "../model.service";
 import {Observable} from "rxjs";
 
-export interface TreeDetailsService<M extends Referencable<any>> {
+export interface DetailsService<M extends Referencable<any>> {
 
     //actually T must be somewhere on M
     openDetails<T extends Referencable<any>>(
