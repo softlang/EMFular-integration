@@ -24,7 +24,7 @@
     "emfular-core": "^1.3.0",
     "ngx-emfular-diagram": "^2.0.2",
     "ngx-emfular-tool": "^1.1.1",
-    "ngx-emfular-integration": "../src/public-api.ts",
+    "ngx-emfular-integration": "^2.0.0",
     "rxjs": "~7.8.0",
     "shiki": "^4.4.2",
     "tslib": "^2.3.0",
