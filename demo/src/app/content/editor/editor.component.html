@@ -10,42 +10,6 @@
     <li>the model-specific palette for creating new model elements</li>
 </ul>
 
-<h2>Modeling Canvas</h2>
-
-<p>
-    You can use the svg canvas of EMFular-diagram to project your own svg components onto.
-    If you have no own graphical representation, you can project our tree model element onto that canvas.
-    In that case, using the tree based editor could also work for you.
-</p>
-
-
-<h2>Editor Bar</h2>
-
-<p>
-    The editor bar is concerned with a fixed set of global model operations: creating, loading and saving models, undo and redo of edit operations, and downloading graphical representations.
-    It needs two inputs: the model service, since it controls model editions and coordinates them with the history service, and an svg element, usually just the one from the drawing canvas, so that it can offer jpeg, png and svg downloads of it.
-</p>
-
-<emfular-file-level-bar
-        [svg]=""
-        [modelService]="demoModelService"
->
-</emfular-file-level-bar>
-
-<h2>Creation Palette</h2>
-
-<p>We offer a simple abstraction for model-specific buttons:</p>
-<demo-highlighted-code [code]="editButtonDef"></demo-highlighted-code>
-<p>
-    It should be sufficient to define a button with a label, and an associated action, as well as an optional icon (via its string name), and a disabled flag.
-    We provide a palette, that consumes such button definitions to display creation buttons (or other buttons you specify).
-</p>
-<div class="button0-container">
-    <emfular-model-editing-bar [buttons]="buttons0">
-    </emfular-model-editing-bar>
-    <span class="output">{{ buttonMessage0 }}</span>
-</div>
-
 <h2>Complete Editors</h2>
 
 <h3>Basic Editor</h3>
@@ -83,9 +47,45 @@
 </p>
 
 <emfular-tree-editor
-    [modelService]="demoModelService"
-    [svgwidth]="750"
-    [svgheight]="500"
+        [modelService]="demoModelService"
+        [svgwidth]="750"
+        [svgheight]="500"
 >
 
 </emfular-tree-editor>
+
+<h2>Modeling Canvas</h2>
+
+<p>
+    You can use the svg canvas of EMFular-diagram to project your own svg components onto.
+    If you have no own graphical representation, you can project our tree model element onto that canvas.
+    In that case, using the tree based editor could also work for you.
+</p>
+
+
+<h2>Editor Bar</h2>
+
+<p>
+    The editor bar is concerned with a fixed set of global model operations: creating, loading and saving models, undo and redo of edit operations, and downloading graphical representations.
+    It needs two inputs: the model service, since it controls model editions and coordinates them with the history service, and an svg element, usually just the one from the drawing canvas, so that it can offer jpeg, png and svg downloads of it.
+</p>
+
+<emfular-file-level-bar
+        [svg]=""
+        [modelService]="demoModelService"
+>
+</emfular-file-level-bar>
+
+<h2>Creation Palette</h2>
+
+<p>We offer a simple abstraction for model-specific buttons:</p>
+<demo-highlighted-code [code]="editButtonDef"></demo-highlighted-code>
+<p>
+    It should be sufficient to define a button with a label, and an associated action, as well as an optional icon (via its string name), and a disabled flag.
+    We provide a palette, that consumes such button definitions to display creation buttons (or other buttons you specify).
+</p>
+<div class="button0-container">
+    <emfular-model-editing-bar [buttons]="buttons0">
+    </emfular-model-editing-bar>
+    <span class="output">{{ buttonMessage0 }}</span>
+</div>

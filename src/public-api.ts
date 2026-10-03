@@ -5,10 +5,10 @@
 export * from './lib/model.service';
 
 export * from './lib/editor/editors/tree-editor/tree-editor.component'
-export * from './lib/editor/editor-bars/file-level-bar/file-level-bar.component';
-export * from './lib/editor/creation-palettes/model-editing-bar/model-editing-bar.component';
+export * from './lib/editor/main-editor-bar/main-editor-bar.component';
+export * from './lib/editor/model-specific-editing/model-specific-editing-bar/model-editing-bar.component';
 export * from './lib/editor/editors/basic-editor/basic-editor.component';
-export * from './lib/editor/creation-palettes/edit-button-def';
+export * from './lib/editor/model-specific-editing/edit-button-def';
 
 export * from './lib/graphical/tree-model-element/tree-model-element.component';
 

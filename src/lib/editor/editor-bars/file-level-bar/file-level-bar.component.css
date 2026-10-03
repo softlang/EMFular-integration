@@ -1,4 +1,0 @@
-.file-level-bar { display:flex; align-items:center; gap:0.4rem; padding:0.3rem 0.5rem; background:#f0f0f0; border-bottom:1px solid #ccc; }
-.file-level-bar button { padding:0.25rem 0.5rem; font-size:0.85rem; cursor:pointer; }
-.file-level-bar button:disabled { opacity:0.5; cursor:default; }
-.separator { width:1px; height:1rem; background:#ccc; margin:0 0.3rem; }

@@ -4,7 +4,7 @@ import {editButtonDef} from "./editor.component.code";
 import {
     BasicEditorComponent,
     EditButtonDef,
-    FileLevelBarComponent,
+    MainEditorBarComponent,
     ModelEditingBarComponent,
     TreeModelElementComponent,
     TreeEditorComponent
@@ -16,7 +16,7 @@ import {DemoModelService} from "../running-example/demo-model.service";
     imports: [
         HighlightedCodeComponent,
         ModelEditingBarComponent,
-        FileLevelBarComponent,
+        MainEditorBarComponent,
         BasicEditorComponent,
         TreeModelElementComponent,
         TreeModelElementComponent,

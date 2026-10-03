@@ -1,15 +1,15 @@
 import {Component, Input} from '@angular/core';
 import {InputHandler, IoService} from "ngx-emfular-tool";
 import {Referencable} from "emfular-core";
-import {ModelService} from "../../../model.service";
+import {ModelService} from "../../model.service";
 
 @Component({
   selector: 'emfular-file-level-bar',
   imports: [],
-  templateUrl: './file-level-bar.component.html',
-  styleUrl: './file-level-bar.component.css'
+  templateUrl: './main-editor-bar.component.html',
+  styleUrl: './main-editor-bar.component.css'
 })
-export class FileLevelBarComponent<M extends Referencable<any>> {
+export class MainEditorBarComponent<M extends Referencable<any>> {
   @Input() svg!: SVGElement
   @Input() modelService!: ModelService<M>
   protected readonly InputHandler = InputHandler;
