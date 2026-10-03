@@ -1,0 +1,10 @@
+.model-details-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 500px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.35);
+}

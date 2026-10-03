@@ -49,7 +49,7 @@ export class GraphicalTreeDetailsService<M extends Referencable<any>> implements
                 {
                     hasBackdrop: true,
                     backdropClass: 'cdk-overlay-dark-backdrop',
-                    panelClass: 'basic-details-panel',
+                    panelClass: 'tree-choice-panel',
                     positionStrategy: this.overlay.position()
                         .global().centerHorizontally().centerVertically()
                 }
@@ -70,7 +70,7 @@ export class GraphicalTreeDetailsService<M extends Referencable<any>> implements
                 {
                     hasBackdrop: true,
                     backdropClass: 'cdk-overlay-dark-backdrop',
-                    panelClass: 'basic-details-panel',
+                    panelClass: 'tree-choice-panel',
                     positionStrategy: this.overlay.position()
                         .global().centerHorizontally().centerVertically()
                 }

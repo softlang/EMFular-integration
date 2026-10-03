@@ -17,4 +17,3 @@ export * from './lib/details/details-service'
 export * from './lib/details/graphical-tree-details.service';
 export * from './lib/details/graphical-tree-details.service'
 export * from './lib/details/model-details/model-details.component';
-export * from './lib/details/reference-details/reference-details.component'
