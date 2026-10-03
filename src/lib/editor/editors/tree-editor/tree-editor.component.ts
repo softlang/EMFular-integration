@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import { Referencable} from "emfular-core";
 import {ModelEditingBarComponent} from "../../creation-palettes/model-editing-bar/model-editing-bar.component";
 import {ModelService} from "../../../model.service";
@@ -19,16 +19,22 @@ import { BoundingBox } from 'ngx-emfular-diagram';
   templateUrl: './tree-editor.component.html',
   styleUrl: './tree-editor.component.css'
 })
-export class TreeEditorComponent<M extends Referencable<any>> {
+export class TreeEditorComponent<M extends Referencable<any>> implements OnChanges {
     @Input() modelService!: ModelService<M>
     @Input() detailsService?: DetailsService<M>
     @Input() customButtons: EditButtonDef[] = [];
     @Input() svgwidth = 1500;
     @Input() svgheight = 1000;
-    initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 50}
+    initialBBox : BoundingBox = {x: this.svgwidth/2-100, y: 20, w: 200, h: 50}
 
 
     constructor(private basicDetailsService: GraphicalTreeDetailsService<M>) {}
+
+    ngOnChanges(changes: SimpleChanges) {
+        if(changes.svgwidth|| changes.svgheight) {
+            this.initialBBox.x = this.svgwidth/2-100;
+        }
+    }
 
     get sidebarButtons() {
       if (this.customButtons) return this.customButtons;
