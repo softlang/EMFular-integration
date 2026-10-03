@@ -7,13 +7,16 @@ Please refer to the version compatibilities listed below for more details.
 ## Current Features
 EMFular-integration currently offers:
 * **editor-level services and components:** model service, on top of model-edit-service, history-service of EMFular-tool; editor toolbars to wire the model service methods with buttons; drawing canvas with or without tree components, ready editor shells, connecting the toolbars, canvas and services into one component.
-* **details services and components:** Detail views (tree-based) and services to open and close them. Components wire the service actions to their click events.
-* **graphical components**: all basic components from EMFular-diagram plus the referencable box.
+* **details services and components:** Detail views and services to open and close them.
+* **graphical components**: all basic components from EMFular-diagram plus a tree based model element.
+
+Please visit our [interactive playground](https://softlang.github.io/EMFular-integration/) to explore the current library capabilities.
 
 ## Versions
 
 | **Integration Version** | **Features** | **Required Core, Tool, and Diagram** |
 | --- | --- | --- |
+| 2.0.0 | Diagram 2.0 with substantial feature improvements; simpler API of integration itself | "emfular-core": ">=1.1.0",  "ngx-emfular-tool": ">=1.0.0",     "ngx-emfular-diagram": ">=2.0.2", |
 | 1.0.0 | Functionality in integration itself is the same as off 0.4.1, but integrates substantial improvements from core | "emfular-core": ">=1.1.0",  "ngx-emfular-tool": ">=1.0.0",     "ngx-emfular-diagram": ">=1.0.1", |  
 | 0.4.1 | Details components, Tree-based Editors and single re-usable graphical components |  "emfular": ">=9.0.0 <11.0.0", "ngx-emfular-helper": "^1.0.0", "ngx-svg-graphics": "^3.0.0" | 
 | 0.1.0 | Referencable box component, basic wiring of core + tool |   "emfular": ">=9.0.0 <11.0.0", "ngx-emfular-helper": "^1.0.0", "ngx-svg-graphics": "^3.0.0" |
