@@ -4,7 +4,7 @@
 }
 
 /*** tree view ***/
-.cdk-overlay-pane.tree-choice-panel {
+.tree-choice-panel {
     background: #ffffff;
     border-radius: 12px;
     padding: 16px;
