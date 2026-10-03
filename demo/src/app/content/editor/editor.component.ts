@@ -1,4 +1,4 @@
-import {OnInit, Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {HighlightedCodeComponent} from "../../layout/highlighted-code/highlighted-code.component";
 import {editButtonDef} from "./editor.component.code";
 import {
@@ -10,7 +10,6 @@ import {
     TreeEditorComponent
 } from "ngx-emfular-integration";
 import {DemoModelService} from "../running-example/demo-model.service";
-import {DemoElement2} from "../running-example/demo-model";
 
 @Component({
   selector: 'demo-editor',
@@ -26,17 +25,9 @@ import {DemoElement2} from "../running-example/demo-model";
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.css'
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent {
 
   constructor(public readonly demoModelService: DemoModelService) {}
-
-  ngOnInit() {
-      this.demoModelService.model.name = 'model0'
-      const model01 = new DemoElement2('model01')
-      const model02 = new DemoElement2('model02')
-      this.demoModelService.model.children.push(model01, model02)
-      model01.friends.push(model02)
-  }
 
   buttons0: EditButtonDef[] = [
     {label: "label1", action: () =>this.buttonAction("label1")},
