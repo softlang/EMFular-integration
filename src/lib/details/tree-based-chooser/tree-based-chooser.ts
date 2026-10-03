@@ -1,0 +1,35 @@
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {TreeModelElementComponent} from "../../graphical/tree-model-element/tree-model-element.component";
+import {ModelService} from "../../model.service";
+import { Referencable, ReTreeChildrenContainer } from 'emfular-core';
+import { BoundingBox, SvgCanvasComponent } from 'ngx-emfular-diagram';
+
+@Component({
+  selector: 'emfular-tree-canvas',
+  imports: [
+    TreeModelElementComponent,
+    SvgCanvasComponent
+  ],
+  templateUrl: './tree-based-chooser.html',
+  styles: []
+})
+export class TreeBasedChooser<M extends Referencable<any>> {
+  svgwidth = 1500;
+  //svgheigth = 1000;
+  viewBox = '0 0 1500 1000';
+  initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 50}
+
+  @Input() modelService!: ModelService<M>
+  @Output() chooseElement: EventEmitter<Referencable<any>> = new EventEmitter();
+  @Output() chooseReference: EventEmitter<ReTreeChildrenContainer<any>> = new EventEmitter();
+  @Output() svgReady: EventEmitter<SVGSVGElement> = new EventEmitter<SVGSVGElement>();
+
+  choose(element: Referencable<any>): void {
+    this.chooseElement.emit(element);
+  }
+
+  chooseRef(reference: ReTreeChildrenContainer<any>) {
+    this.chooseReference.emit(reference);
+  }
+
+}

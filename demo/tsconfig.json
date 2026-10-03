@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+
+    "lib": [
+      "ES2022",
+      "ESNext",
+      "DOM"
+    ],
+
+    "esModuleInterop": true,
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "noImplicitOverride": true,
+    "experimentalDecorators": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "baseUrl": "./"
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.d.ts"],
+  "exclude": ["src/test.ts", "src/**/*.spec.ts"]
+}

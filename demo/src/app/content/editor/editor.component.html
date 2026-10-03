@@ -1,0 +1,98 @@
+<h1>Editors and their Components</h1>
+
+<p>
+    We provide completely wired editors, as well as all the necessary primitives for building a more tailored editor of your own.
+    Our general assumption is that an editor consists of three parts:
+</p>
+<ul>
+    <li>the modeling canvas</li>
+    <li>the main editor bar, providing file-level functionality such as loading and saving models</li>
+    <li>the model-specific palette for any model specific operations like creating new model elements/li>
+</ul>
+
+<h2>Complete Editors</h2>
+
+<h3>Basic Editor</h3>
+<p>
+    We provide a basic editor with the main editor bar and content projection slots for the graphical elements and the optional model specific palette.
+</p>
+
+<p>
+    The version below basically recreates the look of the complete tree editor further down the page.
+    However, the tree model element component exposes a click binding for model elements, that we did not wire while the complete editor opens a details form.
+</p>
+<emfular-basic-editor
+        [svgwidth]="750"
+        [svgheight]="300"
+        [modelService]="demoModelService"
+>
+    <svg:g canvas>
+        <g emfular-tree-model-element
+           [referencable]="demoModelService.model"
+           [position]="positionCompleteFirstElem"
+           [color]="'#ccb5b5'"
+        >
+        </g>
+    </svg:g>
+</emfular-basic-editor>
+
+<h3>Complete Tree Editor</h3>
+
+<p>
+    Users who have no graphical representation of their own, can use this tree based editor.
+    It already has the graphical details service wired in:
+    when clicking on an element, a details form opens as a modal.
+    If you then adapt any relationship on that, your choice dialogue for the other model element is the graphical tree details view you also see on the main canvas.
+    This later interaction gave the service its name.
+</p>
+
+<emfular-tree-editor
+        [modelService]="demoModelService"
+        [svgwidth]="750"
+        [svgheight]="500"
+>
+
+</emfular-tree-editor>
+
+<h2>Building Blocks for Editors</h2>
+
+<p>
+    If you want to control more than the basic editor allows you to, you might consider creating an own editor for the exported building blocks of our library.
+</p>
+
+<h3>Main Editor Bar</h3>
+
+<p>
+    The editor bar is concerned with a fixed set of global model operations: creating, loading and saving models, undo and redo of edit operations, and downloading graphical representations.
+    It needs two inputs: the model service, since it controls model editions and coordinates them with the history service, and an svg element, usually just the one from the drawing canvas, so that it can offer jpeg, png and svg downloads of it.
+</p>
+
+<emfular-main-editor-bar
+        [svg]=""
+        [modelService]="demoModelService"
+>
+</emfular-main-editor-bar>
+
+<h3>Model Specific Palette</h3>
+
+<p>
+    You can provide your model specific operations and button customizations through a simple abstraction:
+</p>
+<demo-highlighted-code [code]="actionButtonDef"></demo-highlighted-code>
+<p>
+    We provide a palette, that consumes such button definitions to display model specific buttons.
+    The example below activates the reset button only, if some other buttons have been clicked and hence text starts filling the area to their right.
+</p>
+<div class="button0-container">
+    <emfular-model-specific-palette [buttons]="buttons0">
+    </emfular-model-specific-palette>
+    <span class="output">{{ buttonMessage0 }}</span>
+</div>
+
+<h3>Modeling Canvas</h3>
+
+<p>
+    You can use the svg canvas of EMFular-diagram to project your own svg components onto.
+    If you have no own graphical representation, you can project our tree model element onto that canvas.
+    In that case, using the tree based editor could also work for you.
+</p>

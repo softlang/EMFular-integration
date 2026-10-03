@@ -1,0 +1,12 @@
+<svg-canvas
+    [viewBox]="viewBox"
+    (svgReady)="svgReady.emit($event)"
+>
+    <svg:g emfular-tree-model-element
+           [referencable]="modelService.model"
+           [position]="initialBBox"
+           (chooseElement)="choose($event)"
+           (chooseReference)="chooseRef($event)"
+        >
+    </svg:g>
+</svg-canvas>

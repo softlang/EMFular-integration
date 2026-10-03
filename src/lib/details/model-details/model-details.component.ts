@@ -5,17 +5,16 @@ import { getAllAttributes } from "emfular-core";
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {
-  ContainerDetailsComponent
-} from "../container-details/container-details.component";
-import {TreeDetailsService} from "../tree-details-service";
-import {IdHelper} from "../../utils/id-helper";
+  ReferenceDetailsComponent
+} from "../reference-details/reference-details.component";
+import {DetailsService} from "../details-service";
 
 @Component({
-  selector: 'lib-model-details',
+  selector: 'emfular-model-details',
   imports: [
     FormsModule,
     NgForOf,
-    ContainerDetailsComponent,
+    ReferenceDetailsComponent,
     NgIf
   ],
   templateUrl: './model-details.component.html',
@@ -24,7 +23,7 @@ import {IdHelper} from "../../utils/id-helper";
 export class ModelDetailsComponent<T extends Referencable<any>, M extends Referencable<any>> implements OnInit {
   @Input() model!: T
   @Input() modelService!: ModelService<M>
-  @Input() detailsService!: TreeDetailsService<M>
+  @Input() detailsService!: DetailsService<M>
 
   attributes: Array<{ key: string; options: AttributeOptions }> = [];
 
@@ -36,22 +35,13 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
     }));
   }
 
-  getLinks(): ReLinkContainer<any, any>[] {
-    return this.model.$otherLinks
-  }
-
-  getChildren(): ReTreeChildrenContainer<any>[] {
-    return this.model.$treeChildren
-  }
-
   chooseParent() {
     this.detailsService
-        .openParentChoice(this.modelService)
-        .subscribe(chosen => {
+        .openTreeReferenceChoice(this.modelService)
+        .subscribe((chosen: ReTreeChildrenContainer<any>) => {
           if (!chosen) return; // user cancelled
           // todo what about type mismatches?
-          const res = chosen._parent.addToReferencableContainer(
-              chosen.referenceName,
+          const res = chosen.add(
               this.model
           )
           if (res) {
@@ -60,5 +50,4 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
         });
   }
 
-  protected readonly IdHelper = IdHelper;
 }

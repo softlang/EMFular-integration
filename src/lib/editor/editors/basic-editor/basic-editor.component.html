@@ -1,0 +1,24 @@
+<div class="editor-root">
+
+    <!-- Fixed top bar -->
+    <div class="editor-topbar">
+        <emfular-main-editor-bar
+                [svg]="svgElement"
+                [modelService]="modelService">
+        </emfular-main-editor-bar>
+    </div>
+
+    <div class="editor-main">
+        <!-- Optional sidebar -->
+        <div class="editor-sidebar">
+            <ng-content select="[sidebar]"></ng-content>
+        </div>
+
+        <svg-canvas
+                [viewBox]="viewBox"
+                (svgReady)="onSvgReady($event)"
+        >
+            <ng-content select="[canvas]"></ng-content>
+        </svg-canvas>
+    </div>
+</div>

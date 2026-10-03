@@ -17,11 +17,6 @@ export default defineConfig({
             '@angular/core/testing',
             '@angular/platform-browser-dynamic/testing',
 
-            '@angular/material/dialog',
-            '@angular/material/icon',
-            '@angular/material/button',
-            '@angular/material/toolbar',
-
             '@angular/cdk/overlay',
             '@angular/cdk/portal',
 
@@ -38,6 +33,15 @@ export default defineConfig({
     },
     test: {
         setupFiles: ['./vitest.setup.ts'],
+        globals: true,
+        exclude: [
+            '**/node_modules/**',
+            '**/.git/**',
+            '**/dist/**',
+            '**/cypress/**',
+            '**/.{idea,git,cache,output,temp}/**',
+            'demo/**'
+        ],
         browser: {
             enabled: true,
             provider: playwright(),

@@ -1,0 +1,20 @@
+<emfular-basic-editor
+    [svgwidth]="svgwidth"
+    [svgheight]="svgheight"
+    [modelService]="modelService"
+>
+    <!-- Default sidebar -->
+    <emfular-model-specific-palette
+            sidebar
+            [buttons]="sidebarButtons">
+    </emfular-model-specific-palette>
+
+    <!-- Default canvas content, needs svg namespace just like components -->
+    <svg:g canvas>
+        <g emfular-tree-model-element
+        [referencable]="modelService.model"
+        [position]="initialBBox"
+        (chooseElement)="choose($event)">
+        </g>
+    </svg:g>
+</emfular-basic-editor>

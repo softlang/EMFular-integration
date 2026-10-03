@@ -7,8 +7,8 @@
     </div>
     <div class="ref-info" *ngIf="model.$getEParent()">
         <span class="ref-icon">🔗</span>
-        <span class="ref-type">{{ model.$getEParent().getEClass() }}</span>
-        <span class="ref-label">{{ IdHelper.getLabel(model.$getEParent()) }}</span>
+        <span class="ref-type">{{ model.$getEParent().$getEClass() }}</span>
+        <span class="ref-label">{{ model.$getEParent().$label }}</span>
     </div>
     <button (click)="chooseParent()">
         Set Parent
@@ -25,21 +25,21 @@
 </div>
 <h3>References</h3>
 <div class="reference-list">
-    <container-details
-            *ngFor="let container of getChildren()"
+    <emfular-reference-details
+            *ngFor="let container of this.model.$treeChildren"
             [container]="container"
             [isTree]="true"
             [modelService]="modelService"
             [detailsService]="detailsService"
     >
-    </container-details>
-    <container-details
-        *ngFor="let container of getLinks()"
+    </emfular-reference-details>
+    <emfular-reference-details
+        *ngFor="let container of this.model.$otherLinks"
         [container]="container"
         [isTree]="false"
         [modelService]="modelService"
         [detailsService]="detailsService"
     >
-    </container-details>
+    </emfular-reference-details>
 </div>
 

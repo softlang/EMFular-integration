@@ -1,0 +1,99 @@
+<svg:g [attr.id]="referencable.$gId">
+
+    <!-- main element -->
+    <g
+        [id]="referencable.$gId + '_main'"
+        [dragPosition]="position"
+        (elemReallyClicked)="choose(referencable)"
+    >
+        <ng-container
+             [ngTemplateOutlet]="rectangleWithText"
+             [ngTemplateOutletContext]="{
+                id: referencable.$gId + '_main',
+                position: position,
+                color: color,
+                text: referencable.$label
+            }"
+        ></ng-container>
+        <g emfular-expand-toggle
+           [(expanded)] ="isExpanded"
+           [x]="position.x+position.w"
+           [y]="position.y+position.h"
+        ></g>
+    </g>
+
+    @if (isExpanded) {
+        @for (container of references; track container.id; let i = $index) {
+
+            <!-- reference box -->
+            <g
+                [id]="container.id + '_ref'"
+                [dragPosition]="container.position"
+                (elemReallyClicked)="chooseRef(container.self)"
+            >
+                <ng-container
+                    [ngTemplateOutlet]="rectangleWithText"
+                    [ngTemplateOutletContext]="{
+                        id: container.id + '_ref',
+                        position: container.position,
+                        color:  referenceColor,
+                        text: container.referenceName
+                    }"
+                ></ng-container>
+            </g>
+            <g emfular-expand-toggle
+               [(expanded)] ="container.expanded"
+               [x]="container.position.x+container.position.w"
+               [y]="container.position.y+container.position.h"
+            ></g>
+
+            <!-- arrow from main box to reference -->
+            <g arrow-elements
+               [startGID]="referencable.$gId+'_main'"
+               [endGID]="container.id+'_ref'"
+            ></g>
+
+
+        <!-- recursive elements under the reference-->
+            @if (container.expanded) {
+                @let realChildren = container.self.getAsList();
+                @for (elem of realChildren; track elem.$gId; let j = $index) {
+                    <g emfular-tree-model-element
+                       (chooseElement)="choose(elem)"
+                       [referencable]="elem"
+                       [position]="getOrCreateChildPosition(elem.$gId, j, container)"
+                       [color]="color"
+                       [referenceColor]="referenceColor"
+                    >
+                    </g>
+                    <!-- arrow from reference to child box -->
+                    <g arrow-elements
+                       [startGID]="container.id+'_ref'"
+                       [endGID]="elem.$gId+'_main'"
+                    ></g>
+                }
+            }
+        }
+    }
+</svg:g>
+
+
+<ng-template #rectangleWithText
+             let-id="id"
+             let-position="position"
+             let-color="color"
+             let-text="text">
+
+    <svg:g rectangleG
+       [id]="id + '_rect'"
+       [position]="position"
+       [color]="color">
+    </svg:g>
+    <svg:text
+            [attr.x]="position.x + position.w/ 2"
+            [attr.y]="position.y + position.h/ 2"
+            text-anchor="middle"
+            dominant-baseline="middle">
+        {{ text }}
+    </svg:text>
+</ng-template>
