@@ -6,7 +6,7 @@ import {
     EditButtonDef,
     FileLevelBarComponent,
     ModelEditingBarComponent,
-    ReferencableBoxComponent,
+    TreeModelElementComponent,
     TreeEditorComponent
 } from "ngx-emfular-integration";
 import {DemoModelService} from "../running-example/demo-model.service";
@@ -18,8 +18,8 @@ import {DemoModelService} from "../running-example/demo-model.service";
         ModelEditingBarComponent,
         FileLevelBarComponent,
         BasicEditorComponent,
-        ReferencableBoxComponent,
-        ReferencableBoxComponent,
+        TreeModelElementComponent,
+        TreeModelElementComponent,
         TreeEditorComponent
     ],
   templateUrl: './editor.component.html',

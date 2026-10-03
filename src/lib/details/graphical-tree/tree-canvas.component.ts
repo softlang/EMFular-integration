@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {ReferencableBoxComponent} from "../../graphical/referencable-box/referencable-box.component";
+import {TreeModelElementComponent} from "../../graphical/tree-model-element/tree-model-element.component";
 import {ModelService} from "../../model.service";
 import { Referencable, ReTreeChildrenContainer } from 'emfular-core';
 import { BoundingBox, SvgCanvasComponent } from 'ngx-emfular-diagram';
@@ -7,7 +7,7 @@ import { BoundingBox, SvgCanvasComponent } from 'ngx-emfular-diagram';
 @Component({
   selector: 'tree-canvas',
   imports: [
-    ReferencableBoxComponent,
+    TreeModelElementComponent,
     SvgCanvasComponent
   ],
   templateUrl: './tree-canvas.component.html',

@@ -11,7 +11,7 @@ export * from './lib/details/graphical-tree/tree-canvas.component';
 export * from './lib/editor/editors/basic-editor/basic-editor.component';
 export * from './lib/editor/creation-palettes/edit-button-def';
 
-export * from './lib/graphical/referencable-box/referencable-box.component';
+export * from './lib/graphical/tree-model-element/tree-model-element.component';
 
 export * from './lib/details/details-service'
 export * from './lib/details/graphical-tree-details.service';

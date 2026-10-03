@@ -11,7 +11,7 @@ import {ReferenceModel} from "../reference-model";
 import {ExpandToggleComponent} from "../toggle-expand/toggle-expand.component";
 
 @Component({
-  selector: '[referencable-box]',
+  selector: '[tree-model-element]',
   imports: [
     RectangleComponent,
     ArrowBetweenElemsComponent,
@@ -19,10 +19,9 @@ import {ExpandToggleComponent} from "../toggle-expand/toggle-expand.component";
     DraggableDirective,
     ExpandToggleComponent,
   ],
-  templateUrl: './referencable-box.component.svg',
-  styleUrl: './referencable-box.component.css'
+  templateUrl: './tree-model-element.component.svg',
 })
-export class ReferencableBoxComponent implements OnChanges {
+export class TreeModelElementComponent implements OnChanges {
   @Input() referencable!: Referencable<any>;
   @Input() position!: BoundingBox
   @Input() color?: string = "rgba(126,117,117,0.5)"

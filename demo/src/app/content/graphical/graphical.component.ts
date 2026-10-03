@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {BoundingBox, SvgCanvasComponent} from "ngx-emfular-diagram";
 import {
-  ReferencableBoxComponent
+  TreeModelElementComponent
 } from "ngx-emfular-integration";
 import {DemoElement1, DemoElement2} from "../running-example/demo-model";
 
@@ -9,7 +9,7 @@ import {DemoElement1, DemoElement2} from "../running-example/demo-model";
   selector: 'demo-graphical',
   imports: [
     SvgCanvasComponent,
-    ReferencableBoxComponent
+    TreeModelElementComponent
   ],
   templateUrl: './graphical.component.html',
   styleUrl: './graphical.component.css'

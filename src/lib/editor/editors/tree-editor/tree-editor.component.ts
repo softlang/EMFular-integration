@@ -6,7 +6,7 @@ import {DetailsService} from "../../../details/details-service";
 import {GraphicalTreeDetailsService} from "../../../details/graphical-tree-details.service";
 import {EditButtonDef} from "../../creation-palettes/edit-button-def";
 import {BasicEditorComponent} from "../basic-editor/basic-editor.component";
-import {ReferencableBoxComponent} from "../../../graphical/referencable-box/referencable-box.component";
+import {TreeModelElementComponent} from "../../../graphical/tree-model-element/tree-model-element.component";
 import { BoundingBox } from 'ngx-emfular-diagram';
 
 @Component({
@@ -14,7 +14,7 @@ import { BoundingBox } from 'ngx-emfular-diagram';
     imports: [
         ModelEditingBarComponent,
         BasicEditorComponent,
-        ReferencableBoxComponent
+        TreeModelElementComponent
     ],
   templateUrl: './tree-editor.component.html',
   styleUrl: './tree-editor.component.css'
