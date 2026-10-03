@@ -63,7 +63,7 @@
 </p>
 
 
-<h2>Editor Bar</h2>
+<h2>Main Editor Bar</h2>
 
 <p>
     The editor bar is concerned with a fixed set of global model operations: creating, loading and saving models, undo and redo of edit operations, and downloading graphical representations.
@@ -76,13 +76,15 @@
 >
 </emfular-main-editor-bar>
 
-<h2>Creation Palette</h2>
+<h2>Model Specific Palette</h2>
 
-<p>We offer a simple abstraction for model-specific buttons:</p>
+<p>
+    You can provide your model specific operations and button customizations through a simple abstraction:
+</p>
 <demo-highlighted-code [code]="editButtonDef"></demo-highlighted-code>
 <p>
     It should be sufficient to define a button with a label, and an associated action, as well as an optional icon (via its string name), and a disabled flag.
-    We provide a palette, that consumes such button definitions to display creation buttons (or other buttons you specify).
+    We provide a palette, that consumes such button definitions to display model specific buttons.
 </p>
 <div class="button0-container">
     <emfular-model-editing-bar [buttons]="buttons0">
