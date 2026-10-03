@@ -8,10 +8,10 @@ import {EditButtonDef} from "../edit-button-def";
     NgForOf,
     NgIf,
   ],
-  templateUrl: './model-editing-bar.component.html',
-  styleUrl: './model-editing-bar.component.css'
+  templateUrl: './model-specific-palette.component.html',
+  styleUrl: './model-specific-palette.component.css'
 })
-export class ModelEditingBarComponent {
+export class ModelSpecificPaletteComponent {
   @Input() buttons: EditButtonDef[]|null = []
 
 }

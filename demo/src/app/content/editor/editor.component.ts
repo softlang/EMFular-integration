@@ -5,7 +5,7 @@ import {
     BasicEditorComponent,
     EditButtonDef,
     MainEditorBarComponent,
-    ModelEditingBarComponent,
+    ModelSpecificPaletteComponent,
     TreeModelElementComponent,
     TreeEditorComponent
 } from "ngx-emfular-integration";
@@ -15,7 +15,7 @@ import {DemoModelService} from "../running-example/demo-model.service";
   selector: 'demo-editor',
     imports: [
         HighlightedCodeComponent,
-        ModelEditingBarComponent,
+        ModelSpecificPaletteComponent,
         MainEditorBarComponent,
         BasicEditorComponent,
         TreeModelElementComponent,

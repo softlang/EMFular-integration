@@ -6,9 +6,9 @@ export * from './lib/model.service';
 
 export * from './lib/editor/editors/tree-editor/tree-editor.component'
 export * from './lib/editor/main-editor-bar/main-editor-bar.component';
-export * from './lib/editor/model-specific-editing/model-specific-editing-bar/model-editing-bar.component';
+export * from './lib/editor/model-specific-palette/model-specific-palette/model-specific-palette.component';
 export * from './lib/editor/editors/basic-editor/basic-editor.component';
-export * from './lib/editor/model-specific-editing/edit-button-def';
+export * from './lib/editor/model-specific-palette/edit-button-def';
 
 export * from './lib/graphical/tree-model-element/tree-model-element.component';
 

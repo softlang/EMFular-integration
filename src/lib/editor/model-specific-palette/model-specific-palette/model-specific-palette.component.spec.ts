@@ -1,19 +1,19 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModelEditingBarComponent } from './model-editing-bar.component';
+import { ModelSpecificPaletteComponent } from './model-specific-palette.component';
 
 describe('ModelEditingBarComponent', () => {
-  let component: ModelEditingBarComponent;
-  let fixture: ComponentFixture<ModelEditingBarComponent>;
+  let component: ModelSpecificPaletteComponent;
+  let fixture: ComponentFixture<ModelSpecificPaletteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModelEditingBarComponent]
+      imports: [ModelSpecificPaletteComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ModelEditingBarComponent);
+    fixture = TestBed.createComponent(ModelSpecificPaletteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

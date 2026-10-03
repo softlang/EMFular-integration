@@ -1,10 +1,10 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import { Referencable} from "emfular-core";
-import {ModelEditingBarComponent} from "../../model-specific-editing/model-specific-editing-bar/model-editing-bar.component";
+import {ModelSpecificPaletteComponent} from "../../model-specific-palette/model-specific-palette/model-specific-palette.component";
 import {ModelService} from "../../../model.service";
 import {DetailsService} from "../../../details/details-service";
 import {GraphicalTreeDetailsService} from "../../../details/graphical-tree-details.service";
-import {EditButtonDef} from "../../model-specific-editing/edit-button-def";
+import {EditButtonDef} from "../../model-specific-palette/edit-button-def";
 import {BasicEditorComponent} from "../basic-editor/basic-editor.component";
 import {TreeModelElementComponent} from "../../../graphical/tree-model-element/tree-model-element.component";
 import { BoundingBox } from 'ngx-emfular-diagram';
@@ -12,7 +12,7 @@ import { BoundingBox } from 'ngx-emfular-diagram';
 @Component({
   selector: 'emfular-tree-editor',
     imports: [
-        ModelEditingBarComponent,
+        ModelSpecificPaletteComponent,
         BasicEditorComponent,
         TreeModelElementComponent
     ],
