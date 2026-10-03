@@ -3,7 +3,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {EditButtonDef} from "../edit-button-def";
 
 @Component({
-  selector: 'emfular-model-editing-bar',
+  selector: 'emfular-model-specific-palette',
   imports: [
     NgForOf,
     NgIf,
