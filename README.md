@@ -14,12 +14,12 @@ Please visit our [interactive playground](https://softlang.github.io/EMFular-int
 
 ## Versions
 
-| **Integration Version** | **Features** | **Required Core, Tool, and Diagram** |
-| --- | --- | --- |
-| 2.0.0 | Diagram 2.0 with substantial feature improvements; simpler API of integration itself | "emfular-core": ">=1.1.0",  "ngx-emfular-tool": ">=1.0.0",     "ngx-emfular-diagram": ">=2.0.2", |
+| **Integration Version** | **Features** | **Required Core, Tool, and Diagram**                                                             |
+| --- | --- |--------------------------------------------------------------------------------------------------|
+| 2.0.0 | Diagram 2.0 with substantial feature improvements; simpler API of integration itself | "emfular-core": ">=1.3.0",  "ngx-emfular-tool": ">=1.1.0",     "ngx-emfular-diagram": ">=2.0.2", |
 | 1.0.0 | Functionality in integration itself is the same as off 0.4.1, but integrates substantial improvements from core | "emfular-core": ">=1.1.0",  "ngx-emfular-tool": ">=1.0.0",     "ngx-emfular-diagram": ">=1.0.1", |  
-| 0.4.1 | Details components, Tree-based Editors and single re-usable graphical components |  "emfular": ">=9.0.0 <11.0.0", "ngx-emfular-helper": "^1.0.0", "ngx-svg-graphics": "^3.0.0" | 
-| 0.1.0 | Referencable box component, basic wiring of core + tool |   "emfular": ">=9.0.0 <11.0.0", "ngx-emfular-helper": "^1.0.0", "ngx-svg-graphics": "^3.0.0" |
+| 0.4.1 | Details components, Tree-based Editors and single re-usable graphical components | "emfular": ">=9.0.0 <11.0.0", "ngx-emfular-helper": "^1.0.0", "ngx-svg-graphics": "^3.0.0"       | 
+| 0.1.0 | Referencable box component, basic wiring of core + tool | "emfular": ">=9.0.0 <11.0.0", "ngx-emfular-helper": "^1.0.0", "ngx-svg-graphics": "^3.0.0"       |
 
 
 
