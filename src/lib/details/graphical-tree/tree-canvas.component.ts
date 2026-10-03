@@ -17,7 +17,7 @@ export class TreeCanvasComponent<M extends Referencable<any>> {
   svgwidth = 1500;
   //svgheigth = 1000;
   viewBox = '0 0 1500 1000';
-  initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 25}
+  initialBBox : BoundingBox = {x: this.svgwidth/2, y: 20, w: 200, h: 50}
 
   @Input() modelService!: ModelService<M>
   @Output() chooseElement: EventEmitter<Referencable<any>> = new EventEmitter();
