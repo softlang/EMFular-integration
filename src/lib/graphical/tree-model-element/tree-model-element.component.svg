@@ -15,7 +15,7 @@
                 text: referencable.$label
             }"
         ></ng-container>
-        <g expand-toggle
+        <g emfular-expand-toggle
            [(expanded)] ="isExpanded"
            [x]="position.x+position.w"
            [y]="position.y+position.h"
@@ -41,7 +41,7 @@
                     }"
                 ></ng-container>
             </g>
-            <g expand-toggle
+            <g emfular-expand-toggle
                [(expanded)] ="container.expanded"
                [x]="container.position.x+container.position.w"
                [y]="container.position.y+container.position.h"
@@ -58,7 +58,7 @@
             @if (container.expanded) {
                 @let realChildren = container.self.getAsList();
                 @for (elem of realChildren; track elem.$gId; let j = $index) {
-                    <g tree-model-element
+                    <g emfular-tree-model-element
                        (chooseElement)="choose(elem)"
                        [referencable]="elem"
                        [position]="getOrCreateChildPosition(elem.$gId, j, container)"

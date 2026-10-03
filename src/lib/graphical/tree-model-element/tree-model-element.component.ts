@@ -11,7 +11,7 @@ import {ReferenceModel} from "../reference-model";
 import {ExpandToggleComponent} from "../toggle-expand/toggle-expand.component";
 
 @Component({
-  selector: '[tree-model-element]',
+  selector: '[emfular-tree-model-element]',
   imports: [
     RectangleComponent,
     ArrowBetweenElemsComponent,

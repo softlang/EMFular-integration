@@ -5,7 +5,7 @@ import {ModelService} from "../../model.service";
 import {DetailsService} from "../details-service";
 
 @Component({
-  selector: 'reference-details',
+  selector: 'emfular-reference-details',
   imports: [
     NgForOf,
     NgIf,

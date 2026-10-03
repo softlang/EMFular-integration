@@ -5,7 +5,7 @@ import { Referencable, ReTreeChildrenContainer } from 'emfular-core';
 import { BoundingBox, SvgCanvasComponent } from 'ngx-emfular-diagram';
 
 @Component({
-  selector: 'tree-canvas',
+  selector: 'emfular-tree-canvas',
   imports: [
     TreeModelElementComponent,
     SvgCanvasComponent

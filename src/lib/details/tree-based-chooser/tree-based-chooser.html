@@ -2,7 +2,7 @@
     [viewBox]="viewBox"
     (svgReady)="svgReady.emit($event)"
 >
-    <svg:g tree-model-element
+    <svg:g emfular-tree-model-element
            [referencable]="modelService.model"
            [position]="initialBBox"
            (chooseElement)="choose($event)"

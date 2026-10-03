@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 
 @Component({
-    selector: '[expand-toggle]',
+    selector: '[emfular-expand-toggle]',
     standalone: true,
     template: `
     <svg:text [attr.x]="x"

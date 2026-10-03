@@ -10,7 +10,7 @@ import {
 import {DetailsService} from "../details-service";
 
 @Component({
-  selector: 'lib-model-details',
+  selector: 'emfular-model-details',
   imports: [
     FormsModule,
     NgForOf,

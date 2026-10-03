@@ -25,21 +25,21 @@
 </div>
 <h3>References</h3>
 <div class="reference-list">
-    <reference-details
+    <emfular-reference-details
             *ngFor="let container of this.model.$treeChildren"
             [container]="container"
             [isTree]="true"
             [modelService]="modelService"
             [detailsService]="detailsService"
     >
-    </reference-details>
-    <reference-details
+    </emfular-reference-details>
+    <emfular-reference-details
         *ngFor="let container of this.model.$otherLinks"
         [container]="container"
         [isTree]="false"
         [modelService]="modelService"
         [detailsService]="detailsService"
     >
-    </reference-details>
+    </emfular-reference-details>
 </div>
 
