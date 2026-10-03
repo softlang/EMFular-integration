@@ -1,5 +1,5 @@
-export const editButtonDef = `
-export interface EditButtonDef {
+export const actionButtonDef = `
+export interface ActionButtonDef {
     label: string;
     action: () => void
     icon?: string;

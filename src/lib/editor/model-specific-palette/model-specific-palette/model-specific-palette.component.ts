@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
-import {EditButtonDef} from "../edit-button-def";
+import {ActionButtonDef} from "../action-button-def";
 
 @Component({
   selector: 'emfular-model-specific-palette',
@@ -12,6 +12,6 @@ import {EditButtonDef} from "../edit-button-def";
   styleUrl: './model-specific-palette.component.css'
 })
 export class ModelSpecificPaletteComponent {
-  @Input() buttons: EditButtonDef[]|null = []
+  @Input() buttons: ActionButtonDef[]|null = []
 
 }

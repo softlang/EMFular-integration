@@ -1,4 +1,4 @@
-export interface EditButtonDef {
+export interface ActionButtonDef {
     label: string;
     action: () => void
     icon?: string;

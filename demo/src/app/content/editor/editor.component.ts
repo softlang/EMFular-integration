@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {HighlightedCodeComponent} from "../../layout/highlighted-code/highlighted-code.component";
-import {editButtonDef} from "./editor.component.code";
+import {actionButtonDef} from "./editor.component.code";
 import {
     BasicEditorComponent,
-    EditButtonDef,
+    ActionButtonDef,
     MainEditorBarComponent,
     ModelSpecificPaletteComponent,
     TreeModelElementComponent,
@@ -29,7 +29,7 @@ export class EditorComponent {
 
   constructor(public readonly demoModelService: DemoModelService) {}
 
-  buttons0: EditButtonDef[] = [
+  buttons0: ActionButtonDef[] = [
     {label: "label1", action: () =>this.buttonAction("label1")},
     {label: "label2", action: () =>this.buttonAction("label2")},
     {label: "reset", action: () =>this.buttonReset(), disabled: true},
@@ -54,5 +54,5 @@ export class EditorComponent {
   positionCompleteFirstElem = {x: 300, y: 0, w:200, h: 50};
 
 
-  protected readonly editButtonDef = editButtonDef;
+  protected readonly actionButtonDef = actionButtonDef;
 }
