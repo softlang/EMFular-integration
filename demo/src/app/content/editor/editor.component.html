@@ -52,10 +52,13 @@
 
 <h3>Basic Editor</h3>
 <p>
-    We provide a basic editor with the fixed model editor bar and content projection slots for the graphical elements and the model editing palette.
-    The latter is optional and not contained in the demo below.
+    We provide a basic editor with the fixed model editor bar and content projection slots for the graphical elements and the optional model editing palette.
 </p>
 
+<p>
+    The version below basically recreates the look of the complete tree editor further down the page.
+    However, the tree model element component exposes a click binding for model elements, that we did not wire while the complete editor opens a details form.
+</p>
 <emfular-basic-editor
         [svgwidth]="750"
         [svgheight]="300"
@@ -75,8 +78,10 @@
 
 <p>
     There is also a complete tree based editor, that users who have no graphical representation of their own, can use.
-    It already has the graphical details service wired in.
-    So when clicking on an element, a details form opens as a modal, and if you then adapt any relationship on that, your choice dialogue for the other model element is the graphical tree details view you also see on the main canvas.
+    It already has the graphical details service wired in:
+    when clicking on an element, a details form opens as a modal.
+    If you then adapt any relationship on that, your choice dialogue for the other model element is the graphical tree details view you also see on the main canvas.
+    This later interaction gave the service its name.
 </p>
 
 <emfular-tree-editor
