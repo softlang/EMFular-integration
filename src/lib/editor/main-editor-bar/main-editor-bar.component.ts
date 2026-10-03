@@ -4,7 +4,7 @@ import {Referencable} from "emfular-core";
 import {ModelService} from "../../model.service";
 
 @Component({
-  selector: 'main-editor-bar',
+  selector: 'emfular-main-editor-bar',
   imports: [],
   templateUrl: './main-editor-bar.component.html',
   styleUrl: './main-editor-bar.component.css'
