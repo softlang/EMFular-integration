@@ -3,7 +3,7 @@ import { Referencable, ReTreeChildrenContainer } from 'emfular-core';
 import {ModelService} from "../model.service";
 import {ModelDetailsComponent} from "./model-details/model-details.component";
 import { Overlay } from '@angular/cdk/overlay';
-import {TreeCanvasComponent} from "./graphical-tree/tree-canvas.component";
+import {TreeBasedChooser} from "./tree-based-chooser/tree-based-chooser";
 import {Observable} from "rxjs";
 import {DetailsService} from "./details-service";
 import {ModalInstance, ModalService} from "ngx-emfular-tool";
@@ -43,9 +43,9 @@ export class GraphicalTreeDetailsService<M extends Referencable<any>> implements
     openElementChoice(
         modelService: ModelService<M>
     ): Observable<Referencable<any>> {
-        const modalInstance: ModalInstance<TreeCanvasComponent<M>, Referencable<any>> =
+        const modalInstance: ModalInstance<TreeBasedChooser<M>, Referencable<any>> =
             this.modalService.createModal(
-                TreeCanvasComponent<M>,
+                TreeBasedChooser<M>,
                 {
                     hasBackdrop: true,
                     backdropClass: 'cdk-overlay-dark-backdrop',
@@ -64,9 +64,9 @@ export class GraphicalTreeDetailsService<M extends Referencable<any>> implements
     openTreeReferenceChoice(
         modelService: ModelService<M>
     ): Observable<ReTreeChildrenContainer<any>> {
-        const modalInstance: ModalInstance<TreeCanvasComponent<M>, ReTreeChildrenContainer<any>> =
+        const modalInstance: ModalInstance<TreeBasedChooser<M>, ReTreeChildrenContainer<any>> =
             this.modalService.createModal(
-                TreeCanvasComponent<M>,
+                TreeBasedChooser<M>,
                 {
                     hasBackdrop: true,
                     backdropClass: 'cdk-overlay-dark-backdrop',

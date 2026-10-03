@@ -1,21 +1,21 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TreeCanvasComponent } from './tree-canvas.component';
+import { TreeBasedChooser } from './tree-based-chooser';
 import {DummyReferencable} from "../../test/dummy-referencable";
 import {ModelService} from "../../model.service";
 
 describe('TreeCanvasComponent', () => {
-  let component: TreeCanvasComponent<DummyReferencable>;
-  let fixture: ComponentFixture<TreeCanvasComponent<DummyReferencable>>;
+  let component: TreeBasedChooser<DummyReferencable>;
+  let fixture: ComponentFixture<TreeBasedChooser<DummyReferencable>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TreeCanvasComponent]
+      imports: [TreeBasedChooser]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TreeCanvasComponent<DummyReferencable>);
+    fixture = TestBed.createComponent(TreeBasedChooser<DummyReferencable>);
     component = fixture.componentInstance;
     const model = new DummyReferencable()
     const modelService = {

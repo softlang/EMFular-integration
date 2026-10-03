@@ -10,10 +10,10 @@ import { BoundingBox, SvgCanvasComponent } from 'ngx-emfular-diagram';
     TreeModelElementComponent,
     SvgCanvasComponent
   ],
-  templateUrl: './tree-canvas.component.html',
-  styleUrl: './tree-canvas.component.css'
+  templateUrl: './tree-based-chooser.html',
+  styles: []
 })
-export class TreeCanvasComponent<M extends Referencable<any>> {
+export class TreeBasedChooser<M extends Referencable<any>> {
   svgwidth = 1500;
   //svgheigth = 1000;
   viewBox = '0 0 1500 1000';
