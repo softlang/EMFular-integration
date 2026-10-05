@@ -14,11 +14,13 @@
             <ng-content select="[sidebar]"></ng-content>
         </div>
 
-        <svg-canvas
-                [viewBox]="viewBox"
-                (svgReady)="onSvgReady($event)"
-        >
-            <ng-content select="[canvas]"></ng-content>
-        </svg-canvas>
+        <div class="editor-canvas">
+            <svg-canvas
+                    [viewBox]="viewBox"
+                    (svgReady)="onSvgReady($event)"
+            >
+                <ng-content select="[canvas]"></ng-content>
+            </svg-canvas>
+        </div>
     </div>
 </div>
