@@ -1,13 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AttributeOptions, Referencable, ReLinkContainer, ReTreeChildrenContainer } from 'emfular-core';
+import {AttributeOptions, getAllAttributes, Referencable, ReTreeChildrenContainer} from 'emfular-core';
 import {ModelService} from "../../model.service";
-import { getAllAttributes } from "emfular-core";
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
-import {
-  ReferenceDetailsComponent
-} from "../reference-details/reference-details.component";
+import {ReferenceDetailsComponent} from "../reference-details/reference-details.component";
 import {DetailsService} from "../details-service";
+import {IconButtonsComponent} from "../icon-buttons/icon-buttons.component";
+import {IconButtonType} from "../icon-buttons/icon-button-type";
 
 @Component({
   selector: 'emfular-model-details',
@@ -15,7 +14,8 @@ import {DetailsService} from "../details-service";
     FormsModule,
     NgForOf,
     ReferenceDetailsComponent,
-    NgIf
+    NgIf,
+    IconButtonsComponent
   ],
   templateUrl: './model-details.component.html',
   styleUrl: './model-details.component.css'
@@ -35,6 +35,10 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
     }));
   }
 
+  close() {
+    console.log("Todo: close!")
+  }
+
   chooseParent() {
     this.detailsService
         .openTreeReferenceChoice(this.modelService)
@@ -50,4 +54,11 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
         });
   }
 
+  delete() {
+    this.model.$destruct()
+    this.modelService.saveCurrentState()
+    this.close()
+  }
+
+  protected readonly IconButtonType = IconButtonType;
 }

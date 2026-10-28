@@ -1,0 +1,37 @@
+<button
+        type="button"
+        class="icon-button"
+        [class.add-button]="type === IconButtonType.Add"
+        [class.delete-button]="type === IconButtonType.Delete"
+        [class.close-button]="type === IconButtonType.Close"
+        [style.width.px]="size"
+        [style.height.px]="size"
+        [disabled]="disabled"
+        [attr.aria-label]="ariaLabel"
+        [attr.title]="ariaLabel"
+        (click)="onClick()">
+
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        @switch (type) {
+            @case (IconButtonType.Add) {
+                <svg:g>
+                    <path d="M12 5v14M5 12h14"/>
+                </svg:g>
+            }
+            @case (IconButtonType.Close) {
+                <svg:g>
+                    <path d="M18 6 6 18M6 6l12 12"/>
+                </svg:g>
+            }
+            @case (IconButtonType.Delete) {
+                <svg:g>
+                    <path d="M3 6h18"/>
+                    <path d="M8 6V4h8v2"/>
+                    <path d="M19 6l-1 14H6L5 6"/>
+                    <path d="M10 11v5M14 11v5"/>
+                </svg:g>
+            }
+
+        }
+    </svg>
+</button>
