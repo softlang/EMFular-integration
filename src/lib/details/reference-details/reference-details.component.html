@@ -1,6 +1,10 @@
-<h4>{{container.referenceName+":"}}</h4>
-
-<button *ngIf="!isTree" class="add-ref" (click)="add()">Add</button>
+<div class="header">
+    <h4>{{container.referenceName+":"}}</h4>
+    <emfular-icon-button  *ngIf="!isTree"
+                          [type]="IconButtonType.Add"
+                          (pressed)="add()">
+    </emfular-icon-button>
+</div>
 
 <div class="container-row"
      *ngFor="let elem of container.getAsList()">
@@ -11,8 +15,14 @@
     </div>
 
     <div class="ref-actions">
-        <button (click)="open(elem)">Open</button>
-        <button (click)="remove(elem)">Remove</button>
+        <emfular-icon-button
+           [type]="IconButtonType.Inspect"
+           (pressed)="open(elem)">
+        </emfular-icon-button>
+        <emfular-icon-button
+                [type]="IconButtonType.Delete"
+                (pressed)="remove(elem)">
+        </emfular-icon-button>
     </div>
 </div>
 
