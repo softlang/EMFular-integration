@@ -1,53 +1,11 @@
 .header {
     display: flex;
+    gap: 6px;
 }
 
-h4 {
+h3 {
     margin-top: 0;
     margin-bottom: 4px;
-}
-
-.add-ref {
-    margin-top: 0;
-    margin-bottom: 8px;  /* spacing before the list */
-    padding: 6px 12px;
-    border-radius: 6px;
-    border: 1px solid #b5b5b5;
-    background: #ffffff;
-    cursor: pointer;
-    font-size: 13px;
-    transition: background 120ms ease, border-color 120ms ease;
-}
-
-.add-ref:hover {
-    background: #f2f2f2;
-    border-color: #999;
-}
-
-.add-ref:active {
-    background: #e6e6e6;
-}
-
-.reference-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 12px;
-}
-
-.reference-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 8px;
-    border: 1px solid #d0d0d0;
-    border-radius: 6px;
-    background: #fafafa;
-    transition: background 120ms ease;
-}
-
-.reference-row:hover {
-    background: #f2f2f2;
 }
 
 /* Left side: icon + type + label */
@@ -83,27 +41,4 @@ h4 {
 .ref-actions {
     display: flex;
     gap: 6px;
-}
-
-/* Buttons: always visible, with border + background */
-.ref-actions button {
-    border: 1px solid #b5b5b5;
-    background: #ffffff;
-    cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    color: #333;
-    min-width: 32px;
-    text-align: center;
-    transition: background 120ms ease, border-color 120ms ease;
-}
-
-.ref-actions button:hover {
-    background: #e6e6e6;
-    border-color: #999;
-}
-
-.ref-actions button:active {
-    background: #dcdcdc;
 }
