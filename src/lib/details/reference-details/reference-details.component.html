@@ -9,17 +9,13 @@
 <div class="container-row"
      *ngFor="let elem of container.getAsList()">
     <div class="ref-info">
-        <span class="ref-icon">🔗</span>
+        <emfular-icon-button
+                [type]="IconButtonType.Inspect"
+                (pressed)="open(elem)">
+        </emfular-icon-button>
         <span class="ref-type">{{ elem.$getEClass() }}</span>
         <span class="ref-label">{{ elem.$label }}</span>
-    </div>
-
-    <div class="ref-actions">
-        <emfular-icon-button
-           [type]="IconButtonType.Inspect"
-           (pressed)="open(elem)">
-        </emfular-icon-button>
-        <emfular-icon-button
+        <emfular-icon-button class="ref-button"
                 [type]="IconButtonType.Delete"
                 (pressed)="remove(elem)">
         </emfular-icon-button>
