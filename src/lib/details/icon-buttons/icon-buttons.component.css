@@ -19,6 +19,11 @@
             color 120ms ease;
 }
 
+.icon-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
 .icon-button svg {
     width: 100%;
     height: 100%;
@@ -27,17 +32,6 @@
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
-}
-
-.add-button {
-    color: #315fb5;
-    border-color: #cbd8f2;
-    background: #f5f8ff;
-}
-
-.add-button:hover {
-    background: #e8efff;
-    border-color: #a8bce8;
 }
 
 .delete-button {
@@ -51,28 +45,6 @@
     border-color: #dfa0a0;
 }
 
-.close-button {
-    color: #646b78;
-    border-color: #e0e3e9;
-    background: #fff;
-}
-
-.close-button:hover {
-    color: #252a35;
-    background: #f0f2f5;
-    border-color: #cdd2dc;
-}
-
-.icon-button:focus-visible {
-    outline: 2px solid #647fc5;
-    outline-offset: 2px;
-}
-
-.icon-button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-}
-
 .edit-button {
     color: #4b658a;
     border-color: #d5dfed;
@@ -84,13 +56,13 @@
     border-color: #b4c7e2;
 }
 
-.inspect-button {
+.neutral-button {
     color: #596579;
     border-color: #e0e3e9;
     background: #fff;
 }
 
-.inspect-button:hover {
+.neutral-button:hover {
     background: #f0f2f6;
     border-color: #cdd2dc;
 }

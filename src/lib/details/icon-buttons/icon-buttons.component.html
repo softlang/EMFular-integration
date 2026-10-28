@@ -1,11 +1,9 @@
 <button
         type="button"
         class="icon-button"
-        [class.add-button]="type === IconButtonType.Add"
-        [class.close-button]="type === IconButtonType.Close"
         [class.delete-button]="type === IconButtonType.Delete"
-        [class.edit-button]="type === IconButtonType.Edit"
-        [class.inspect-button]="type === IconButtonType.Inspect"
+        [class.edit-button]="type === IconButtonType.Edit || type === IconButtonType.Add"
+        [class.neutral-button]="type === IconButtonType.Close || type === IconButtonType.Inspect"
         [style.width.px]="size"
         [style.height.px]="size"
         [disabled]="disabled"
