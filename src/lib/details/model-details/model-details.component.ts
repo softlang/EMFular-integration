@@ -7,6 +7,7 @@ import {ReferenceDetailsComponent} from "../reference-details/reference-details.
 import {DetailsService} from "../details-service";
 import {IconButtonsComponent} from "../icon-buttons/icon-buttons.component";
 import {IconButtonType} from "../icon-buttons/icon-button-type";
+import {ModalRef} from "ngx-emfular-tool";
 
 @Component({
   selector: 'emfular-model-details',
@@ -24,6 +25,7 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
   @Input() model!: T
   @Input() modelService!: ModelService<M>
   @Input() detailsService!: DetailsService<M>
+  @Input() modalRef!: ModalRef<void>;
 
   attributes: Array<{ key: string; options: AttributeOptions }> = [];
 
@@ -36,7 +38,7 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
   }
 
   close() {
-    console.log("Todo: close!")
+    this.modalRef.close();
   }
 
   chooseParent() {
@@ -56,8 +58,11 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
 
   delete() {
     this.model.$destruct()
-    this.modelService.saveCurrentState()
-    this.close()
+    try{
+      this.modelService.saveCurrentState()
+    } finally {
+      this.close()
+    }
   }
 
   protected readonly IconButtonType = IconButtonType;
