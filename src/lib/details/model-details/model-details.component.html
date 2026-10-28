@@ -30,12 +30,10 @@
                 {{ model.$getEParent().$label }}
             </span>
         </div>
-        <button
-                type="button"
-                class="emfular-white-button"
-                (click)="chooseParent()">
-            Set Parent
-        </button>
+        <emfular-icon-button
+                [type]="IconButtonType.Edit"
+                (pressed)="chooseParent()"
+        />
     </section>
 
     <section class="editor-section">
