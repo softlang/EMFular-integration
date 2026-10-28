@@ -1,3 +1,5 @@
+@import "../../styles/button.css";
+
 .detail-header {
     display: flex;
     flex-direction: row;
