@@ -37,6 +37,9 @@
     },
     "./details-overlay.css": {
       "default": "./details-overlay.css"
+    },
+    "./button.css": {
+      "default": "./button.css"
     }
   },
   "peerDependencies": {
