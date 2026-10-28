@@ -1,12 +1,9 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IconButtonType} from "./icon-button-type";
-import {NgSwitch, NgSwitchCase} from "@angular/common";
 
 @Component({
   selector: 'emfular-icon-button',
-  imports: [
-    NgSwitch
-  ],
+  imports: [],
   templateUrl: './icon-buttons.component.html',
   styleUrl: './icon-buttons.component.css'
 })
@@ -20,11 +17,15 @@ export class IconButtonsComponent {
   get ariaLabel(): string {
     switch (this.type) {
       case IconButtonType.Add:
-        return 'Add element';
-      case IconButtonType.Delete:
-        return 'Delete element';
+        return 'Add';
       case IconButtonType.Close:
         return 'Close';
+      case IconButtonType.Delete:
+        return 'Delete';
+      case IconButtonType.Edit:
+        return 'Edit';
+      case IconButtonType.Inspect:
+        return 'Inspect';
     }
   }
 

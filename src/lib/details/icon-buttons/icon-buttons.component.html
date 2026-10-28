@@ -2,8 +2,10 @@
         type="button"
         class="icon-button"
         [class.add-button]="type === IconButtonType.Add"
-        [class.delete-button]="type === IconButtonType.Delete"
         [class.close-button]="type === IconButtonType.Close"
+        [class.delete-button]="type === IconButtonType.Delete"
+        [class.edit-button]="type === IconButtonType.Edit"
+        [class.inspect-button]="type === IconButtonType.Inspect"
         [style.width.px]="size"
         [style.height.px]="size"
         [disabled]="disabled"
@@ -31,7 +33,18 @@
                     <path d="M10 11v5M14 11v5"/>
                 </svg:g>
             }
-
+            @case (IconButtonType.Edit) {
+                <g>
+                    <path d="m15 5 4 4"/>
+                    <path d="M4 20l4.5-1 10.8-10.8a2.1 2.1 0 0 0-3-3L5.5 16 4 20z"/>
+                </g>
+            }
+            @case (IconButtonType.Inspect) {
+                <g>
+                    <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </g>
+            }
         }
     </svg>
 </button>

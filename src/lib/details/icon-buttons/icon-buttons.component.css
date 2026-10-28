@@ -72,3 +72,25 @@
     opacity: 0.45;
     cursor: not-allowed;
 }
+
+.edit-button {
+    color: #4b658a;
+    border-color: #d5dfed;
+    background: #fff;
+}
+
+.edit-button:hover {
+    background: #edf3fb;
+    border-color: #b4c7e2;
+}
+
+.inspect-button {
+    color: #596579;
+    border-color: #e0e3e9;
+    background: #fff;
+}
+
+.inspect-button:hover {
+    background: #f0f2f6;
+    border-color: #cdd2dc;
+}
