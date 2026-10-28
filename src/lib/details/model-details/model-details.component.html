@@ -19,21 +19,23 @@
 
     <section class="editor-section parent-choice">
         <h2>Parent</h2>
-        <div *ngIf="!model.$getEParent()" class="empty-ref">
-            No Parent
-        </div>
-        <div *ngIf="model.$getEParent()" class="ref-info">
+        <div class="parent-row">
+            <div *ngIf="!model.$getEParent()" class="empty-ref">
+                No Parent
+            </div>
+            <div *ngIf="model.$getEParent()" class="ref-info">
             <span class="ref-type">
                 {{ model.$getEParent().$getEClass() }}
             </span>
-            <span class="ref-label">
+                <span class="ref-label">
                 {{ model.$getEParent().$label }}
             </span>
+            </div>
+            <emfular-icon-button
+                    [type]="IconButtonType.Edit"
+                    (pressed)="chooseParent()"
+            />
         </div>
-        <emfular-icon-button
-                [type]="IconButtonType.Edit"
-                (pressed)="chooseParent()"
-        />
     </section>
 
     <section class="editor-section">

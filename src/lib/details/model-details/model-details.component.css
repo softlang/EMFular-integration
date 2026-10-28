@@ -1,4 +1,11 @@
+
 @import "../../styles/button.css";
+
+.detail-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
 .detail-header {
     display: flex;
@@ -8,7 +15,6 @@
     gap: 16px;
     width: 100%;
     box-sizing: border-box;
-    padding-bottom: 18px;
     border-bottom: 1px solid #e5e7eb;
 }
 
@@ -35,44 +41,38 @@
 .header-actions {
     display: flex;
     flex: 0 0 auto;
-    flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     gap: 6px;
-    margin-left: auto;
 }
 
-.attribute-list {
+.editor-section {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-}
-
-.attribute-row {
-    display: flex;
-    flex-direction: column;
-}
-
-.attribute-row label {
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-
-.alert-ref {
-    color: red;
-}
-
-/* Left side: icon + type + label */
-.ref-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    gap: 12px;
     min-width: 0;
 }
 
-.ref-icon {
-    opacity: 0.7;
-    font-size: 14px;
+.editor-section h2 {
+    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 19px;
+    line-height: 1.3;
+    font-weight: 650;
+}
+
+.parent-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.parent-row .ref-info,
+.parent-row .empty-ref {
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 /* Type hint (EClass) */
@@ -90,4 +90,20 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.attribute-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.attribute-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.attribute-row label {
+    font-weight: 600;
+    margin-bottom: 4px;
 }
