@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AttributeOptions, getAllAttributes, Referencable, ReTreeChildrenContainer} from 'emfular-core';
 import {ModelService} from "../../model.service";
 import {FormsModule} from "@angular/forms";
@@ -7,7 +7,6 @@ import {ReferenceDetailsComponent} from "../reference-details/reference-details.
 import {DetailsService} from "../details-service";
 import {IconButtonsComponent} from "../icon-buttons/icon-buttons.component";
 import {IconButtonType} from "../icon-buttons/icon-button-type";
-import {ModalRef} from "ngx-emfular-tool";
 
 @Component({
   selector: 'emfular-model-details',
@@ -25,7 +24,7 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
   @Input() model!: T
   @Input() modelService!: ModelService<M>
   @Input() detailsService!: DetailsService<M>
-  @Input() modalRef?: ModalRef<void>;
+  @Output() closeMe: EventEmitter<void> = new EventEmitter();
 
   attributes: Array<{ key: string; options: AttributeOptions }> = [];
 
@@ -38,7 +37,7 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
   }
 
   close() {
-    this.modalRef?.close();
+    this.closeMe.emit();
   }
 
   chooseParent() {

@@ -38,7 +38,9 @@ export class GraphicalTreeDetailsService<M extends Referencable<any>> implements
     modalInstance.componentRef.instance.model = elem
     modalInstance.componentRef.instance.modelService = modelService
     modalInstance.componentRef.instance.detailsService = this
-    modalInstance.componentRef.instance.modalRef = modalInstance.ref
+    modalInstance.componentRef.instance.closeMe.subscribe(
+        () => {modalInstance.ref.close()}
+    )
   }
 
     openElementChoice(
