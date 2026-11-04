@@ -73,4 +73,13 @@ describe('ModelDetailsComponent', () => {
     expect(parent.add).toHaveBeenCalledWith(component.model);
     expect(modelService.saveCurrentState).not.toHaveBeenCalled();
   });
+
+  it('should save the current state and emit closeMe when deleting the model', () => {
+    const closeRequested = vi.fn();
+    component.closeMe.subscribe(closeRequested);
+
+    component.delete();
+    expect(modelService.saveCurrentState).toHaveBeenCalledOnce();
+    expect(closeRequested).toHaveBeenCalledOnce();
+  });
 });

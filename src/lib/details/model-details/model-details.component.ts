@@ -1,13 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AttributeOptions, Referencable, ReLinkContainer, ReTreeChildrenContainer } from 'emfular-core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AttributeOptions, getAllAttributes, Referencable, ReTreeChildrenContainer} from 'emfular-core';
 import {ModelService} from "../../model.service";
-import { getAllAttributes } from "emfular-core";
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
-import {
-  ReferenceDetailsComponent
-} from "../reference-details/reference-details.component";
+import {ReferenceDetailsComponent} from "../reference-details/reference-details.component";
 import {DetailsService} from "../details-service";
+import {IconButtonsComponent} from "../icon-buttons/icon-buttons.component";
+import {IconButtonType} from "../icon-buttons/icon-button-type";
 
 @Component({
   selector: 'emfular-model-details',
@@ -15,7 +14,8 @@ import {DetailsService} from "../details-service";
     FormsModule,
     NgForOf,
     ReferenceDetailsComponent,
-    NgIf
+    NgIf,
+    IconButtonsComponent
   ],
   templateUrl: './model-details.component.html',
   styleUrl: './model-details.component.css'
@@ -24,6 +24,7 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
   @Input() model!: T
   @Input() modelService!: ModelService<M>
   @Input() detailsService!: DetailsService<M>
+  @Output() closeMe: EventEmitter<void> = new EventEmitter();
 
   attributes: Array<{ key: string; options: AttributeOptions }> = [];
 
@@ -33,6 +34,10 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
       key,
       options
     }));
+  }
+
+  close() {
+    this.closeMe.emit();
   }
 
   chooseParent() {
@@ -50,4 +55,14 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
         });
   }
 
+  delete() {
+    this.model.$destruct()
+    try{
+      this.modelService.saveCurrentState()
+    } finally {
+      this.close()
+    }
+  }
+
+  protected readonly IconButtonType = IconButtonType;
 }

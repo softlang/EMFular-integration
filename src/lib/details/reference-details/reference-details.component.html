@@ -1,18 +1,24 @@
-<h4>{{container.referenceName+":"}}</h4>
-
-<button *ngIf="!isTree" class="add-ref" (click)="add()">Add</button>
+<div class="header">
+    <h3>{{container.referenceName+":"}}</h3>
+    <emfular-icon-button  *ngIf="!isTree"
+                          [type]="IconButtonType.Add"
+                          (pressed)="add()">
+    </emfular-icon-button>
+</div>
 
 <div class="container-row"
      *ngFor="let elem of container.getAsList()">
     <div class="ref-info">
-        <span class="ref-icon">🔗</span>
+        <emfular-icon-button
+                [type]="IconButtonType.Inspect"
+                (pressed)="open(elem)">
+        </emfular-icon-button>
         <span class="ref-type">{{ elem.$getEClass() }}</span>
         <span class="ref-label">{{ elem.$label }}</span>
-    </div>
-
-    <div class="ref-actions">
-        <button (click)="open(elem)">Open</button>
-        <button (click)="remove(elem)">Remove</button>
+        <emfular-icon-button class="ref-button"
+                [type]="IconButtonType.Delete"
+                (pressed)="remove(elem)">
+        </emfular-icon-button>
     </div>
 </div>
 

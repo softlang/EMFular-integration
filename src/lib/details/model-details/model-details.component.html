@@ -1,45 +1,75 @@
-<h1>Detail-Editor</h1>
-<h2>{{model.$getEClass()}}</h2>
-<div class="parent-choice">
-    <label>Current Parent</label>
-    <div *ngIf="!model.$getEParent()">
-        <span class="alert-ref">No Parent</span>
-    </div>
-    <div class="ref-info" *ngIf="model.$getEParent()">
-        <span class="ref-icon">🔗</span>
-        <span class="ref-type">{{ model.$getEParent().$getEClass() }}</span>
-        <span class="ref-label">{{ model.$getEParent().$label }}</span>
-    </div>
-    <button (click)="chooseParent()">
-        Set Parent
-    </button>
-</div>
-<div class="attribute-list">
-    <div class="attribute-row" *ngFor="let attr of attributes">
-        <label>{{ attr.key }}</label>
-        <input
-                type="text"
-                [(ngModel)]="$any(model)[attr.key]"
-        />
-    </div>
-</div>
-<h3>References</h3>
-<div class="reference-list">
-    <emfular-reference-details
-            *ngFor="let container of this.model.$treeChildren"
-            [container]="container"
-            [isTree]="true"
-            [modelService]="modelService"
-            [detailsService]="detailsService"
-    >
-    </emfular-reference-details>
-    <emfular-reference-details
-        *ngFor="let container of this.model.$otherLinks"
-        [container]="container"
-        [isTree]="false"
-        [modelService]="modelService"
-        [detailsService]="detailsService"
-    >
-    </emfular-reference-details>
-</div>
+<div class="detail-editor">
+    <header class="detail-header">
+        <div class="detail-title">
+            <h1>Detail Editor</h1>
+            <span class="detail-type">{{ model.$getEClass() }}</span>
+        </div>
 
+        <div class="header-actions">
+            <emfular-icon-button
+                    [type]="IconButtonType.Delete"
+                    (pressed)="delete()"
+            />
+            <emfular-icon-button
+                    [type]="IconButtonType.Close"
+                    (pressed)="close()"
+            />
+        </div>
+    </header>
+
+    <section class="editor-section parent-choice">
+        <h2>Parent</h2>
+        <div class="parent-row">
+            <div *ngIf="!model.$getEParent()" class="empty-ref">
+                No Parent
+            </div>
+            <div *ngIf="model.$getEParent()" class="ref-info">
+            <span class="ref-type">
+                {{ model.$getEParent().$getEClass() }}
+            </span>
+                <span class="ref-label">
+                {{ model.$getEParent().$label }}
+            </span>
+            </div>
+            <emfular-icon-button
+                    [type]="IconButtonType.Edit"
+                    (pressed)="chooseParent()"
+            />
+        </div>
+    </section>
+
+    <section class="editor-section">
+        <h2>Attributes</h2>
+        <div class="attribute-list">
+            <div class="attribute-row" *ngFor="let attr of attributes">
+                <label [for]="'attr-' + attr.key">
+                    {{ attr.key }}
+                </label>
+                <input
+                        [id]="'attr-' + attr.key"
+                        type="text"
+                        [(ngModel)]="$any(model)[attr.key]" />
+            </div>
+        </div>
+    </section>
+
+    <section class="editor-section">
+        <h2>References</h2>
+        <div class="reference-list">
+            <emfular-reference-details
+                    *ngFor="let container of model.$treeChildren"
+                    [container]="container"
+                    [isTree]="true"
+                    [modelService]="modelService"
+                    [detailsService]="detailsService">
+            </emfular-reference-details>
+            <emfular-reference-details
+                    *ngFor="let container of model.$otherLinks"
+                    [container]="container"
+                    [isTree]="false"
+                    [modelService]="modelService"
+                    [detailsService]="detailsService">
+            </emfular-reference-details>
+        </div>
+    </section>
+</div>

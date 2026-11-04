@@ -31,11 +31,9 @@ describe('ModelServiceService', () => {
       providers: [
           provideHistoryForModel('test_', 10),
         { provide: IoService, useClass: IoService },
-        { provide: DummyModelService, useFactory: () =>
-              new DummyModelService(
-                  TestBed.inject(HISTORY_SERVICE),
-                  TestBed.inject(IoService),
-              ) }
+        { provide: DummyModelService, useFactory: (history: HistoryService<JsonOf<DummyReferencable>>, io: IoService) =>
+              new DummyModelService(history, io),
+          deps: [HISTORY_SERVICE, IoService] }
       ]
     });
     service = TestBed.inject(DummyModelService);
@@ -74,11 +72,9 @@ describe('ModelService with HistoryService emitting immediately', () => {
       providers: [
         { provide: HISTORY_SERVICE, useValue: historyStub },
         { provide: IoService, useValue: {} },
-        { provide: DummyModelService, useFactory: () =>
-              new DummyModelService(
-                  TestBed.inject(HISTORY_SERVICE),
-                  TestBed.inject(IoService),
-              ) }
+        { provide: DummyModelService, useFactory: (history: HistoryService<JsonOf<DummyReferencable>>, io: IoService) =>
+              new DummyModelService(history, io),
+          deps: [HISTORY_SERVICE, IoService] }
       ]
     });
   });

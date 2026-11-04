@@ -1,0 +1,20 @@
+.emfular-white-button {
+    margin-top: 0;
+    margin-bottom: 8px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #b5b5b5;
+    background: #ffffff;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 120ms ease, border-color 120ms ease;
+}
+
+.emfular-white-button:hover {
+    background: #f2f2f2;
+    border-color: #999;
+}
+
+.emfular-white-button:focus-visible {
+    background: #e6e6e6;
+}

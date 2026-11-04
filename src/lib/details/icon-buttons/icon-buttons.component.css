@@ -1,0 +1,68 @@
+:host {
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+.icon-button {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    transition:
+            background-color 120ms ease,
+            border-color 120ms ease,
+            color 120ms ease;
+}
+
+.icon-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.icon-button svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.delete-button {
+    color: #c53b3b;
+    border-color: #f0caca;
+    background: #fff;
+}
+
+.delete-button:hover {
+    background: #fff0f0;
+    border-color: #dfa0a0;
+}
+
+.edit-button {
+    color: #4b658a;
+    border-color: #d5dfed;
+    background: #fff;
+}
+
+.edit-button:hover {
+    background: #edf3fb;
+    border-color: #b4c7e2;
+}
+
+.neutral-button {
+    color: #596579;
+    border-color: #e0e3e9;
+    background: #fff;
+}
+
+.neutral-button:hover {
+    background: #f0f2f6;
+    border-color: #cdd2dc;
+}

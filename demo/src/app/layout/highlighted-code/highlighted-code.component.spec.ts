@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HighlightedCodeComponent } from './highlighted-code.component';
+import {afterEach} from "vitest";
 
 describe('HighlightedCodeComponent', () => {
   let component: HighlightedCodeComponent;
@@ -15,6 +16,10 @@ describe('HighlightedCodeComponent', () => {
     fixture = TestBed.createComponent(HighlightedCodeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
   });
 
   it('should create', () => {

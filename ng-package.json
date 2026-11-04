@@ -12,6 +12,11 @@
       "input": "src/lib/styles",
       "glob": "details-overlay.css",
       "output": "."
+    },
+    {
+      "input": "src/lib/styles",
+      "glob": "button.css",
+      "output": "."
     }
   ]
 }

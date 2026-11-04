@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditorComponent } from './editor.component';
+import {afterEach} from "vitest";
 
 describe('EditorComponent', () => {
   let component: EditorComponent;
@@ -15,6 +16,10 @@ describe('EditorComponent', () => {
     fixture = TestBed.createComponent(EditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
   });
 
   it('should create', () => {

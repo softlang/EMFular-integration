@@ -3,13 +3,16 @@ import {ReContainer, Referencable } from 'emfular-core';
 import {NgForOf, NgIf} from "@angular/common";
 import {ModelService} from "../../model.service";
 import {DetailsService} from "../details-service";
+import {IconButtonsComponent} from "../icon-buttons/icon-buttons.component";
+import {IconButtonType} from "../icon-buttons/icon-button-type";
 
 @Component({
   selector: 'emfular-reference-details',
-  imports: [
-    NgForOf,
-    NgIf,
-  ],
+    imports: [
+        NgForOf,
+        NgIf,
+        IconButtonsComponent,
+    ],
   templateUrl: './reference-details.component.html',
   styleUrl: './reference-details.component.css'
 })
@@ -46,4 +49,5 @@ export class ReferenceDetailsComponent<M extends Referencable<any>> {
     }
   }
 
+    protected readonly IconButtonType = IconButtonType;
 }
