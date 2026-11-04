@@ -25,7 +25,7 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
   @Input() model!: T
   @Input() modelService!: ModelService<M>
   @Input() detailsService!: DetailsService<M>
-  @Input() modalRef!: ModalRef<void>;
+  @Input() modalRef?: ModalRef<void>;
 
   attributes: Array<{ key: string; options: AttributeOptions }> = [];
 
@@ -38,7 +38,7 @@ export class ModelDetailsComponent<T extends Referencable<any>, M extends Refere
   }
 
   close() {
-    this.modalRef.close();
+    this.modalRef?.close();
   }
 
   chooseParent() {
