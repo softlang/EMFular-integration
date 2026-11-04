@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GraphicalComponent } from './graphical.component';
+import {afterEach} from "vitest";
 
 describe('GraphicalComponent', () => {
   let component: GraphicalComponent;
@@ -15,6 +16,10 @@ describe('GraphicalComponent', () => {
     fixture = TestBed.createComponent(GraphicalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
   });
 
   it('should create', () => {
